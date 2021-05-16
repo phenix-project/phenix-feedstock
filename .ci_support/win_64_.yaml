@@ -3,7 +3,7 @@ boost_cpp:
 c_compiler:
 - vs2017
 channel_sources:
-- cctbx202105,conda-forge
+- conda-forge,defaults
 channel_targets:
 - cctbx-dev main
 cxx_compiler:
