@@ -1,6 +1,6 @@
 # dual build configuration
 channel_sources:
-  - cctbx202105,cctbx,conda-forge               # [not (aarch64 or armv7l or (osx and arm64))]
+  - cctbx202105,conda-forge                     # [not (aarch64 or armv7l or (osx and arm64))]
   - conda-forge                                 # [osx and arm64]
 
 channel_targets:
