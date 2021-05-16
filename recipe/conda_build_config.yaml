@@ -1,0 +1,7 @@
+# dual build configuration
+channel_sources:
+  - cctbx202105,cctbx                           # [not (aarch64 or armv7l or (osx and arm64))]
+  - conda-forge                                 # [osx and arm64]
+
+channel_targets:
+  - cctbx-dev main
