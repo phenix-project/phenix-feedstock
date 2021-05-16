@@ -5,11 +5,13 @@ channels:
   -
     - cctbx-dev
 channel_sources:
-  - cctbx202105
+  - cctbx202105, cctbx
 channel_targets:
   targets:
   -
     - cctbx-dev main
+
+build_with_mambabuild: true
 
 azure: {store_build_artifacts: true}
 build_platform: {osx_arm64: osx_64}
