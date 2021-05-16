@@ -5,7 +5,7 @@ channels:
   -
     - cctbx-dev
 channel_sources:
-  - cctbx202105, cctbx
+  - cctbx202105,cctbx
 channel_targets:
   targets:
   -
