@@ -3,13 +3,7 @@ github:
 channels:
   targets:
   -
-    - cctbx-dev
-channel_sources:
-  - cctbx202105,cctbx
-channel_targets:
-  targets:
-  -
-    - cctbx-dev main
+    - ["cctbx-dev", "main"]
 
 build_with_mambabuild: true
 
