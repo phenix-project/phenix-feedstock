@@ -1,1 +1,16 @@
-{}
+github:
+  user_or_org: phenix-project
+channels:
+  targets:
+  -
+    - cctbx-dev
+channel_sources:
+  - cctbx202105
+channel_targets:
+  targets:
+  -
+    - cctbx-dev main
+
+azure: {store_build_artifacts: true}
+build_platform: {osx_arm64: osx_64}
+test_on_native_only: true
