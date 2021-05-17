@@ -1,2 +1,4 @@
+channel_sources:
+  - cctbx202105,conda-forge,defaults
 channel_targets:
   - cctbx-dev main

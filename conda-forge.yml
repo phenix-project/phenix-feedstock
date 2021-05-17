@@ -2,6 +2,10 @@ github:
   user_or_org: phenix-project
   repo_name: phenix-feedstock
 channels:
+  sources:
+    - cctbx202105
+    - conda-forge
+    - defaults
   targets:
     - [cctbx-dev, main]
 
