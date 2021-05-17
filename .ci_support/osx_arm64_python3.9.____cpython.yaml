@@ -9,7 +9,7 @@ c_compiler:
 c_compiler_version:
 - '11'
 channel_sources:
-- conda-forge/label/rust_dev,conda-forge
+- cctbx202105,conda-forge,defaults
 channel_targets:
 - cctbx-dev main
 cxx_compiler:
