@@ -1,7 +1,7 @@
 {% set version = "2021.3" %}
 
 package:
-  name: phenix
+  name: cctbx-base
   version: {{ version }}
 
 source:
