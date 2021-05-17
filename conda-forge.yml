@@ -2,11 +2,11 @@ github:
   user_or_org: phenix-project
 channels:
   targets:
-  -
-    - ["cctbx-dev", "main"]
+    - [cctbx-dev, main]
 
-build_with_mambabuild: true
-
-azure: {store_build_artifacts: true}
-build_platform: {osx_arm64: osx_64}
+azure:
+  store_build_artifacts: true
+build_platform:
+  osx_arm64: osx_64
 test_on_native_only: true
+upload_on_branch: master
