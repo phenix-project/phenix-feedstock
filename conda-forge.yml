@@ -4,7 +4,10 @@ channels:
   targets:
     - [cctbx-dev, main]
 
+channel_priority: flexible
 azure:
+  user_or_org: phenix-release
+  project_name: feedstock-builds
   store_build_artifacts: true
 build_platform:
   osx_arm64: osx_64
