@@ -1,7 +1,7 @@
 {% set version = "2021.3" %}
 
 package:
-  name: cctbx-base
+  name: phenix
   version: {{ version }}
 
 source:
@@ -47,7 +47,7 @@ requirements:
     - xorg-libxfixes  # [linux]
 
 outputs:
-  - name: cctbx-base
+  - name: phenix
     requirements:
       run:
         - biopython
@@ -77,26 +77,26 @@ outputs:
       requires:
         - pip
 
-  - name: cctbx
-    build:
-    requirements:
-      run:
-        - {{ pin_subpackage('cctbx-base', max_pin="x.x.x") }}
-        - ipython
-        - pyside2  # [not aarch64 and not ppc64le and python_impl == "cpython"]
-        - pyzmq
-        - websockets
-        - wxpython  # [not aarch64 and not ppc64le and python_impl == "cpython"]
-    test:
-      imports:
-        - scitbx.array_family.flex
-        - gltbx.gl
-        - gltbx.glu
-      commands:
-        - libtbx.show_commands
-        - pip check
-      requires:
-        - pip
+  # - name: cctbx
+  #   build:
+  #   requirements:
+  #     run:
+  #       - {{ pin_subpackage('cctbx-base', max_pin="x.x.x") }}
+  #       - ipython
+  #       - pyside2  # [not aarch64 and not ppc64le and python_impl == "cpython"]
+  #       - pyzmq
+  #       - websockets
+  #       - wxpython  # [not aarch64 and not ppc64le and python_impl == "cpython"]
+  #   test:
+  #     imports:
+  #       - scitbx.array_family.flex
+  #       - gltbx.gl
+  #       - gltbx.glu
+  #     commands:
+  #       - libtbx.show_commands
+  #       - pip check
+  #     requires:
+  #       - pip
 
 about:
   home: https://github.com/cctbx/cctbx_project
