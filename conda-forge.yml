@@ -3,10 +3,10 @@ github:
   repo_name: phenix-feedstock
 channels:
   sources:
+    - conda-forge
     - cctbx202105
     - dacase
     - phenix-project
-    - conda-forge
     - defaults
   targets:
     - [cctbx-dev, main]
