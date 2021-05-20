@@ -25,8 +25,7 @@ conda-build:
  root-dir: ${FEEDSTOCK_ROOT}/build_artifacts
 
 CONDARC
-GET_BOA=boa
-BUILD_CMD=mambabuild
+BUILD_CMD=build
 
 conda install --yes --quiet "conda-forge-ci-setup=3" conda-build pip ${GET_BOA:-} -c conda-forge
 
@@ -67,8 +66,6 @@ else
     conda $BUILD_CMD "${RECIPE_ROOT}" -m "${CI_SUPPORT}/${CONFIG}.yaml" \
         --suppress-variables ${EXTRA_CB_OPTIONS:-} \
         --clobber-file "${CI_SUPPORT}/clobber_${CONFIG}.yaml"
-    # we are building with mambabuild, so exit with an error code for now
-    exit 1
 
     ( startgroup "Uploading packages" ) 2> /dev/null
 
