@@ -5,7 +5,7 @@ boost_cpp:
 c_compiler:
 - vs2017
 channel_sources:
-- conda-forge,cctbx202105,dacase,phenix-project,defaults
+- cctbx202105,conda-forge,dacase,phenix-project,defaults
 channel_targets:
 - cctbx-dev main
 cxx_compiler:

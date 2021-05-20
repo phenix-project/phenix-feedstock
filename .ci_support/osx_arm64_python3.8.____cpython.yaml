@@ -9,7 +9,7 @@ c_compiler:
 c_compiler_version:
 - '11'
 channel_sources:
-- conda-forge,cctbx202105,dacase,phenix-project,defaults
+- cctbx202105,conda-forge,dacase,phenix-project,defaults
 channel_targets:
 - cctbx-dev main
 cxx_compiler:
