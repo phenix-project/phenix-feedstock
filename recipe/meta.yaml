@@ -70,14 +70,14 @@ outputs:
         - requests
         - six
 
-        - amber_phenix
+        - amber_phenix  # [not win]
         - gdk-pixbuf =2.38  # [linux and not py==39]
         - onedep_api
         - pyrtf
         - rdkit
-        - wxpython =4.0  # [not py==39]
-        - wxpython  # [py==39]
-        - pyside2
+        - wxpython =4.0  # [not py==39 and x86_64]
+        - wxpython  # [py==39 or arm64]
+        - pyside2  # [x86_64]
 
         - absl-py
         - pip
