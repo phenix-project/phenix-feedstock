@@ -4,6 +4,8 @@ github:
 channels:
   sources:
     - cctbx202105
+    - dacase
+    - phenix-project
     - conda-forge
     - defaults
   targets:
