@@ -72,7 +72,7 @@ outputs:
 
         - amber_phenix
         - gdk-pixbuf =2.38  # [linux and not py==39]
-        - ondep_api
+        - onedep_api
         - pyrtf
         - rdkit
         - wxpython =4.0  # [not py==39]
