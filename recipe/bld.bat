@@ -1,7 +1,11 @@
+call %CONDA%\condabin\conda.bat create -n test -y -c conda-forge m2-tar curl
+call %CONDA%\condabin\conda.bat activate test
 curl -L -O "http://cci.lbl.gov/~bkpoon/abc.txt"
 rmdir /S /Q .\modules
 tar -xf abc.txt
 move phenix*\modules .
+call %CONDA%\condabin\conda.bat deactivate
+call %CONDA%\condabin\conda.bat remove -n test -y --all
 
 REM reapply patches
 git apply %RECIPE_DIR%\crys3d.patch
@@ -9,16 +13,12 @@ copy %RECIPE_DIR%\phaser_SConscript .\modules\phaser\SConscript
 copy %RECIPE_DIR%\bootstrap.py .\modules\cctbx_project\libtbx\auto_build\bootstrap.py
 
 REM get latest DIALS repositories
-call %CONDA%\condabin\conda.bat create -n test -y -c conda-forge m2-tar curl
-call %CONDA%\condabin\conda.bat activate test
 cd modules
 rmdir /S /Q .\dials
 rmdir /S /Q .\dxtbx xia2
 git clone https://github.com/dials/dials.git
 git clone https://github.com/dials/dxtbx.git
 cd ..
-call %CONDA%\condabin\conda.bat deactivate
-call %CONDA%\condabin\conda.bat remove -n test -y --all
 
 REM copy bootstrap.py
 copy modules\cctbx_project\libtbx\auto_build\bootstrap.py .
