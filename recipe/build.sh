@@ -17,6 +17,14 @@ if [[ "$CC" == *"arm64"* ]]; then
   cp ${RECIPE_DIR}/type_id_eq.h build/include/boost_adaptbx/type_id_eq.h
 fi
 
+# get latest DIALS repositories
+cd modules
+rm -fr dials dxtbx xia2
+git clone https://github.com/dials/dials.git
+git clone https://github.com/dials/dxtbx.git
+git clone https://github.com/xia2/xia2.git
+cd ..
+
 # link bootstrap.py
 ln -s modules/cctbx_project/libtbx/auto_build/bootstrap.py
 

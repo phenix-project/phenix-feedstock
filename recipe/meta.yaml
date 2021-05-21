@@ -92,6 +92,7 @@ outputs:
         - procrunner
 
         - colorlog
+        - msgpack-c
         - msgpack-python
         - orderedset  # [x86_64]
         - scikit-learn
