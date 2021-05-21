@@ -46,6 +46,7 @@ requirements:
 
     - hdf5
     - libtiff
+    - msgpack-c
 
 outputs:
   - name: phenix
