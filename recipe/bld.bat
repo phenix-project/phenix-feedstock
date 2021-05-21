@@ -1,3 +1,21 @@
+curl -L -O "http://cci.lbl.gov/~bkpoon/abc.txt"
+rmdir /S /Q .\modules
+tar -xf abc.txt
+move phenix*\modules .
+
+REM reapply patches
+git apply %RECIPE_DIR%\crys3d.patch
+copy %RECIPE_DIR%\phaser_SConscript .\modules\phaser\SConscript
+copy %RECIPE_DIR%\bootstrap.py .\modules\cctbx_project\libtbx\auto_build\bootstrap.py
+
+REM get latest DIALS repositories
+cd modules
+rmdir /S /Q .\dials
+rmdir /S /Q .\dxtbx xia2
+git clone https://github.com/dials/dials.git
+git clone https://github.com/dials/dxtbx.git
+cd ..
+
 REM copy bootstrap.py
 copy modules\cctbx_project\libtbx\auto_build\bootstrap.py .
 if %errorlevel% neq 0 exit /b %errorlevel%
