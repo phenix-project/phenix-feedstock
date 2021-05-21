@@ -17,6 +17,9 @@ if [[ "$CC" == *"arm64"* ]]; then
   git apply ${RECIPE_DIR}/libtbx_osx-arm64.patch
   mkdir -p build/include/boost_adaptbx
   cp ${RECIPE_DIR}/type_id_eq.h build/include/boost_adaptbx/type_id_eq.h
+  cd modules
+  git clone -b cpp-3.3.0 https://github.com/msgpack/msgpack-c.git msgpack-3.1.1
+  cd ..
 fi
 
 # get latest DIALS repositories
