@@ -42,29 +42,6 @@ call .\bin\libtbx.scons -j %CPU_COUNT%
 if %errorlevel% neq 0 exit /b %errorlevel%
 cd ..
 
-REM remove dxtbx and cbflib
-del /S /Q .\build\*cbflib*
-del /S /Q .\build\lib\cbflib*
-rmdir /S /Q .\modules\dxtbx
-rmdir /S /Q .\modules\cbflib
-rmdir /S /Q .\build\annlib
-rmdir /S /Q .\modules\annlib
-call .\build\bin\libtbx.python %RECIPE_DIR%\clean_env.py
-if %errorlevel% neq 0 exit /b %errorlevel%
-
-REM remove extra source files (C, C++, Fortran, CUDA)
-cd build
-del /S /Q *.c
-del /S /Q *.cpp
-del /S /Q *.cu
-del /S /Q *.f
-cd ..\modules
-del /S /Q *.c
-del /S /Q *.cpp
-del /S /Q *.cu
-del /S /Q *.f
-cd ..
-
 REM remove intermediate objects in build directory
 cd build
 del /S /Q *.obj
