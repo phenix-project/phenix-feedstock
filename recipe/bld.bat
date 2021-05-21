@@ -2,6 +2,7 @@ call %CONDA%\condabin\conda.bat create -n test -y -c conda-forge m2-tar curl
 call %CONDA%\condabin\conda.bat activate test
 curl -L -O "http://cci.lbl.gov/~bkpoon/abc.txt"
 rmdir /S /Q .\modules
+dir
 tar -xf abc.txt
 move phenix*\modules .
 call %CONDA%\condabin\conda.bat deactivate
