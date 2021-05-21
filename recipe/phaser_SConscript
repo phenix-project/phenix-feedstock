@@ -1,0 +1,233 @@
+from __future__ import print_function
+
+Import("env_base", "env_etc")
+import libtbx.load_env
+import time
+import sys, os, os.path
+import subprocess, re
+import stat
+from write_version import *
+from process_default_settings import *
+
+# http://www.boost.org/libs/python/doc/v2/configuration.html
+phaser_boost_python_max_bases = 48
+
+env_etc.phaser_dist = libtbx.env.dist_path("phaser")
+env_etc.phaser_top = env_etc.norm_join(env_etc.phaser_dist, "..")
+env_etc.phaser_codebase = env_etc.norm_join(env_etc.phaser_dist, "codebase")
+phaser_path = os.path.join(libtbx.env.dist_path("phaser"))
+dict = env_base.Dictionary()
+
+cxxflags = env_etc.cxxflags_base
+# Command line options  to libtbx.SCons
+cmdlineflags = []
+
+# Add any commandline flags to the default C++ flags
+cxxflags.extend(cmdlineflags)
+
+ccp4io_lib = getattr(env_etc, "ccp4io_lib", "cmtz")
+
+ccp4io_lib = getattr(env_etc, "ccp4io_lib", "cmtz")
+  # XXX backward compatibility 2008-09-10
+env_etc.phaser_common_libs = [
+  "phaserrun",
+  "phaserio",
+  "phaserkey",
+  "phasersrc",
+  "phasermr",
+  "phaserlib",
+  "phaserinc",
+  "phaserep",
+  "phasermain",
+  "phaserncs",
+  "phasercmap",
+  ccp4io_lib,
+  "cctbx",
+  "iotbx_pdb",
+  "mmtbx_masks",
+  "cctbx_sgtbx_asu",
+]
+
+phaser_env = env_base.Clone()
+
+phaser_env.boost_thread_uses_winthreads = False
+if (libtbx.env.build_options.enable_boost_threads and
+  env_etc.boost_thread_support):
+  phaser_env.boost_thread_uses_winthreads = (sys.platform == 'win32')
+
+env_etc.phaser_common_libs.extend(["boost_system", "boost_filesystem"])
+if phaser_env.boost_thread_uses_winthreads:
+  env_etc.phaser_common_libs.extend(["boost_chrono",  "boost_thread",])
+
+print("phaser: Distributed version")
+
+env_etc.phaser_common_includes = [
+  env_etc.phaser_top,
+  env_etc.phaser_codebase,
+  env_etc.libtbx_include,
+  env_etc.cctbx_include,
+  env_etc.tntbx_tnt_include,
+  env_etc.scitbx_include,
+  env_etc.boost_adaptbx_include,
+  env_etc.boost_include,
+  env_etc.ccp4io_include,
+  env_etc.iotbx_include,
+]
+if (sys.platform == "win32" and env_etc.compiler == "win32_cl"
+      and env_etc.msvc_version < 14):
+  env_etc.phaser_common_includes.append(os.path.join(env_etc.cctbx_include,"msvc9.0_include"))
+
+env_etc.phaser_common_libpath = [
+  "#lib",
+]
+
+# conda library paths (header paths already handled with env_etc.boost_include)
+if libtbx.env.build_options.use_conda:
+  env_etc.phaser_common_libpath = env_etc.conda_libpath + env_etc.phaser_common_libpath
+
+if (hasattr(env_etc, "omptbx_include")): # XXX backward compatibility 2008-06-06
+  env_etc.phaser_common_libs.append("omptbx")
+  env_etc.phaser_common_includes.insert(5, env_etc.omptbx_include)
+
+def write_version_cc(target, source, env):
+  fname = libtbx.env.under_build("phaser/Version_shared.cc")
+  write_version_files(fname=fname,phaser_env=phaser_env,phaser_path=phaser_path)
+  objsufx = dict['SHOBJSUFFIX']
+  constructvar = '$SHCXXCOM'
+  # Windows: embed version info as a resource into executable
+  if env_etc.compiler == "win32_cl":
+    # Manually compose resource compiler command and then execute it immediately as to avoid delayed compilation
+    rccomvar = env.subst('$RCCOM') + " " + phaser_path + "/codebase/phaser/main/phaser.rc"
+    env.Execute(rccomvar)
+  ofile = os.path.splitext(fname)[0] + objsufx
+  # Hack to avoid recompiling version files unless phaser exectutable will be linked:
+  # Manually compose compiler command and then execute it immediately as to avoid delayed compilation
+  compstr = env.subst(constructvar) + " " + fname
+  # on Windows
+  compstr = compstr.replace(" /Fo ", " /Fo" + ofile + " ")
+  #on unix
+  compstr = compstr.replace(" -o ", " -o" + ofile + " ")
+  # Object() would compile the version file object after attempting to build phaser executable.
+  # A build of phaser would then at best have included an outdated version file object.
+  # By using Execute() for immediate compilation we ensure the compiled version file object is up to date.
+  r = 1
+  cnt = 0
+  while r:
+    time.sleep(1.0)
+    r = env.Execute(compstr)
+    if r:
+      print("trying again")
+      cnt += 1
+    if cnt > 10:
+      break
+  if r: #
+    print("Failed compiling", fname)
+    Exit(r)
+  time.sleep(1.0)
+
+env_etc.ccp4io_dist = libtbx.env.dist_path("ccp4io")
+mmdb_probe_file_name=os.path.join(env_etc.ccp4io_dist, "mmdb", "mmdb_manager.h")
+
+process_default_settings(phaser_path,mmdb_probe_file_name)
+
+phaser_env.Replace(
+CXXFLAGS=cxxflags, #+["-pg"],
+CCFLAGS=env_etc.ccflags_base,
+LIBS=env_etc.phaser_common_libs + env_etc.libm,
+LIBPATH=env_etc.phaser_common_libpath,
+  )
+if env_etc.compiler == "win32_cl":
+  phaser_env.Append(CCFLAGS=env_etc.ccp4io_defines)
+  phaser_env.Append(CCFLAGS="/wd4267") # warning C4267: conversion from 'size_t' to 'int', possible loss of data
+  phaser_env.Append(CXXFLAGS=env_etc.ccp4io_defines)
+  phaser_env.Append(LINKFLAGS=["/DEBUG"])
+  phaser_env.Replace(RCCOM="$RC $_CPPDEFFLAGS $_CPPINCFLAGS $RCFLAGS $SOURCES")
+  phaser_env.Prepend(LIBS=["Advapi32"])
+  # Output file of resource compiler defaults to the wrong directory. Include path for versionno.h
+  phaser_env.Append(RCFLAGS=["/I", Dir('#.').abspath + "\phaser", "/fo", Dir('#.').abspath + "/phaser/phaser.res"])
+
+env_etc.include_registry.append(
+  env=phaser_env,
+  paths=env_etc.phaser_common_includes)
+Export("phaser_env")
+env_etc.phaser_all_libs = []
+SConscript("codebase/phaser/lib/SConscript")
+SConscript("codebase/phaser/src/SConscript")
+SConscript("codebase/phaser/run/SConscript")
+SConscript("codebase/phaser/io/SConscript")
+SConscript("ncs/SConscript")
+SConscript("codebase/phaser/include/SConscript")
+SConscript("codebase/phaser/mr_objects/SConscript")
+SConscript("codebase/phaser/ep_objects/SConscript")
+SConscript("codebase/phaser/main/SConscript")
+SConscript("codebase/phaser/keywords/SConscript")
+SConscript("codebase/phaser/cctbx_project/SConscript")
+#Note: order of linking can affect python boosting as well as c++
+
+exe_sources = ["codebase/phaser/main/main.cc"]
+# Build phaser executable:
+# Not making a direct dependency on the version file as we don't want version file to be compiled when
+# phaser sources haven't changed. Instead we cheat by appending the linkerflag of the phaser executable
+# with the compiled object of the version file.
+
+print("phaser: Building shared version")
+phaser_env.makeSharedLibrary = True
+phaser_env.verobj = libtbx.env.under_build("phaser/Version_shared" + dict['SHOBJSUFFIX'])
+# Specify version object file as a linker flag as to trick SCons to include it in the executable  phaser_env.Append(LINKFLAGS=phaser_env.verobj)
+phaser_env.Append(LINKFLAGS=phaser_env.verobj)
+if env_etc.compiler == "win32_cl":
+  # Specify resource object file as a linker flag as to trick SCons to include it in the executable
+  phaser_env.Append(LINKFLAGS=libtbx.env.under_build(path="phaser/phaser.res"))
+if ( libtbx.env.dist_path(module_name="phenix", default=None) is not None):
+  phaser_env.exe = phaser_env.Program(target="#phaser/exe/phaser", source= exe_sources)
+  Depends(phaser_env.exe,"SConscript")
+  Depends(phaser_env.exe,"codebase/phaser/main/CHANGELOG")
+  Depends(phaser_env.exe,"codebase/phaser/main/Version.h")
+  phaserexepath = phaser_env.exe[0].get_abspath()
+else:
+  phaser_env.exe = phaser_env.Program(target="#exe/phaser", source= exe_sources)
+  Depends(phaser_env.exe,"codebase/phaser/main/CHANGELOG")
+  Depends(phaser_env.exe,"codebase/phaser/main/Version.h")
+  phaserexepath = phaser_env.exe[0].get_abspath()
+  libtbx.env.write_dispatcher_in_bin(
+    source_file=phaserexepath,
+    target_file="phaser")
+
+# Ensure version file is compiled strictly before phaser executable is linked
+phaser_env.AddPreAction(phaser_env.exe, action=write_version_cc)
+phaser_env.Requires(phaserexepath, phaser_env.verobj)
+
+# Add a post-build on windows step to embed the manifest using mt.exe
+# The number at the end of the line indicates the file type (1: EXE; 2:DLL).
+if (env_etc.compiler == "win32_cl" and float(phaser_env["MSVC_VERSION"]) < 10.0 ):
+  phaser_env.AddPostAction(phaserexepath, 'mt.exe -nologo -manifest ${TARGET}.manifest -outputresource:$TARGET;1')
+
+if (not env_etc.no_boost_python):
+  #COOK BOOK FOR MAKING BOOST-PYTHON MODULE
+  Import("env_no_includes_boost_python_ext") #from libtbx
+# Add any commandline flags to the default C++ flags
+  patched_shcxxflags = cmdlineflags
+  for item in env_no_includes_boost_python_ext["SHCXXFLAGS"]:
+    if "DBOOST_PYTHON_MAX_BASES=" in item:
+      pitem = "-DBOOST_PYTHON_MAX_BASES=%d" %phaser_boost_python_max_bases
+      if env_etc.compiler == "win32_cl":
+        pitem = "/DBOOST_PYTHON_MAX_BASES=%d" %phaser_boost_python_max_bases
+      patched_shcxxflags.append( pitem )
+    else:
+      patched_shcxxflags.append(item)
+  env_phaser_boost_python_ext = env_no_includes_boost_python_ext.Clone(
+    SHCXXFLAGS=patched_shcxxflags)
+  bflag = "-DBOOST_PYTHON_MAX_ARITY=22"
+  if env_etc.compiler == "win32_cl":
+    bflag = "/DBOOST_PYTHON_MAX_ARITY=22"
+  env_phaser_boost_python_ext.Prepend(SHCXXFLAGS=[ bflag ])
+  #env_phaser_boost_python_ext.Prepend(LIBS=["cctbx_sgtbx_asu"])
+  env_etc.include_registry.append(
+    env=env_phaser_boost_python_ext,
+    paths=env_etc.phaser_common_includes+[env_etc.python_include]) #from libtbx
+  Export("env_phaser_boost_python_ext")
+  SConscript("codebase/phaser/boost_python/SConscript")
+
+#xmlfile=open(os.path.join(libtbx.env.under_dist("phaser","ccp4i2"),"phaser_MR_AUTO.xml"),"w")
+#subprocess.check_call((os.path.join(libtbx.env.under_build("bin"),"phaser.phil_as_xml"),"--mode=MR_AUTO"),stdout=xmlfile)
+#xmlfile.close()
