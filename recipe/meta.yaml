@@ -68,7 +68,7 @@ outputs:
         - requests
         - six
 
-        - amber_phenix  # [not win and x86_64]
+        # - amber_phenix  # [not win and x86_64]
         - gdk-pixbuf =2.38  # [linux and not py==39]
         - onedep_api
         - pyrtf
