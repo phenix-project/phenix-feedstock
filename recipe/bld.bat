@@ -4,7 +4,9 @@ curl -L -O "http://cci.lbl.gov/~bkpoon/abc.txt"
 rmdir /S /Q .\modules
 dir
 tar -xzf abc.txt
+dir
 move phenix*\modules .
+dir
 call %CONDA%\condabin\conda.bat deactivate
 call %CONDA%\condabin\conda.bat remove -n test -y --all
 
