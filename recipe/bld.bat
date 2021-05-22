@@ -7,6 +7,8 @@ cd phenix-installer*
 move .\modules ..
 cd ..
 del abc.txt
+dir
+dir modules
 
 REM reapply patches
 git apply %RECIPE_DIR%\crys3d.patch
