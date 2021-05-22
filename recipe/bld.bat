@@ -33,7 +33,7 @@ rmdir /S /Q .\modules\eigen
 rmdir /S /Q .\modules\scons
 
 REM build
-%PYTHON% bootstrap.py build --builder=cctbx --use-conda %PREFIX% --nproc 4 --config-flags="--enable_cxx11" --config-flags="--no_bin_python"
+%PYTHON% bootstrap.py build --builder=phenix --use-conda %PREFIX% --nproc 4 --config-flags="--enable_cxx11" --config-flags="--no_bin_python"
 if %errorlevel% neq 0 exit /b %errorlevel%
 cd build
 call .\bin\libtbx.configure cma_es crys3d fable rstbx spotinder
