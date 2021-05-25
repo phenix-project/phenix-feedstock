@@ -2,12 +2,12 @@
 set -xe
 
 export TARBALL="https://artprodcus3.artifacts.visualstudio.com/Aa21b64c7-c136-4a25-ab50-eb9ba3fa4296/f0ee1b2f-77b3-4fa6-a2c5-97101b71b939/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL3BoZW5peC1yZWxlYXNlL3Byb2plY3RJZC9mMGVlMWIyZi03N2IzLTRmYTYtYTJjNS05NzEwMWI3MWI5MzkvYnVpbGRJZC8xMDU1L2FydGlmYWN0TmFtZS9waGVuaXgtMjAyMS4wNS5hMjQ1/content?format=file&subPath=%2Fphenix-2021.05.a24.enc"
-export TOKEN=U2FsdGVkX18yOdDmlI6ZOSJYRHXC8zouRilhLZbKujbuGFerBNntNY4cBB6Z1gYCX0AtQ94f4bE9GGPOBNKEkjPPjw9iIUOrfvdsKVbaLdA=
+# export TOKEN="U2FsdGVkX18yOdDmlI6ZOSJYRHXC8zouRilhLZbKujbuGFerBNntNY4cBB6Z1gYCX0AtQ94f4bE9GGPOBNKEkjPPjw9iIUOrfvdsKVbaLdA="
 
 # curl -L -O http://cci.lbl.gov/~bkpoon/abc.txt
-cat ${BINSTAR_TOKEN} > password
-export ACCESS_TOKEN=`echo ${TOKEN} | openssl enc -d -aes-256-cbc -a -salt -pass file:./password`
-curl -L -O ${TARBALL} --user "user:${ACCESS_TOKEN}"
+# cat ${BINSTAR_TOKEN} > password
+# export ACCESS_TOKEN=`echo ${TOKEN} | openssl enc -d -aes-256-cbc -a -salt -pass file:./password`
+curl -L -O ${TARBALL} # --user "user:${ACCESS_TOKEN}"
 ls
 rm -fr ./modules
 tar -xf abc.txt
