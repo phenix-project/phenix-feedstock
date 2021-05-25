@@ -1,7 +1,7 @@
 #!/bin/bash
 set -xe
 
-export TARBALL=https://artprodcus3.artifacts.visualstudio.com/Aa21b64c7-c136-4a25-ab50-eb9ba3fa4296/_apis/public/artifact/cGlwZWxpbmVhcnRpZmFjdDovL3BoZW5peC1yZWxlYXNlL3Byb2plY3RJZC9mMGVlMWIyZi03N2IzLTRmYTYtYTJjNS05NzEwMWI3MWI5MzkvYnVpbGRJZC8xMDU1L2FydGlmYWN0TmFtZS9waGVuaXgtMjAyMS4wNS5hMjQ1/signedContent?format=zip&urlExpires=2021-05-25T02%3A38%3A00.3330849Z&urlSigningMethod=HMACV1&urlSignature=tYi%2FMGxeJrA8bB9SZTQM5x4HtucZJeWZj0nRx%2F3H2OM%3D
+export TARBALL=https://artprodcus3.artifacts.visualstudio.com/Aa21b64c7-c136-4a25-ab50-eb9ba3fa4296/f0ee1b2f-77b3-4fa6-a2c5-97101b71b939/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL3BoZW5peC1yZWxlYXNlL3Byb2plY3RJZC9mMGVlMWIyZi03N2IzLTRmYTYtYTJjNS05NzEwMWI3MWI5MzkvYnVpbGRJZC8xMDU1L2FydGlmYWN0TmFtZS9waGVuaXgtMjAyMS4wNS5hMjQ1/content?format=file&subPath=%2Fphenix-2021.05.a24.enc
 export TOKEN=U2FsdGVkX18yOdDmlI6ZOSJYRHXC8zouRilhLZbKujbuGFerBNntNY4cBB6Z1gYCX0AtQ94f4bE9GGPOBNKEkjPPjw9iIUOrfvdsKVbaLdA=
 
 # curl -L -O http://cci.lbl.gov/~bkpoon/abc.txt
