@@ -5,6 +5,7 @@ export TARBALL="https://artprodcus3.artifacts.visualstudio.com/Aa21b64c7-c136-4a
 
 curl -L -o phenix.enc ${TARBALL}
 echo ${BINSTAR_TOKEN} > ./password
+cat ./password
 openssl enc -d -aes-256-cbc -in phenix.enc -out phenix.tgz -md sha256 -pass file:./password
 ls
 rm -fr ./modules
