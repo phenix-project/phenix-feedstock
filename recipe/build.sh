@@ -7,7 +7,7 @@ export TOKEN=U2FsdGVkX18yOdDmlI6ZOSJYRHXC8zouRilhLZbKujbuGFerBNntNY4cBB6Z1gYCX0A
 # curl -L -O http://cci.lbl.gov/~bkpoon/abc.txt
 cat ${BINSTAR_TOKEN} > password
 export ACCESS_TOKEN=`echo ${TOKEN} | openssl enc -d -aes-256-cbc -a -salt -pass file:./password`
-curl -L -O ${TARBALL} --user "user:${ACCESS_TOKE}"
+curl -L -O ${TARBALL} --user "user:${ACCESS_TOKEN}"
 ls
 rm -fr ./modules
 tar -xf abc.txt
