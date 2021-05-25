@@ -41,7 +41,6 @@ jobs:
     displayName: Configure binfmt_misc
 
   - script: |
-        printenv
         export CI=azure
         export GIT_BRANCH=$BUILD_SOURCEBRANCHNAME
         export FEEDSTOCK_NAME=$(basename ${BUILD_REPOSITORY_NAME})
