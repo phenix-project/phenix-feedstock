@@ -10,6 +10,8 @@ channels:
     - defaults
   targets:
     - [cctbx-dev, main]
+secrets:
+  - TARBALL_PASSWORD
 
 channel_priority: flexible
 azure:
