@@ -3,14 +3,11 @@ set -xe
 
 export TARBALL="https://artprodcus3.artifacts.visualstudio.com/Aa21b64c7-c136-4a25-ab50-eb9ba3fa4296/f0ee1b2f-77b3-4fa6-a2c5-97101b71b939/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL3BoZW5peC1yZWxlYXNlL3Byb2plY3RJZC9mMGVlMWIyZi03N2IzLTRmYTYtYTJjNS05NzEwMWI3MWI5MzkvYnVpbGRJZC8xMDU1L2FydGlmYWN0TmFtZS9waGVuaXgtMjAyMS4wNS5hMjQ1/content?format=file&subPath=%2Fphenix-2021.05.a24.enc"
 
-printenv
-
 curl -L -o phenix.enc ${TARBALL}
-ls
 openssl enc -d -aes-256-cbc -in phenix.enc -out phenix.tgz -md sha256 -pass env:TARBALL_PASSWORD
-ls
 rm -fr ./modules
 tar -xf phenix.tgz
+rm phenix.tgz
 mv phenix*/modules .
 
 # reapply patches
@@ -24,9 +21,9 @@ if [[ "$CC" == *"arm64"* ]]; then
   git apply ${RECIPE_DIR}/libtbx_osx-arm64.patch
   mkdir -p build/include/boost_adaptbx
   cp ${RECIPE_DIR}/type_id_eq.h build/include/boost_adaptbx/type_id_eq.h
-  cd modules
-  git clone -b cpp-3.3.0 https://github.com/msgpack/msgpack-c.git msgpack-3.1.1
-  cd ..
+  # cd modules
+  # git clone -b cpp-3.3.0 https://github.com/msgpack/msgpack-c.git msgpack-3.1.1
+  # cd ..
 fi
 
 # get latest DIALS repositories
