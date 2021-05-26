@@ -27,11 +27,11 @@ if [[ "$CC" == *"arm64"* ]]; then
 fi
 
 # get latest DIALS repositories
-cd modules
-rm -fr dials dxtbx xia2
-git clone https://github.com/dials/dials.git
-git clone https://github.com/dials/dxtbx.git
-cd ..
+# cd modules
+# rm -fr dials dxtbx xia2
+# git clone https://github.com/dials/dials.git
+# git clone https://github.com/dials/dxtbx.git
+# cd ..
 
 # link bootstrap.py
 ln -s modules/cctbx_project/libtbx/auto_build/bootstrap.py
