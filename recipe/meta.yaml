@@ -39,6 +39,7 @@ requirements:
     - future
     - libglu  # [linux]
     - numpy
+    - pip
     - python
     - python.app  # [osx]
     - scons
