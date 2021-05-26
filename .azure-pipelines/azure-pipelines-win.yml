@@ -120,4 +120,5 @@ jobs:
       displayName: Upload package
       env:
         BINSTAR_TOKEN: $(BINSTAR_TOKEN)
+        TARBALL_PASSWORD: $(TARBALL_PASSWORD)
       condition: and(succeeded(), not(eq(variables['UPLOAD_PACKAGES'], 'False')))

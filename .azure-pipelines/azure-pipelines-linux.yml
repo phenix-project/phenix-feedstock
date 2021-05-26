@@ -49,6 +49,7 @@ jobs:
     displayName: Run docker build
     env:
       BINSTAR_TOKEN: $(BINSTAR_TOKEN)
+      TARBALL_PASSWORD: $(TARBALL_PASSWORD)
   - script: |
         full_artifact_name="conda_artifacts_$(build.BuildId)_$(CONFIG)"
         artifact_name=`echo "$full_artifact_name" | head -c 80`
