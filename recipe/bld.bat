@@ -13,6 +13,12 @@ cd phenix-installer*
 move .\modules ..
 cd ..
 
+REM compress phenix_examples
+cd .\modules
+tar -zcf phenix_examples.tgz phenix_examples
+rmdir /S /Q .\phenix_examples
+cd ..
+
 REM reapply patches
 git apply %RECIPE_DIR%\crys3d.patch
 copy %RECIPE_DIR%\phaser_SConscript .\modules\phaser\SConscript
@@ -39,19 +45,17 @@ rmdir /S /Q .\modules\scons
 REM build
 %PYTHON% bootstrap.py build --builder=phenix --use-conda %PREFIX% --nproc 4 --config-flags="--enable_cxx11" --config-flags="--no_bin_python"
 if %errorlevel% neq 0 exit /b %errorlevel%
-cd build
-call .\bin\libtbx.configure cma_es crys3d fable rstbx spotinder
-if %errorlevel% neq 0 exit /b %errorlevel%
-call .\bin\libtbx.scons -j %CPU_COUNT%
-if %errorlevel% neq 0 exit /b %errorlevel%
-call .\bin\libtbx.scons -j %CPU_COUNT%
-if %errorlevel% neq 0 exit /b %errorlevel%
 cd ..
 
 REM remove intermediate objects in build directory
 cd build
 del /S /Q *.obj
 cd ..
+
+REM extract phenix_examples
+cd .\modules
+tar -zxf phenix_examples.tgz
+del phenix_examples.tgz
 
 REM copy files in build
 SET EXTRA_CCTBX_DIR=%LIBRARY_PREFIX%\share\cctbx
