@@ -7,7 +7,7 @@ source:
 
 build:
   number: 0
-  skip: true  # [py<36]
+  skip: true  # [py<37]
   preserve_egg_dir: true
   script_env:
     - TARBALL_PASSWORD
