@@ -1,19 +1,13 @@
-{% set version = "2021.3" %}
-
 package:
   name: phenix
-  version: {{ version }}
+  version: nightly
 
 source:
-  url: https://github.com/cctbx/cctbx_project/releases/download/v{{ version }}/cctbx-{{ version }}.tar.gz
-  sha256: a0fce583497a96b549f1849e772f9aa4422887b83c46e8ebf097445c840ead02
-  patches:
-    - crys3d.patch
-    - libtbx_osx-arm64.patch  # [build_platform != target_platform]
+  git_url: https://github.com/phenix-project/phenix-installer.git
 
 build:
-  number: 1
-  skip: true  # [win and py==39]
+  number: 0
+  skip: true  # [py<36]
   preserve_egg_dir: true
   script_env:
     - TARBALL_PASSWORD
@@ -104,8 +98,8 @@ outputs:
     test:
       imports:
         - scitbx.array_family.flex
-        - gltbx.gl
-        - gltbx.glu
+        - gltbx.gl  # [not (win and py==39)]
+        - gltbx.glu  # [not (win and py==39)]
       commands:
         - libtbx.show_commands
         - pip check
