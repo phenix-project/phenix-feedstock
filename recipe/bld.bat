@@ -13,15 +13,11 @@ cd phenix-installer*
 move .\modules ..
 cd ..
 
-REM compress chem_data and phenix_examples
+REM remove chem_data, phenix_examples, and phenix_regression
 cd .\modules
-tar -zcf phenix_examples.tgz phenix_examples
 rmdir /S /Q .\chem_data
-mkdir chem_data
-copy NUL chem_data\__init__.py
-tar -zcf phenix_examples.tgz phenix_examples
 rmdir /S /Q .\phenix_examples
-mkdir phenix_examples
+rmdir /S /Q .\phenix_regression
 cd ..
 
 REM reapply patches
@@ -47,15 +43,6 @@ REM remove intermediate objects in build directory
 cd build
 del /S /Q *.obj
 cd ..
-
-REM extract chem_data and phenix_examples
-cd .\modules
-rmdir /S /Q .\chem_data
-rmdir /S /Q .\phenix_examples
-tar -zxf chem_data.tgz
-tar -zxf phenix_examples.tgz
-del chem_data.tgz
-del phenix_examples.tgz
 
 REM copy files in build
 SET EXTRA_CCTBX_DIR=%LIBRARY_PREFIX%\share\cctbx
