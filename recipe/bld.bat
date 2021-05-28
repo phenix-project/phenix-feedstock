@@ -12,6 +12,7 @@ del phenix.tgz
 cd phenix-installer*
 move .\modules ..
 cd ..
+dir
 
 REM remove chem_data, phenix_examples, and phenix_regression
 cd .\modules
@@ -19,6 +20,7 @@ rmdir /S /Q .\chem_data
 rmdir /S /Q .\phenix_examples
 rmdir /S /Q .\phenix_regression
 cd ..
+dir
 
 REM reapply patches
 git apply %RECIPE_DIR%\crys3d.patch
@@ -33,6 +35,7 @@ REM remove extra source code
 rmdir /S /Q .\modules\boost
 rmdir /S /Q .\modules\eigen
 rmdir /S /Q .\modules\scons
+dir
 
 REM build
 %PYTHON% bootstrap.py build --builder=phenix --use-conda %PREFIX% --nproc 4 --config-flags="--enable_cxx11" --config-flags="--no_bin_python"
