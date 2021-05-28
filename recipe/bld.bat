@@ -24,6 +24,7 @@ dir
 
 REM reapply patches
 git apply %RECIPE_DIR%\crys3d.patch
+git apply %RECIPE_DIR%\libtbx_SConscript.patch
 copy %RECIPE_DIR%\phaser_SConscript .\modules\phaser\SConscript
 copy %RECIPE_DIR%\bootstrap.py .\modules\cctbx_project\libtbx\auto_build\bootstrap.py
 
