@@ -13,25 +13,21 @@ cd phenix-installer*
 move .\modules ..
 cd ..
 
-REM compress phenix_examples
+REM compress chem_data and phenix_examples
 cd .\modules
 tar -zcf phenix_examples.tgz phenix_examples
+rmdir /S /Q .\chem_data
+mkdir chem_data
+copy NUL chem_data\__init__.py
+tar -zcf phenix_examples.tgz phenix_examples
 rmdir /S /Q .\phenix_examples
+mkdir phenix_examples
 cd ..
 
 REM reapply patches
 git apply %RECIPE_DIR%\crys3d.patch
 copy %RECIPE_DIR%\phaser_SConscript .\modules\phaser\SConscript
 copy %RECIPE_DIR%\bootstrap.py .\modules\cctbx_project\libtbx\auto_build\bootstrap.py
-
-REM get latest DIALS repositories
-@REM cd modules
-@REM rmdir /S /Q .\dials
-@REM rmdir /S /Q .\dxtbx
-@REM rmdir /S /Q .\xia2
-@REM git clone https://github.com/dials/dials.git
-@REM git clone https://github.com/dials/dxtbx.git
-@REM cd ..
 
 REM copy bootstrap.py
 copy modules\cctbx_project\libtbx\auto_build\bootstrap.py .
@@ -52,9 +48,13 @@ cd build
 del /S /Q *.obj
 cd ..
 
-REM extract phenix_examples
+REM extract chem_data and phenix_examples
 cd .\modules
+rmdir /S /Q .\chem_data
+rmdir /S /Q .\phenix_examples
+tar -zxf chem_data.tgz
 tar -zxf phenix_examples.tgz
+del chem_data.tgz
 del phenix_examples.tgz
 
 REM copy files in build
