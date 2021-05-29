@@ -15,12 +15,12 @@ cd ..
 dir
 
 REM remove chem_data, phenix_examples, and phenix_regression
-cd .\modules
-rmdir /S /Q .\chem_data
-rmdir /S /Q .\phenix_examples
-rmdir /S /Q .\phenix_regression
-cd ..
-dir
+@REM cd .\modules
+@REM rmdir /S /Q .\chem_data
+@REM rmdir /S /Q .\phenix_examples
+@REM rmdir /S /Q .\phenix_regression
+@REM cd ..
+@REM dir
 
 REM reapply patches
 git apply %RECIPE_DIR%\crys3d.patch
