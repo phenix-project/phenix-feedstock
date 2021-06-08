@@ -49,9 +49,11 @@ del /S /Q *.obj
 cd ..
 
 REM copy files in build
+REM not sure why directory changes, which is why "cd %SRC_DIR%" is needed
 SET EXTRA_CCTBX_DIR=%LIBRARY_PREFIX%\share\cctbx
 mkdir  %EXTRA_CCTBX_DIR%
 SET CCTBX_CONDA_BUILD=.\modules\cctbx_project\libtbx\auto_build\conda_build
+cd %SRC_DIR%
 dir
 call .\build\bin\libtbx.python %CCTBX_CONDA_BUILD%\install_build.py --prefix %LIBRARY_PREFIX% --sp-dir %SP_DIR% --ext-dir %PREFIX%\lib --preserve-egg-dir
 if %errorlevel% neq 0 exit /b %errorlevel%
