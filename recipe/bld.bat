@@ -2,9 +2,16 @@ echo on
 
 call %CONDA%\condabin\conda.bat create -n test -y -c conda-forge curl m2-gzip m2-tar openssl
 call %CONDA%\condabin\conda.bat activate test
-SET TARBALL="https://artprodcus3.artifacts.visualstudio.com/Aa21b64c7-c136-4a25-ab50-eb9ba3fa4296/f0ee1b2f-77b3-4fa6-a2c5-97101b71b939/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL3BoZW5peC1yZWxlYXNlL3Byb2plY3RJZC9mMGVlMWIyZi03N2IzLTRmYTYtYTJjNS05NzEwMWI3MWI5MzkvYnVpbGRJZC8xMTEzL2FydGlmYWN0TmFtZS9waGVuaXgtMjAyMS4wNi5hMDc1/content?format=file&subPath=/phenix-2021.06.a07.enc"
-curl -L -o phenix.enc %TARBALL%
-openssl enc -d -aes-256-cbc -in phenix.enc -out phenix.tgz -md sha256 -pass env:TARBALL_PASSWORD
+
+openssl enc -d ^
+  -aes-256-cbc ^
+  -salt ^
+  -md sha256 ^
+  -iter 100000 ^
+  -pbkdf2 ^
+  -in phenix.enc ^
+  -out phenix.tgz ^
+  -pass env:TARBALL_PASSWORD
 rmdir /S /Q .\modules
 tar -xzf phenix.tgz
 del phenix.enc
