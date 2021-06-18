@@ -13,8 +13,8 @@ openssl enc -d ^
   -md sha256 ^
   -iter 100000 ^
   -pbkdf2 ^
-  -in phenix.enc ^
-  -out phenix.tgz ^
+  -in .\phenix.enc ^
+  -out .\phenix.tgz ^
   -pass env:TARBALL_PASSWORD
 rmdir /S /Q .\modules
 del phenix.enc
