@@ -15,11 +15,11 @@ openssl enc -d ^
   -iter 100000 ^
   -pbkdf2 ^
   -in %SRC_DIR%\phenix.enc ^
-  -out %SRC_DIR%\phenix.tgz ^
+  -out %SRC_DIR%\phenix.tar ^
   -pass env:TARBALL_PASSWORD
 dir
-tar -xzf phenix.tgz
-del phenix.tgz
+tar -xf phenix.tar
+del phenix.tar
 cd phenix-installer*
 move .\modules ..
 cd ..
