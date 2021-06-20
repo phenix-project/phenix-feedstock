@@ -7,20 +7,15 @@ dir D:\bld\src_cache
 del /S /Q D:\bld\src_cache\phenix*.tar.gz
 dir
 
-del phenix.enc
-SET TARBALL="https://artprodcus3.artifacts.visualstudio.com/Aa21b64c7-c136-4a25-ab50-eb9ba3fa4296/f0ee1b2f-77b3-4fa6-a2c5-97101b71b939/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL3BoZW5peC1yZWxlYXNlL3Byb2plY3RJZC9mMGVlMWIyZi03N2IzLTRmYTYtYTJjNS05NzEwMWI3MWI5MzkvYnVpbGRJZC8xMTUzL2FydGlmYWN0TmFtZS9waGVuaXg1/content?format=file&subPath=/phenix.tar.gz"
-curl -L -o phenix.tar.gz %TARBALL%
-tar -xf phenix.tar.gz
-dir
-
+cd %SRC_DIR%
 openssl enc -d ^
   -aes-256-cbc ^
   -salt ^
   -md sha256 ^
   -iter 100000 ^
   -pbkdf2 ^
-  -in .\phenix.enc ^
-  -out .\phenix.tgz ^
+  -in phenix.enc ^
+  -out phenix.tgz ^
   -pass env:TARBALL_PASSWORD
 rmdir /S /Q .\modules
 del phenix.enc
