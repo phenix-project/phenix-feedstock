@@ -17,7 +17,7 @@ openssl enc -d ^
   -in %SRC_DIR%\phenix.enc ^
   -out %SRC_DIR%\phenix.tgz ^
   -pass env:TARBALL_PASSWORD
-rmdir /S /Q .\modules
+dir
 tar -xzf phenix.tgz
 del phenix.tgz
 cd phenix-installer*
