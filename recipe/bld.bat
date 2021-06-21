@@ -18,6 +18,7 @@ openssl enc -d ^
   -out %SRC_DIR%\phenix.tar ^
   -pass env:TARBALL_PASSWORD
 dir
+del /S /Q %SRC_DIR%\phenix.enc
 tar -xf phenix.tar
 del phenix.tar
 cd phenix-installer*
