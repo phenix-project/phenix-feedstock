@@ -21,5 +21,5 @@ azure:
 build_platform:
   osx_arm64: osx_64
 test_on_native_only: true
-upload_on_branch: master
+upload_on_branch: upload
 # build_with_mambabuild: True
