@@ -46,8 +46,10 @@ rm -fr ./modules/boost
 rm -fr ./modules/eigen
 rm -fr ./modules/scons
 
+ls ./modules
+
 # build
-${PYTHON} bootstrap.py build --builder=phenix --use-conda ${PREFIX} --nproc 4 \
+${PYTHON} bootstrap.py build --builder=phenix_voyager --use-conda ${PREFIX} --nproc 4 \
   --config-flags="--compiler=conda" --config-flags="--use_environment_flags" \
   --config-flags="--enable_cxx11" --config-flags="--no_bin_python"
 
