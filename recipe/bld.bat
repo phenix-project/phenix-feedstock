@@ -55,6 +55,14 @@ REM build
 if %errorlevel% neq 0 exit /b %errorlevel%
 cd ..
 
+REM rebuild rotarama and cablam caches
+del /S /Q .\modules\chem_data\rotarama_data\*.pickle
+del /S /Q .\modules\chem_data\rotarama_data\*.dlite
+del /S /Q .\modules\chem_data\cablam_data\*.pickle
+del /S /Q .\modules\chem_data\cablam_data\*.dlite
+call ./build/bin/mmtbx.rebuild_rotarama_cache
+call ./build/bin/mmtbx.rebuild_cablam_cache
+
 REM remove intermediate objects in build directory
 cd build
 del /S /Q *.obj

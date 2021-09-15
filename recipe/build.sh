@@ -51,6 +51,14 @@ ${PYTHON} bootstrap.py build --builder=phenix --use-conda ${PREFIX} --nproc 4 \
   --config-flags="--compiler=conda" --config-flags="--use_environment_flags" \
   --config-flags="--enable_cxx11" --config-flags="--no_bin_python"
 
+# rebuild rotarama and cablam caches
+rm -fr ./modules/chem_data/rotarama_data/*.pickle
+rm -fr ./modules/chem_data/rotarama_data/*.dlite
+rm -fr ./modules/chem_data/cablam_data/*.pickle
+rm -fr ./modules/chem_data/cablam_data/*.dlite
+./build/bin/mmtbx.rebuild_rotarama_cache
+./build/bin/mmtbx.rebuild_cablam_cache
+
 # remove intermediate objects in build directory
 cd build
 find . -name "*.o" -type f -delete
