@@ -8,14 +8,14 @@ jobs:
     vmImage: vs2017-win2016
   strategy:
     matrix:
-      win_64_numpy1.17python3.7.____cpython:
-        CONFIG: win_64_numpy1.17python3.7.____cpython
+      win_64_numpy1.18python3.7.____cpython:
+        CONFIG: win_64_numpy1.18python3.7.____cpython
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG_NAME: win_64_numpy1.17python3.7.____cpython
-      win_64_numpy1.17python3.8.____cpython:
-        CONFIG: win_64_numpy1.17python3.8.____cpython
+        SHORT_CONFIG_NAME: win_64_numpy1.18python3.7.____cpython
+      win_64_numpy1.18python3.8.____cpython:
+        CONFIG: win_64_numpy1.18python3.8.____cpython
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG_NAME: win_64_numpy1.17python3.8.____cpython
+        SHORT_CONFIG_NAME: win_64_numpy1.18python3.8.____cpython
       win_64_numpy1.19python3.9.____cpython:
         CONFIG: win_64_numpy1.19python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -81,7 +81,7 @@ jobs:
         call activate base
         run_conda_forge_build_setup
       displayName: conda-forge build setup
-
+    
 
     # Special cased version setting some more things!
     - script: |
@@ -116,7 +116,7 @@ jobs:
     - script: |
         set "GIT_BRANCH=%BUILD_SOURCEBRANCHNAME%"
         set "FEEDSTOCK_NAME=%BUILD_REPOSITORY_NAME:*/=%"
-        set "UPLOAD_ON_BRANCH=master"
+        set "UPLOAD_ON_BRANCH=upload"
         call activate base
         upload_package  .\ ".\recipe" .ci_support\%CONFIG%.yaml
       displayName: Upload package
