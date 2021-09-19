@@ -103,3 +103,7 @@ del /Q %LIBRARY_BIN%\*show_build_path.bat
 del /Q %LIBRARY_BIN%\*show_dist_paths.bat
 attrib -H %LIBRARY_BIN%\libtbx.show_build_path.bat
 attrib -H %LIBRARY_BIN%\libtbx.show_dist_paths.bat
+
+REM clean up and wait 10 minutes
+call %CONDA%\condabin\conda.bat clean -y --all
+timeout /T 600
