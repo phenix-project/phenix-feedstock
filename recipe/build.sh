@@ -97,4 +97,4 @@ find ${PREFIX}/bin -name "*show_dist_paths" -not -name "libtbx.show_dist_paths" 
 find ${PREFIX}/bin -name "*show_build_path" -not -name "libtbx.show_build_path" -type f -delete
 
 # remove cache
-conda build purge -y
+conda build purge
