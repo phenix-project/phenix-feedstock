@@ -95,3 +95,18 @@ ${PYTHON} ${CCTBX_CONDA_BUILD}/update_libtbx_env.py
 echo Removing some duplicate dispatchers
 find ${PREFIX}/bin -name "*show_dist_paths" -not -name "libtbx.show_dist_paths" -type f -delete
 find ${PREFIX}/bin -name "*show_build_path" -not -name "libtbx.show_build_path" -type f -delete
+
+# put package filename into a file
+ARTIFACT_DIR=/home/vsts/work/1/s/build_artifacts
+SUBDIR=linux-64
+if [[ ! -z "$MACOSX_DEPLOYMENT_TARGET" ]]; then
+  ARTIFACT_DIR=/Users/runner/miniforge3/conda-bld/
+  SUBDIR=osx-64
+  if [[ "$CC" == *"arm64"* ]]; then
+    SUBDIR=osx-arm64
+  fi
+fi
+echo ${ARTIFACT_NAME}
+cd ${ARTIFACT_DIR}/conda_artifacts*
+cd ${SUBDIR}
+ls phenix* > package_name.txt
