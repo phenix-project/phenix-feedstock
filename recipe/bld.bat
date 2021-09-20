@@ -107,3 +107,9 @@ attrib -H %LIBRARY_BIN%\libtbx.show_dist_paths.bat
 REM clean up and wait 10 minutes
 call %CONDA%\condabin\conda.bat clean -y --all
 ping -n 601 localhost >nul 2>&1
+
+REM put package filename into a file
+cd D:\bld\win-64
+dir /B phenix* > package_name.txt
+
+REM encode package
