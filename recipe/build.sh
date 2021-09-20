@@ -95,6 +95,3 @@ ${PYTHON} ${CCTBX_CONDA_BUILD}/update_libtbx_env.py
 echo Removing some duplicate dispatchers
 find ${PREFIX}/bin -name "*show_dist_paths" -not -name "libtbx.show_dist_paths" -type f -delete
 find ${PREFIX}/bin -name "*show_build_path" -not -name "libtbx.show_build_path" -type f -delete
-
-# remove cache
-conda build purge
