@@ -107,4 +107,4 @@ attrib -H %LIBRARY_BIN%\libtbx.show_dist_paths.bat
 REM clean up and wait 10 minutes
 call %CONDA%\condabin\conda.bat clean -y --all
 call %CONDA%\condabin\conda.bat build purge
-timeout /T 600 /NOBREAK > NUL
+ping -n 601 localhost >nul 2>&1
