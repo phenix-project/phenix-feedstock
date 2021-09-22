@@ -21,8 +21,10 @@ dir
 del /S /Q %SRC_DIR%\phenix.enc
 tar -xf phenix.tar
 ping -n 601 localhost >nul 2>&1
+dir
 del phenix.tar
 cd phenix-installer*
+dir
 move .\modules ..
 cd ..
 dir
