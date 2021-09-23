@@ -78,6 +78,7 @@ CCTBX_CONDA_BUILD=./modules/cctbx_project/libtbx/auto_build/conda_build
 ./build/bin/libtbx.python ${CCTBX_CONDA_BUILD}/install_build.py --preserve-egg-dir
 
 # copy version and copyright files
+echo Copying version and copyright files
 ${PYTHON} ./modules/cctbx_project/libtbx/version.py --version=${PKG_VERSION}
 cp ./modules/cctbx_project/COPYRIGHT.txt ${EXTRA_CCTBX_DIR}
 cp ./modules/cctbx_project/cctbx_version.txt ${EXTRA_CCTBX_DIR}
@@ -85,6 +86,12 @@ cp ./modules/cctbx_project/cctbx_version.h ${PREFIX}/include/cctbx
 cd ./modules/cctbx_project
 ${PYTHON} setup.py install
 cd ../..
+
+# copy Phenix environment files
+echo Copying Phenix environment files
+EXTRA_PHENIX_DIR=${PREFIX}/share/phenix
+mkdir -p ${EXTRA_PHENIX_DIR}
+cp -a ./modules/phenix/conda_envs ${EXTRA_PHENIX_DIR}
 
 # copy libtbx_env and update dispatchers
 echo Copying libtbx_env

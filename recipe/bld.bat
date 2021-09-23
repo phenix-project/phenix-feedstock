@@ -92,6 +92,13 @@ cd .\modules\cctbx_project
 if %errorlevel% neq 0 exit /b %errorlevel%
 cd ..\..
 
+REM copy Phenix environment files
+SET EXTRA_PHENIX_DIR=%LIBRARY_PREFIX%\share\phenix
+mkdir  %EXTRA_PHENIX_DIR%
+cd %SRC_DIR%
+move .\modules\phenix\conda_envs %EXTRA_PHENIX_DIR%
+if %errorlevel% neq 0 exit /b %errorlevel%
+
 REM copy libtbx_env and update dispatchers
 echo Copying libtbx_env
 call .\build\bin\libtbx.python %CCTBX_CONDA_BUILD%\update_libtbx_env.py
