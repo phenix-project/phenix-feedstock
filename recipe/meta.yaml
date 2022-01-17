@@ -39,7 +39,7 @@ requirements:
     - python
     - python.app  # [osx]
     - scons
-    - setuptools
+    - setuptools <60
     - six
     - xorg-libxfixes  # [linux]
 
@@ -59,7 +59,7 @@ outputs:
         - libsvm
         - matplotlib-base
         - mrcfile
-        - {{ pin_compatible('numpy', upper_bound='1.21') }}
+        - {{ pin_compatible('numpy') }}
         - pillow
         - psutil
         - python
@@ -73,8 +73,7 @@ outputs:
         - onedep_api
         - pyrtf
         - rdkit
-        - wxpython =4.0  # [not py==39 and x86_64]
-        - wxpython  # [py==39 or arm64]
+        - wxpython
         - pyside2  # [x86_64]
 
         - absl-py
