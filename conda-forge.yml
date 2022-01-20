@@ -3,7 +3,7 @@ github:
   repo_name: phenix-feedstock
 channels:
   sources:
-    - cctbx202105
+    - cctbx202112
     - conda-forge
     - dacase
     - phenix-project
@@ -22,4 +22,3 @@ build_platform:
   osx_arm64: osx_64
 test_on_native_only: true
 upload_on_branch: upload
-# build_with_mambabuild: True
