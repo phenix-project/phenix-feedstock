@@ -1,0 +1,22 @@
+diff --git a/modules/cctbx_project/libtbx/auto_build/bootstrap.py b/modules/cctbx_project/libtbx/auto_build/bootstrap.py
+index 5a48439ab1..f57dcb1565 100644
+--- a/modules/cctbx_project/libtbx/auto_build/bootstrap.py
++++ b/modules/cctbx_project/libtbx/auto_build/bootstrap.py
+@@ -2329,7 +2329,7 @@ class PhenixBuilder(CCIBuilder):
+     'probe',
+     'king',
+     'dials',
+-    'xia2',
++    # 'xia2',
+     'phaser',
+     'phasertng',
+     'phaser_regression',
+@@ -2356,7 +2356,7 @@ class PhenixBuilder(CCIBuilder):
+     'reduce',
+     'probe',
+     'dials',
+-    'xia2',
++    # 'xia2',
+     'prime',
+   ]
+ 
