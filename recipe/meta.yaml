@@ -66,35 +66,43 @@ outputs:
         - python.app  # [osx]
         - reportlab
         - requests
+        - scipy
         - six
 
         # - amber_phenix  # [not win and x86_64]
+        - flask
         - gdk-pixbuf =2.38  # [linux and not py==39]
         - onedep_api
         - pyrtf
         - rdkit
         - wxpython
         - pyside2  # [x86_64]
+        - restraintlib
 
+        # pathwalker
         - absl-py
         - pip
         - protobuf
 
+        # phasertng
         - bokeh
         - networkx
 
+        # dxtbx
         - h5py
         - hdf5
-        - hdf5-external-filter-plugins
+        - hdf5plugin
         - libtiff
+        - pint
         - procrunner
+        - pybind11
 
+        # dials
         - colorlog
         - msgpack-c
         - msgpack-python
         - orderedset
         - scikit-learn
-        - scipy
         - tabulate
         - tqdm
     test:
