@@ -13,7 +13,7 @@ channels:
 secrets:
   - TARBALL_PASSWORD
 
-#channel_priority: flexible
+channel_priority: flexible
 azure:
   user_or_org: phenix-release
   project_name: feedstock-builds
