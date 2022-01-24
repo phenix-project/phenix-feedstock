@@ -8,6 +8,7 @@ channels:
     - dacase
     - phenix-project
     - defaults
+    - cctbx202105
   targets:
     - [cctbx-dev, main]
 secrets:
