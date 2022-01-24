@@ -19,9 +19,9 @@ requirements:
   build:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - future                                 # [build_platform != target_platform]
+    - future
     - numpy                                  # [build_platform != target_platform]
-    - six                                    # [build_platform != target_platform]
+    - six
     - gnuconfig  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
