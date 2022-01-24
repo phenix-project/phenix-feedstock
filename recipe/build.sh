@@ -98,6 +98,12 @@ EXTRA_PHENIX_DIR=${PREFIX}/share/phenix
 mkdir -p ${EXTRA_PHENIX_DIR}
 cp -a ./modules/phenix/conda_envs ${EXTRA_PHENIX_DIR}
 
+# install six for osx-arm64
+# not clear why this is needed here, but not for cctbx
+if [[ "$CC" == *"arm64"* ]]; then
+  ./build/bin/libtbx.python -m pip install six
+fi
+
 # copy libtbx_env and update dispatchers
 echo Copying libtbx_env
 ./build/bin/libtbx.python ${CCTBX_CONDA_BUILD}/update_libtbx_env.py
