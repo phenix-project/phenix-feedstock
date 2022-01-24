@@ -73,7 +73,7 @@ outputs:
 
         # - amber_phenix  # [not win and x86_64]
         - flask
-        - gdk-pixbuf =2.38  # [linux and not py==39]
+        - gdk-pixbuf  # [linux and not py==39]
         - onedep_api
         - pyrtf
         - rdkit
