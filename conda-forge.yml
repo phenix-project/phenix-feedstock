@@ -2,15 +2,8 @@ github:
   user_or_org: phenix-project
   repo_name: phenix-feedstock
 channels:
-  sources:
-    - cctbx202112
-    - conda-forge
-    - dacase
-    - phenix-project
-    - defaults
-    - cctbx202105
   targets:
-    - [cctbx-dev, main]
+    - [cctbx-dev]
 secrets:
   - TARBALL_PASSWORD
 

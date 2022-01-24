@@ -1,4 +1,4 @@
 channel_sources:
-  - cctbx202112,conda-forge,dacase,phenix-project,defaults,cctbx202105
+  - cctbx202112,conda-forge,dacase,phenix-project,defaults
 channel_targets:
   - cctbx-dev main
