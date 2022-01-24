@@ -59,8 +59,10 @@ rm -fr ./modules/chem_data/rotarama_data/*.pickle
 rm -fr ./modules/chem_data/rotarama_data/*.dlite
 rm -fr ./modules/chem_data/cablam_data/*.pickle
 rm -fr ./modules/chem_data/cablam_data/*.dlite
-./build/bin/mmtbx.rebuild_rotarama_cache
-./build/bin/mmtbx.rebuild_cablam_cache
+if [[ "$CC" != *"arm64"* ]]; then
+  ./build/bin/mmtbx.rebuild_rotarama_cache
+  ./build/bin/mmtbx.rebuild_cablam_cache
+fi
 
 # remove intermediate objects in build directory
 cd build
