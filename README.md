@@ -106,16 +106,41 @@ conda config --add channels cctbx-dev
 conda config --set channel_priority strict
 ```
 
-Once the `cctbx-dev` channel has been enabled, `phenix` can be installed with:
+Once the `cctbx-dev` channel has been enabled, `phenix` can be installed with `conda`:
 
 ```
 conda install phenix
 ```
 
-It is possible to list all of the versions of `phenix` available on your platform with:
+or with `mamba`:
+
+```
+mamba install phenix
+```
+
+It is possible to list all of the versions of `phenix` available on your platform with `conda`:
 
 ```
 conda search phenix --channel cctbx-dev
+```
+
+or with `mamba`:
+
+```
+mamba search phenix --channel cctbx-dev
+```
+
+Alternatively, `mamba repoquery` may provide more information:
+
+```
+# Search all versions available on your platform:
+mamba repoquery search phenix --channel cctbx-dev
+
+# List packages depending on `phenix`:
+mamba repoquery whoneeds phenix --channel cctbx-dev
+
+# List dependencies of `phenix`:
+mamba repoquery depends phenix --channel cctbx-dev
 ```
 
 
