@@ -1,8 +1,8 @@
-diff --git a/modules/cctbx_project/crys3d/hklviewer/cmdlineframes.py b/modules/cctbx_project/crys3d/hklviewer/cmdlineframes.py
-index 697b0fe799..28f932a248 100644
---- a/modules/cctbx_project/crys3d/hklviewer/cmdlineframes.py
-+++ b/modules/cctbx_project/crys3d/hklviewer/cmdlineframes.py
-@@ -86,7 +86,7 @@ class HKLViewFrame() :
+diff --git a/modules/cctbx_project/crys3d/hklviewer/hklview_frame.py b/modules/cctbx_project/crys3d/hklviewer/hklview_frame.py
+index ea2da44fdb..c00cb3457a 100644
+--- a/modules/cctbx_project/crys3d/hklviewer/hklview_frame.py
++++ b/modules/cctbx_project/crys3d/hklviewer/hklview_frame.py
+@@ -61,7 +61,7 @@ class HKLViewFrame() :
      self.aniso3 = None
      self.uservectors = []
      self.new_miller_array_operations_lst = []
