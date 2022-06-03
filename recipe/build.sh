@@ -44,16 +44,6 @@ fi
 # link bootstrap.py
 ln -s modules/cctbx_project/libtbx/auto_build/bootstrap.py
 
-# compress chem_data to save disk space
-cd modules
-rm -fr ./chem_data/rotarama_data/*.pickle
-rm -fr ./chem_data/rotarama_data/*.dlite
-rm -fr ./chem_data/cablam_data/*.pickle
-rm -fr ./chem_data/cablam_data/*.dlite
-tar -Jcf chem_data.tar.xz chem_data
-rm -fr chem_data
-cd ..
-
 # remove extra source code
 rm -fr ./modules/boost
 rm -fr ./modules/eigen
@@ -64,6 +54,16 @@ ${PYTHON} bootstrap.py build --builder=phenix --use-conda ${PREFIX} --nproc 4 \
   --config-flags="--compiler=conda" --config-flags="--use_environment_flags" \
   --config-flags="--enable_cxx11" --config-flags="--no_bin_python"
 
+# rebuild rotarama and cablam caches
+rm -fr ./modules/chem_data/rotarama_data/*.pickle
+rm -fr ./modules/chem_data/rotarama_data/*.dlite
+rm -fr ./modules/chem_data/cablam_data/*.pickle
+rm -fr ./modules/chem_data/cablam_data/*.dlite
+if [[ "$CC" != *"arm64"* ]]; then
+  ./build/bin/mmtbx.rebuild_rotarama_cache
+  ./build/bin/mmtbx.rebuild_cablam_cache
+fi
+
 # remove intermediate objects in build directory
 cd build
 find . -name "*.o" -type f -delete
@@ -73,18 +73,6 @@ cd ..
 if [[ ! -z "$MACOSX_DEPLOYMENT_TARGET" ]]; then
   echo Fixing rpath:
   ${PYTHON} ${RECIPE_DIR}/fix_macos_rpath.py
-fi
-
-# restore chem_data
-cd modules
-tar -xf chem_data.tar.xz
-rm -f chem_data.tar.xz
-cd ..
-
-# rebuild rotarama and cablam caches
-if [[ "$CC" != *"arm64"* ]]; then
-  ./build/bin/mmtbx.rebuild_rotarama_cache
-  ./build/bin/mmtbx.rebuild_cablam_cache
 fi
 
 # copy files in build
