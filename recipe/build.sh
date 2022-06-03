@@ -114,6 +114,10 @@ echo Removing some duplicate dispatchers
 find ${PREFIX}/bin -name "*show_dist_paths" -not -name "libtbx.show_dist_paths" -type f -delete
 find ${PREFIX}/bin -name "*show_build_path" -not -name "libtbx.show_build_path" -type f -delete
 
+# remove chem_data to free up disk space
+rm -fr ./modules/chem_data
+df -h
+
 # clean source cache
 ARTIFACT_DIR=/home/conda/feedstock_root/build_artifacts
 SUBDIR=linux-64
