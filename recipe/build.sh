@@ -53,6 +53,8 @@ rm -fr ./chem_data/cablam_data/*.dlite
 tar -Jcf chem_data.tar.xz chem_data
 rm -fr chem_data
 cd ..
+echo Check disk space
+df -h
 
 # remove extra source code
 rm -fr ./modules/boost
@@ -80,12 +82,17 @@ cd modules
 tar -xf chem_data.tar.xz
 rm -f chem_data.tar.xz
 cd ..
+echo Check disk space
+df -h
 
 # rebuild rotarama and cablam caches
 if [[ "$CC" != *"arm64"* ]]; then
   ./build/bin/mmtbx.rebuild_rotarama_cache
   ./build/bin/mmtbx.rebuild_cablam_cache
 fi
+
+# move chem_data manually to avoid copy
+mv ./modules/chem_data ${SP_DIR}
 
 # copy files in build
 echo Copying build
