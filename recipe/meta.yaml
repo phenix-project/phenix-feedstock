@@ -1,4 +1,4 @@
-{% set version = "2022.8a14" %}
+{% set version = "2022.8a15" %}
 
 package:
   name: phenix
