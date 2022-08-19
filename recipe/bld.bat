@@ -29,14 +29,6 @@ move .\modules ..
 cd ..
 dir
 
-REM remove chem_data, phenix_examples, and phenix_regression
-@REM cd .\modules
-@REM rmdir /S /Q .\chem_data
-@REM rmdir /S /Q .\phenix_examples
-@REM rmdir /S /Q .\phenix_regression
-@REM cd ..
-@REM dir
-
 REM reapply patches
 git apply %RECIPE_DIR%\crys3d.patch
 git apply %RECIPE_DIR%\libtbx_SConscript.patch
@@ -70,6 +62,14 @@ REM remove intermediate objects in build directory
 cd build
 del /S /Q *.obj
 cd ..
+
+REM move chem_data, phenix_examples, and phenix_regression
+cd .\modules
+move .\chem_data %SP_DIR%
+move .\phenix_examples %SP_DIR%
+move .\phenix_regression %SP_DIR%
+cd ..
+dir
 
 REM copy files in build
 REM not sure why directory changes, which is why "cd %SRC_DIR%" is needed
