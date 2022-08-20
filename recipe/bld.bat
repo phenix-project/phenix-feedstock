@@ -25,9 +25,6 @@ dir
 del phenix.tar
 cd phenix-installer*
 dir
-move .\modules ..
-cd ..
-dir
 
 REM reapply patches
 git apply %RECIPE_DIR%\crys3d.patch
@@ -77,6 +74,7 @@ SET EXTRA_CCTBX_DIR=%LIBRARY_PREFIX%\share\cctbx
 mkdir  %EXTRA_CCTBX_DIR%
 SET CCTBX_CONDA_BUILD=.\modules\cctbx_project\libtbx\auto_build\conda_build
 cd %SRC_DIR%
+cd phenix-installer*
 dir
 call .\build\bin\libtbx.python %CCTBX_CONDA_BUILD%\install_build.py --prefix %LIBRARY_PREFIX% --sp-dir %SP_DIR% --ext-dir %PREFIX%\lib --preserve-egg-dir
 if %errorlevel% neq 0 exit /b %errorlevel%
@@ -96,6 +94,7 @@ REM copy Phenix environment files
 SET EXTRA_PHENIX_DIR=%LIBRARY_PREFIX%\share\phenix
 mkdir  %EXTRA_PHENIX_DIR%
 cd %SRC_DIR%
+cd phenix-installer*
 move .\modules\phenix\conda_envs %EXTRA_PHENIX_DIR%
 if %errorlevel% neq 0 exit /b %errorlevel%
 
