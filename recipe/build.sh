@@ -50,8 +50,8 @@ rm -fr ./chem_data/rotarama_data/*.pickle
 rm -fr ./chem_data/rotarama_data/*.dlite
 rm -fr ./chem_data/cablam_data/*.pickle
 rm -fr ./chem_data/cablam_data/*.dlite
-tar -Jcf chem_data.tar.xz chem_data
-rm -fr chem_data
+# tar -Jcf chem_data.tar.xz chem_data
+# rm -fr chem_data
 cd ..
 echo Check disk space
 df -h
@@ -78,10 +78,10 @@ if [[ ! -z "$MACOSX_DEPLOYMENT_TARGET" ]]; then
 fi
 
 # restore chem_data
-cd modules
-tar -xf chem_data.tar.xz
-rm -f chem_data.tar.xz
-cd ..
+# cd modules
+# tar -xf chem_data.tar.xz
+# rm -f chem_data.tar.xz
+# cd ..
 echo Check disk space
 df -h
 
