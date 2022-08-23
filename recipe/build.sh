@@ -10,7 +10,7 @@ openssl enc -d \
   -in phenix.enc \
   -out phenix.tgz \
   -pass env:TARBALL_PASSWORD
-rm -fr ./modules
+rm -fr ./modules phenix.enc
 tar -xf phenix.tgz
 rm phenix.tgz
 mv phenix*/modules .
