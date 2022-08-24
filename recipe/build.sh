@@ -62,9 +62,14 @@ rm -fr ./modules/eigen
 rm -fr ./modules/scons
 
 # build
-${PYTHON} bootstrap.py build --builder=phenix_voyager --use-conda ${PREFIX} --nproc 2 \
-  --config-flags="--compiler=conda" --config-flags="--use_environment_flags" \
-  --config-flags="--enable_cxx11" --config-flags="--no_bin_python"
+${PYTHON} bootstrap.py build \
+  --builder=phenix_voyager \
+  --use-conda ${PREFIX} \
+  --nproc 2 \
+  --config-flags="--compiler=conda" \
+  --config-flags="--use_environment_flags" \
+  --config-flags="--enable_cxx11" \
+  --config-flags="--no_bin_python"
 
 # remove intermediate objects in build directory
 cd build
