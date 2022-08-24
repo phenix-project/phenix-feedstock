@@ -66,6 +66,7 @@ ${PYTHON} bootstrap.py build \
   --builder=phenix_voyager \
   --use-conda ${PREFIX} \
   --nproc 2 \
+  --verbose \
   --config-flags="--compiler=conda" \
   --config-flags="--use_environment_flags" \
   --config-flags="--enable_cxx11" \
