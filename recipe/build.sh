@@ -62,6 +62,7 @@ rm -fr ./modules/eigen
 rm -fr ./modules/scons
 
 # build
+export CCTBX_SKIP_CHEMDATA_CACHE_REBUILD=1
 ${PYTHON} bootstrap.py build \
   --builder=phenix_voyager \
   --use-conda ${PREFIX} \
