@@ -16,7 +16,6 @@ rm phenix.tgz
 mv phenix*/modules .
 
 # reapply patches
-git apply ${RECIPE_DIR}/crys3d.patch
 cp ${RECIPE_DIR}/phaser_SConscript ./modules/phaser/SConscript
 # cp ${RECIPE_DIR}/bootstrap.py ./modules/cctbx_project/libtbx/auto_build/bootstrap.py
 
