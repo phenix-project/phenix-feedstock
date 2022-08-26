@@ -9,7 +9,7 @@ c_compiler_version:
 cdt_name:
 - cos6
 channel_sources:
-- cctbx202112,conda-forge,dacase,phenix-project,defaults
+- cctbx202208,conda-forge,phenix-project
 channel_targets:
 - cctbx-dev main
 cxx_compiler:
