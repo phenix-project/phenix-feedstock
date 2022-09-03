@@ -32,6 +32,18 @@ git apply %RECIPE_DIR%\libtbx_SConscript.patch
 copy %RECIPE_DIR%\phaser_SConscript .\modules\phaser\SConscript
 @REM copy %RECIPE_DIR%\bootstrap.py .\modules\cctbx_project\libtbx\auto_build\bootstrap.py
 
+REM clean up sources
+rmdir /S /Q .\modules\cbflib\py2cbf
+rmdir /S /Q .\modules\cctbx_project\xfel\euxfel\definitions
+
+call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\cbflib
+call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\elbow
+call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\phaser_regression
+call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\tntbx
+call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\ksdssp
+
+call futurize -f lib2to3.fixes.fix_tuple_params -wn .\modules\PyQuante
+
 REM copy bootstrap.py
 copy modules\cctbx_project\libtbx\auto_build\bootstrap.py .
 if %errorlevel% neq 0 exit /b %errorlevel%
