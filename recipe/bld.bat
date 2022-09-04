@@ -33,13 +33,7 @@ copy %RECIPE_DIR%\phaser_SConscript .\modules\phaser\SConscript
 @REM copy %RECIPE_DIR%\bootstrap.py .\modules\cctbx_project\libtbx\auto_build\bootstrap.py
 
 REM clean up sources
-rmdir /S /Q .\modules\cbflib\py2cbf
 rmdir /S /Q .\modules\cctbx_project\xfel\euxfel\definitions
-
-call futurize -f lib2to3.fixes.fix_exec -wn .\modules\cbflib
-call futurize -f lib2to3.fixes.fix_except -wn .\modules\cbflib
-call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\cbflib
-call futurize -f lib2to3.fixes.fix_tuple_params -wn .\modules\cbflib
 
 call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\muscle
 call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\phaser_regression
@@ -133,6 +127,10 @@ del /Q %LIBRARY_BIN%\*show_build_path.bat
 del /Q %LIBRARY_BIN%\*show_dist_paths.bat
 attrib -H %LIBRARY_BIN%\libtbx.show_build_path.bat
 attrib -H %LIBRARY_BIN%\libtbx.show_dist_paths.bat
+
+REM clean up cbflib
+move %SP_DIR%\cbflib\pycbf\pycbf.py %SP_DIR%
+rmdir /S /Q %SP_DIR%\cbflib
 
 REM clean up and wait 10 minutes
 call %CONDA%\condabin\conda.bat clean -y --all
