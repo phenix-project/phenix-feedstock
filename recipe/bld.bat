@@ -36,9 +36,18 @@ REM clean up sources
 rmdir /S /Q .\modules\cbflib\py2cbf
 rmdir /S /Q .\modules\cctbx_project\xfel\euxfel\definitions
 
+call futurize -f lib2to3.fixes.fix_exec -wn .\modules\cbflib
+call futurize -f lib2to3.fixes.fix_except -wn .\modules\cbflib
 call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\cbflib
-call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\elbow
+call futurize -f lib2to3.fixes.fix_tuple_params -wn .\modules\cbflib
+
+call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\muscle
 call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\phaser_regression
+call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\phaser_voyager
+
+call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\reduce
+call futurize -f lib2to3.fixes.fix_except -wn .\modules\reduce
+
 call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\tntbx
 call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\ksdssp
 
