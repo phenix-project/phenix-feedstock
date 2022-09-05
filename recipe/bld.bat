@@ -47,6 +47,9 @@ call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\ksdssp
 
 call futurize -f lib2to3.fixes.fix_tuple_params -wn .\modules\PyQuante
 
+copy %RECIPE_DIR%\process_saccharides.py .\modules\elbow\elbow\scripts\process_saccharides.py
+copy %RECIPE_DIR%\process_amino_acid_parentage_from_chemical_components.py .\modules\elbow\elbow\scripts\process_amino_acid_parentage_from_chemical_components.py
+
 REM copy bootstrap.py
 copy modules\cctbx_project\libtbx\auto_build\bootstrap.py .
 if %errorlevel% neq 0 exit /b %errorlevel%
