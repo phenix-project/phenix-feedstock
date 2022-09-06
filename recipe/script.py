@@ -14,14 +14,14 @@ def dump_ui(widget, path):
 app = QtGui.QApplication([''])
 
 if sys.argv[3] == "dialog":
-        dialog = QtWidgets.QDialog()
-        a().setupUi(dialog)
+	dialog = QtWidgets.QDialog()
+	a().setupUi(dialog)
 
-        dialog.show()
+	dialog.show()
 else:
-        window = QtWidgets.MainWindow()
-        a().setupUi(window)
+	window = QtWidgets.MainWindow()
+	a().setupUi(window)
 
-        window.show()
+	window.show()
 
 dump_ui(dialog, 'myui.ui')
