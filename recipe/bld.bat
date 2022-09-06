@@ -39,6 +39,9 @@ call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\muscle
 call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\phaser_regression
 call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\phaser_voyager
 
+copy %RECIPE_DIR%\parseHHpred.py .\modules\phaser_voyager\old_storage\scripts\parseHHpred.py
+copy %RECIPE_DIR%\script.py .\modules\phaser_voyager\VoyagerGUI-QTC\old_gui\script.py
+
 call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\reduce
 call futurize -f lib2to3.fixes.fix_except -wn .\modules\reduce
 
