@@ -128,14 +128,12 @@ del /Q %LIBRARY_BIN%\*show_build_path.bat
 del /Q %LIBRARY_BIN%\*show_dist_paths.bat
 attrib -H %LIBRARY_BIN%\libtbx.show_build_path.bat
 attrib -H %LIBRARY_BIN%\libtbx.show_dist_paths.bat
+if %errorlevel% neq 0 exit /b %errorlevel%
 
 REM clean up cbflib
 move %SP_DIR%\cbflib\pycbf\pycbf.py %SP_DIR%
 rmdir /S /Q %SP_DIR%\cbflib
-
-REM clean up
-call %CONDA%\condabin\conda.bat clean -y --all
-@REM ping -n 601 localhost >nul 2>&1
+if %errorlevel% neq 0 exit /b %errorlevel%
 
 REM try a successful command
 dir
