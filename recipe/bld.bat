@@ -133,6 +133,6 @@ REM clean up cbflib
 move %SP_DIR%\cbflib\pycbf\pycbf.py %SP_DIR%
 rmdir /S /Q %SP_DIR%\cbflib
 
-REM clean up and wait 10 minutes
+REM clean up
 call %CONDA%\condabin\conda.bat clean -y --all
-ping -n 601 localhost >nul 2>&1
+@REM ping -n 601 localhost >nul 2>&1
