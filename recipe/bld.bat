@@ -136,3 +136,6 @@ rmdir /S /Q %SP_DIR%\cbflib
 REM clean up
 call %CONDA%\condabin\conda.bat clean -y --all
 @REM ping -n 601 localhost >nul 2>&1
+
+REM try a successful command
+dir
