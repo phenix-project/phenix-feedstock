@@ -40,19 +40,13 @@ call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\phaser_re
 call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\phaser_voyager
 
 copy %RECIPE_DIR%\parseHHpred.py .\modules\phaser_voyager\old_storage\scripts\parseHHpred.py
-copy %RECIPE_DIR%\script.py .\modules\phaser_voyager\VoyagerGUI-QTC\old_gui\script.py
+rmdir /S /Q .\modules\phaser_voyager\old_storage\VoyagerGUI-QTC\old_gui
 
 call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\reduce
 call futurize -f lib2to3.fixes.fix_except -wn .\modules\reduce
 
 call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\tntbx
 call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\ksdssp
-
-call futurize -f lib2to3.fixes.fix_tuple_params -wn .\modules\PyQuante
-
-copy %RECIPE_DIR%\process_saccharides.py .\modules\elbow\elbow\scripts\process_saccharides.py
-copy %RECIPE_DIR%\process_amino_acid_parentage_from_chemical_components.py .\modules\elbow\elbow\scripts\process_amino_acid_parentage_from_chemical_components.py
-copy %RECIPE_DIR%\ThomasFermi.py .\modules\PyQuante\PyQuante\ThomasFermi.py
 
 REM copy bootstrap.py
 copy modules\cctbx_project\libtbx\auto_build\bootstrap.py .
