@@ -24,6 +24,7 @@ dir
 del phenix.tar
 cd phenix-installer*
 dir
+call %CONDA%\condabin\conda.bat deactivate test
 
 REM reapply patches
 git apply %RECIPE_DIR%\crys3d.patch
@@ -34,7 +35,6 @@ copy %RECIPE_DIR%\phaser_SConscript .\modules\phaser\SConscript
 REM clean up sources
 rmdir /S /Q .\modules\cctbx_project\xfel\euxfel\definitions
 
-call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\muscle
 call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\phaser_regression
 call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\phaser_voyager
 
@@ -45,7 +45,6 @@ call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\reduce
 call futurize -f lib2to3.fixes.fix_except -wn .\modules\reduce
 
 call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\tntbx
-call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\ksdssp
 
 REM copy bootstrap.py
 copy modules\cctbx_project\libtbx\auto_build\bootstrap.py .
