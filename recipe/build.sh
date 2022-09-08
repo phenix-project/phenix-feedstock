@@ -65,7 +65,7 @@ export CCTBX_SKIP_CHEMDATA_CACHE_REBUILD=1
 ${PYTHON} bootstrap.py build \
   --builder=phenix_voyager \
   --use-conda ${PREFIX} \
-  --nproc 2 \
+  --nproc 4 \
   --verbose \
   --config-flags="--compiler=conda" \
   --config-flags="--use_environment_flags" \
