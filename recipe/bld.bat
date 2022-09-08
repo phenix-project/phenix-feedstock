@@ -1,5 +1,8 @@
 echo on
 
+REM debug conda-build
+copy %RECIPE_DIR%\build.py %SP_DIR%\conda_build\build.py
+
 call %CONDA%\condabin\conda.bat create -n test -y -c conda-forge curl m2-gzip m2-tar openssl
 call %CONDA%\condabin\conda.bat activate
 
