@@ -64,6 +64,8 @@ if %errorlevel% neq 0 exit /b %errorlevel%
 cd ..
 
 REM rebuild rotarama and cablam caches
+cd %SRC_DIR%
+cd phenix-installer*
 del /S /Q .\modules\chem_data\rotarama_data\*.pickle
 del /S /Q .\modules\chem_data\rotarama_data\*.dlite
 del /S /Q .\modules\chem_data\cablam_data\*.pickle
@@ -72,9 +74,10 @@ call ./build/bin/mmtbx.rebuild_rotarama_cache
 call ./build/bin/mmtbx.rebuild_cablam_cache
 
 REM remove intermediate objects in build directory
+cd %SRC_DIR%
+cd phenix-installer*
 cd build
 del /S /Q *.obj
-cd ..
 
 REM remove compiled Python files
 REM https://stackoverflow.com/questions/28991015/python3-project-remove-pycache-folders-and-pyc-files
@@ -86,14 +89,14 @@ cd %SRC_DIR%
 cd phenix-installer*
 cd modules
 %PYTHON% -Bc "import pathlib; import shutil; [shutil.rmtree(p) for p in pathlib.Path('.').rglob('__pycache__')]"
-cd ..
 
 REM move chem_data, phenix_examples, and phenix_regression
+cd %SRC_DIR%
+cd phenix-installer*
 cd .\modules
 move .\chem_data %SP_DIR%
 move .\phenix_examples %SP_DIR%
 REM move .\phenix_regression %SP_DIR%
-cd ..
 dir
 
 REM copy files in build
