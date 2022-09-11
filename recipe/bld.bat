@@ -54,6 +54,7 @@ rmdir /S /Q .\modules\boost
 rmdir /S /Q .\modules\eigen
 rmdir /S /Q .\modules\scons
 rmdir /S /Q .\modules\phenix_regression
+rmdir /S /Q .\modules\phaser_regression
 dir
 
 REM build
