@@ -55,6 +55,7 @@ rmdir /S /Q .\modules\eigen
 rmdir /S /Q .\modules\scons
 rmdir /S /Q .\modules\phenix_regression
 rmdir /S /Q .\modules\phaser_regression
+rmdir /S /Q .\modules\voyager_regression
 dir
 
 REM build
