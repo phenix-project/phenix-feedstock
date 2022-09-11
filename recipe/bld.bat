@@ -1,8 +1,5 @@
 echo on
 
-REM debug conda-build
-copy %RECIPE_DIR%\build.py %SP_DIR%\conda_build\build.py
-
 call %CONDA%\condabin\conda.bat create -n test -y -c conda-forge curl m2-gzip m2-tar openssl
 call %CONDA%\condabin\conda.bat activate
 
@@ -56,6 +53,7 @@ REM remove extra source code
 rmdir /S /Q .\modules\boost
 rmdir /S /Q .\modules\eigen
 rmdir /S /Q .\modules\scons
+rmdir /S /Q .\modules\phenix_regression
 dir
 
 REM build
@@ -80,7 +78,7 @@ REM move chem_data, phenix_examples, and phenix_regression
 cd .\modules
 move .\chem_data %SP_DIR%
 move .\phenix_examples %SP_DIR%
-move .\phenix_regression %SP_DIR%
+REM move .\phenix_regression %SP_DIR%
 cd ..
 dir
 
@@ -134,6 +132,3 @@ REM clean up cbflib
 move %SP_DIR%\cbflib\pycbf\pycbf.py %SP_DIR%
 rmdir /S /Q %SP_DIR%\cbflib
 if %errorlevel% neq 0 exit /b %errorlevel%
-
-REM try a successful command
-dir
