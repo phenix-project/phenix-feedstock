@@ -145,3 +145,10 @@ REM clean up cbflib
 move %SP_DIR%\cbflib\pycbf\pycbf.py %SP_DIR%
 rmdir /S /Q %SP_DIR%\cbflib
 if %errorlevel% neq 0 exit /b %errorlevel%
+
+REM clean up build directory
+cd %SRC_DIR%
+cd phenix-installer*
+rmdir /S /Q .\build
+if %errorlevel% neq 0 exit /b %errorlevel%
+dir
