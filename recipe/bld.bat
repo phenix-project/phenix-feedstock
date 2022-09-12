@@ -53,9 +53,10 @@ REM remove extra source code
 rmdir /S /Q .\modules\boost
 rmdir /S /Q .\modules\eigen
 rmdir /S /Q .\modules\scons
-rmdir /S /Q .\modules\phenix_regression
-rmdir /S /Q .\modules\phaser_regression
-rmdir /S /Q .\modules\voyager_regression
+rmdir /S /Q .\modules\chem_data
+@REM rmdir /S /Q .\modules\phenix_regression
+@REM rmdir /S /Q .\modules\phaser_regression
+@REM rmdir /S /Q .\modules\voyager_regression
 dir
 
 REM build
@@ -83,18 +84,14 @@ REM remove compiled Python files
 REM https://stackoverflow.com/questions/28991015/python3-project-remove-pycache-folders-and-pyc-files
 cd %SRC_DIR%
 cd phenix-installer*
-cd build
-%PYTHON% -Bc "import pathlib; import shutil; [shutil.rmtree(p) for p in pathlib.Path('.').rglob('__pycache__')]"
-cd %SRC_DIR%
-cd phenix-installer*
-cd modules
-%PYTHON% -Bc "import pathlib; import shutil; [shutil.rmtree(p) for p in pathlib.Path('.').rglob('__pycache__')]"
+%PYTHON% -Bc "import pathlib; import shutil; [shutil.rmtree(p) for p in pathlib.Path('.\build').rglob('__pycache__')]"
+%PYTHON% -Bc "import pathlib; import shutil; [shutil.rmtree(p) for p in pathlib.Path('.\modules').rglob('__pycache__')]"
 
 REM move chem_data, phenix_examples, and phenix_regression
 cd %SRC_DIR%
 cd phenix-installer*
 cd .\modules
-move .\chem_data %SP_DIR%
+@REM move .\chem_data %SP_DIR%
 move .\phenix_examples %SP_DIR%
 REM move .\phenix_regression %SP_DIR%
 dir
