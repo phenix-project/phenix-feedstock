@@ -53,7 +53,6 @@ REM remove extra source code
 rmdir /S /Q .\modules\boost
 rmdir /S /Q .\modules\eigen
 rmdir /S /Q .\modules\scons
-rmdir /S /Q .\modules\chem_data
 @REM rmdir /S /Q .\modules\phenix_regression
 @REM rmdir /S /Q .\modules\phaser_regression
 @REM rmdir /S /Q .\modules\voyager_regression
@@ -91,7 +90,7 @@ REM move chem_data, phenix_examples, and phenix_regression
 cd %SRC_DIR%
 cd phenix-installer*
 cd .\modules
-@REM move .\chem_data %SP_DIR%
+robocopy move .\chem_data %SP_DIR% /e /zb /j /move
 move .\phenix_examples %SP_DIR%
 REM move .\phenix_regression %SP_DIR%
 dir
