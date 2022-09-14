@@ -7,7 +7,7 @@ openssl enc -d \
   -md sha256 \
   -iter 100000 \
   -pbkdf2 \
-  -in phenix.enc \
+  -in ${SRC_DIR}/phenix.enc \
   -out phenix.tgz \
   -pass env:TARBALL_PASSWORD
 rm -fr ./modules phenix.enc
