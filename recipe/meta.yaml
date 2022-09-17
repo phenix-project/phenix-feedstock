@@ -10,7 +10,7 @@ source:
 
 build:
   number: 0
-  skip: true  # [py<37 or win or arm64]
+  skip: true  # [win]
   preserve_egg_dir: true
   script_env:
     - TARBALL_PASSWORD
@@ -19,9 +19,9 @@ requirements:
   build:
     - python                                 # [build_platform != target_platform]
     - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - future
+    - future                                 # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
-    - six
+    - six                                    # [build_platform != target_platform]
     - gnuconfig  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
