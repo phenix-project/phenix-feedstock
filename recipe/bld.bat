@@ -24,12 +24,11 @@ dir
 del phenix.tar
 cd phenix-installer*
 dir
-call %CONDA%\condabin\conda.bat deactivate test
+call %CONDA%\condabin\conda.bat deactivate
 
 REM reapply patches
 git apply %RECIPE_DIR%\libtbx_SConscript.patch
 copy %RECIPE_DIR%\phaser_SConscript .\modules\phaser\SConscript
-@REM copy %RECIPE_DIR%\bootstrap.py .\modules\cctbx_project\libtbx\auto_build\bootstrap.py
 
 REM clean up sources
 rmdir /S /Q .\modules\cctbx_project\xfel\euxfel\definitions
@@ -59,7 +58,7 @@ rmdir /S /Q .\modules\scons
 dir
 
 REM build
-%PYTHON% bootstrap.py build --builder=phenix --use-conda %PREFIX% --nproc 4 --config-flags="--enable_cxx11" --config-flags="--no_bin_python"
+%PYTHON% bootstrap.py build --builder=phenix --use-conda %PREFIX% --nproc 10 --config-flags="--enable_cxx11" --config-flags="--no_bin_python"
 if %errorlevel% neq 0 exit /b %errorlevel%
 cd ..
 
@@ -92,7 +91,7 @@ cd phenix-installer*
 cd .\modules
 robocopy move .\chem_data %SP_DIR% /e /zb /j /move
 move .\phenix_examples %SP_DIR%
-REM move .\phenix_regression %SP_DIR%
+move .\phenix_regression %SP_DIR%
 dir
 
 REM copy files in build
