@@ -91,12 +91,6 @@ fi
 echo Check disk space
 df -h
 
-# rebuild rotarama and cablam caches
-if [[ "$CC" != *"arm64"* ]]; then
-  ./build/bin/mmtbx.rebuild_rotarama_cache
-  ./build/bin/mmtbx.rebuild_cablam_cache
-fi
-
 # move chem_data manually to avoid copy
 mv ./modules/chem_data ${SP_DIR}
 
