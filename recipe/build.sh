@@ -17,7 +17,20 @@ mv phenix*/modules .
 
 # reapply patches
 cp ${RECIPE_DIR}/phaser_SConscript ./modules/phaser/SConscript
-# cp ${RECIPE_DIR}/bootstrap.py ./modules/cctbx_project/libtbx/auto_build/bootstrap.py
+
+# clean up sources
+rm -fr ./modules/cctbx_project/xfel/euxfel/definitions
+
+futurize -f libfuturize.fixes.fix_print_with_import -wn ./modules/phaser_regression
+futurize -f libfuturize.fixes.fix_print_with_import -wn ./modules/phaser_voyager
+
+cp ${RECIPE_DIR}/parseHHpred.py ./modules/phaser_voyager/old_storage/scripts/parseHHpred.py
+rm -fr ./modules/phaser_voyager/old_storage/VoyagerGUI-QTC/old_gui
+
+futurize -f libfuturize.fixes.fix_print_with_import -wn ./modules/reduce
+futurize -f lib2to3.fixes.fix_except -wn ./modules/reduce
+
+futurize -f libfuturize.fixes.fix_print_with_import -wn ./modules/tntbx
 
 # turn off xia2
 git apply ${RECIPE_DIR}/xia2.patch
@@ -49,8 +62,6 @@ rm -fr ./chem_data/rotarama_data/*.pickle
 rm -fr ./chem_data/rotarama_data/*.dlite
 rm -fr ./chem_data/cablam_data/*.pickle
 rm -fr ./chem_data/cablam_data/*.dlite
-# tar -Jcf chem_data.tar.xz chem_data
-# rm -fr chem_data
 cd ..
 echo Check disk space
 df -h
@@ -77,17 +88,19 @@ cd build
 find . -name "*.o" -type f -delete
 cd ..
 
+# remove compiled Python files
+# https://stackoverflow.com/questions/28991015/python3-project-remove-pycache-folders-and-pyc-files
+cd ${SRC_DIR}
+cd phenix-installer*
+${PYTHON} -Bc "import pathlib; import shutil; [shutil.rmtree(p) for p in pathlib.Path('.\build').rglob('__pycache__')]"
+${PYTHON} -Bc "import pathlib; import shutil; [shutil.rmtree(p) for p in pathlib.Path('.\modules').rglob('__pycache__')]"
+
 # fix rpath on macOS because libraries and extensions will be in different locations
 if [[ ! -z "$MACOSX_DEPLOYMENT_TARGET" ]]; then
   echo Fixing rpath:
   ${PYTHON} ${RECIPE_DIR}/fix_macos_rpath.py
 fi
 
-# restore chem_data
-# cd modules
-# tar -xf chem_data.tar.xz
-# rm -f chem_data.tar.xz
-# cd ..
 echo Check disk space
 df -h
 
@@ -126,6 +139,11 @@ ${PYTHON} ${CCTBX_CONDA_BUILD}/update_libtbx_env.py
 echo Removing some duplicate dispatchers
 find ${PREFIX}/bin -name "*show_dist_paths" -not -name "libtbx.show_dist_paths" -type f -delete
 find ${PREFIX}/bin -name "*show_build_path" -not -name "libtbx.show_build_path" -type f -delete
+
+# clean up cbflib
+echo Fix cbflib
+mv ${SP_DIR}\cbflib\pycbf\pycbf.py ${SP_DIR}
+rm -fr ${SP_DIR}\cbflib
 
 # clean source cache
 ARTIFACT_DIR=/home/conda/feedstock_root/build_artifacts
