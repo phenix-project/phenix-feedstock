@@ -140,8 +140,8 @@ find ${PREFIX}/bin -name "*show_build_path" -not -name "libtbx.show_build_path" 
 
 # clean up cbflib
 echo Fix cbflib
-mv ${SP_DIR}\cbflib\pycbf\pycbf.py ${SP_DIR}
-rm -fr ${SP_DIR}\cbflib
+mv ${SP_DIR}/cbflib/pycbf/pycbf.py ${SP_DIR}
+rm -fr ${SP_DIR}/cbflib
 
 # clean source cache
 ARTIFACT_DIR=/home/conda/feedstock_root/build_artifacts
