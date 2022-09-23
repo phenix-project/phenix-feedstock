@@ -90,8 +90,6 @@ cd ..
 
 # remove compiled Python files
 # https://stackoverflow.com/questions/28991015/python3-project-remove-pycache-folders-and-pyc-files
-cd ${SRC_DIR}
-cd phenix-installer*
 ${PYTHON} -Bc "import pathlib; import shutil; [shutil.rmtree(p) for p in pathlib.Path('.\build').rglob('__pycache__')]"
 ${PYTHON} -Bc "import pathlib; import shutil; [shutil.rmtree(p) for p in pathlib.Path('.\modules').rglob('__pycache__')]"
 
