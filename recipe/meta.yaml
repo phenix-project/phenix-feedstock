@@ -40,10 +40,11 @@ requirements:
     - future
     - libglu  # [linux]
     - numpy
+    - pip
     - python
     - python.app  # [osx]
     - scons
-    - setuptools <60
+    - setuptools
     - six
     - xorg-libxfixes  # [linux]
 
