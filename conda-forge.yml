@@ -1,6 +1,8 @@
 github:
   user_or_org: phenix-project
   repo_name: phenix-feedstock
+  branch_name: main
+  tooling_branch_name: main
 channels:
   targets:
     - [cctbx-dev]
