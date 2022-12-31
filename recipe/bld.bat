@@ -58,7 +58,11 @@ rmdir /S /Q .\modules\scons
 dir
 
 REM build
-%PYTHON% bootstrap.py build --builder=phenix --use-conda %PREFIX% --nproc 10 --config-flags="--enable_cxx11" --config-flags="--no_bin_python"
+%PYTHON% bootstrap.py build ^
+  --builder=phenix_voyager ^
+  --use-conda %PREFIX% ^
+  --nproc 10 ^
+  --config-flags="--no_bin_python"
 if %errorlevel% neq 0 exit /b %errorlevel%
 cd ..
 
@@ -102,7 +106,11 @@ SET CCTBX_CONDA_BUILD=.\modules\cctbx_project\libtbx\auto_build\conda_build
 cd %SRC_DIR%
 cd phenix-installer*
 dir
-call .\build\bin\libtbx.python %CCTBX_CONDA_BUILD%\install_build.py --prefix %LIBRARY_PREFIX% --sp-dir %SP_DIR% --ext-dir %PREFIX%\lib --preserve-egg-dir
+call .\build\bin\libtbx.python %CCTBX_CONDA_BUILD%\install_build.py ^
+  --prefix %LIBRARY_PREFIX% ^
+  --sp-dir %SP_DIR% ^
+  --ext-dir %PREFIX%\lib ^
+  --preserve-egg-dir
 if %errorlevel% neq 0 exit /b %errorlevel%
 
 REM copy version and copyright files
