@@ -51,6 +51,7 @@ requirements:
     - hdf5
     - libtiff
     - msgpack-c
+    - pybind11
 
 outputs:
   - name: phenix

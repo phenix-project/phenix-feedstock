@@ -147,6 +147,9 @@ for m in dxtbx dials iota xia2; do
 done
 cd ..
 
+# copy dxtbx_flumpy.so separately since it does not end it *_ext.so
+cp ./build/lib/dxtbx_flumpy.so ${SP_DIR}/../lib-dynload/
+
 # clean up cbflib
 echo Fix cbflib
 cp ./build/lib/*cbf* ${PREFIX}/lib
