@@ -62,7 +62,7 @@ rm -fr ./modules/scons
 rm -fr ./modules/msgpack*
 
 # remove some libtbx_refresh.py files
-rm -fr ./modules/dials/libtbx_refresh.py
+# rm -fr ./modules/dials/libtbx_refresh.py
 rm -fr ./modules/dxtbx/libtbx_refresh.py
 rm -fr ./modules/iota/libtbx_refresh.py
 rm -fr ./modules/xia2/libtbx_refresh.py
@@ -139,7 +139,8 @@ find ${PREFIX}/bin -name "*show_build_path" -not -name "libtbx.show_build_path" 
 
 # install dxtbx, dials, iota, and xia2
 cd modules
-for m in dxtbx dials iota xia2; do
+# for m in dxtbx dials iota xia2; do
+for m in dxtbx iota xia2; do
   rm -fr ${SP_DIR}/${m}
   cd ./${m}
   ${PYTHON} -m pip install . -vv --no-deps
