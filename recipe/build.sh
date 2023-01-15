@@ -154,6 +154,9 @@ cp ./build/lib/dxtbx_flumpy.so ${SP_DIR}/../lib-dynload/
 # clean up cbflib
 echo Fix cbflib
 cp ./build/lib/*cbf* ${PREFIX}/lib
+for f in _pycbf.so cbflib_ext.so; do
+  mv ${PREFIX}/lib/${f} ${PREFIX}/lib/python${PY_VER}/lib-dynload/${f}
+done
 rm -f ${PREFIX}/lib/pycbf.py
 mv ${SP_DIR}/cbflib/pycbf/pycbf.py ${SP_DIR}
 rm -fr ${SP_DIR}/cbflib
