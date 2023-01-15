@@ -1,7 +1,7 @@
 echo on
 
-call %CONDA%\condabin\conda.bat create -n test -y -c conda-forge curl m2-gzip m2-tar openssl
-call %CONDA%\condabin\conda.bat activate
+call %CONDA%\condabin\conda.bat create -n test -y -c conda-forge curl git openssl xz
+call %CONDA%\condabin\conda.bat activate test
 call %CONDA%\condabin\conda.bat clean --all -y
 
 dir D:\bld\src_cache
@@ -16,13 +16,13 @@ openssl enc -d ^
   -iter 100000 ^
   -pbkdf2 ^
   -in %SRC_DIR%\phenix.enc ^
-  -out %SRC_DIR%\phenix.tar ^
+  -out %SRC_DIR%\phenix.tar.xz ^
   -pass env:TARBALL_PASSWORD
 dir
 del /S /Q %SRC_DIR%\phenix.enc
-tar -xf phenix.tar
+tar -xf phenix.tar.xz
 dir
-del phenix.tar
+del phenix.tar.xz
 cd phenix-installer*
 dir
 call %CONDA%\condabin\conda.bat deactivate
