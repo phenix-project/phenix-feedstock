@@ -2,6 +2,7 @@ echo on
 
 call %CONDA%\condabin\conda.bat create -n test -y -c conda-forge curl m2-gzip m2-tar openssl
 call %CONDA%\condabin\conda.bat activate
+call %CONDA%\condabin\conda.bat clean --all -y
 
 dir D:\bld\src_cache
 del /S /Q D:\bld\src_cache\phenix*.tar.gz
