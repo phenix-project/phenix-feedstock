@@ -34,8 +34,10 @@ requirements:
     - {{ cdt('libxxf86vm') }}  # [linux]
     - {{ cdt('libxext') }}     # [linux]
   host:
-    - boost =1.74
-    - boost-cpp =1.74
+    - boost =1.74  # [not arm64]
+    - boost =1.78  # [arm64]
+    - boost-cpp =1.74  # [not arm64]
+    - boost-cpp =1.78  # [arm64]
     - eigen
     - future
     - libglu  # [linux]

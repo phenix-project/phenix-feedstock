@@ -69,14 +69,26 @@ rm -fr ./modules/xia2/libtbx_refresh.py
 
 # build
 export CCTBX_SKIP_CHEMDATA_CACHE_REBUILD=1
-${PYTHON} bootstrap.py build \
-  --builder=phenix_voyager \
-  --use-conda ${PREFIX} \
-  --nproc 4 \
-  --verbose \
-  --config-flags="--compiler=conda" \
-  --config-flags="--use_environment_flags" \
-  --config-flags="--no_bin_python"
+if [[ "$CC" == *"arm64"* ]]; then
+  ${PYTHON} bootstrap.py build \
+    --builder=phenix_voyager \
+    --use-conda ${PREFIX} \
+    --nproc 4 \
+    --verbose \
+    --config-flags="--compiler=conda" \
+    --config-flags="--use_environment_flags" \
+    --config-flags="--no_bin_python" \
+    --config-flags="--cxxstd=c++14"
+else
+  ${PYTHON} bootstrap.py build \
+    --builder=phenix_voyager \
+    --use-conda ${PREFIX} \
+    --nproc 4 \
+    --verbose \
+    --config-flags="--compiler=conda" \
+    --config-flags="--use_environment_flags" \
+    --config-flags="--no_bin_python"
+fi
 
 # remove intermediate objects in build directory
 cd build
