@@ -5,8 +5,8 @@ call %CONDA%\condabin\conda.bat activate test
 call %CONDA%\condabin\conda.bat clean --all -y
 
 dir D:\bld\src_cache
-del /S /Q D:\bld\src_cache\phenix*.tar.gz
-dir
+del /S /Q D:\bld\src_cache\*
+dir D:\bld\src_cache
 
 cd %SRC_DIR%
 openssl enc -d ^
@@ -53,16 +53,18 @@ REM remove extra source code
 rmdir /S /Q .\modules\boost
 rmdir /S /Q .\modules\eigen
 rmdir /S /Q .\modules\scons
-@REM rmdir /S /Q .\modules\phenix_regression
-@REM rmdir /S /Q .\modules\phaser_regression
-@REM rmdir /S /Q .\modules\voyager_regression
 dir
+
+REM remove some libtbx_refresh.py files
+del /S /Q .\modules\dxtbx\libtbx_refresh.py
+del /S /Q .\modules\iota\libtbx_refresh.py
+del /S /Q .\modules\xia2\libtbx_refresh.py
 
 REM build
 %PYTHON% bootstrap.py build ^
   --builder=phenix_voyager ^
   --use-conda %PREFIX% ^
-  --nproc 10 ^
+  --nproc 4 ^
   --config-flags="--no_bin_python"
 if %errorlevel% neq 0 exit /b %errorlevel%
 cd ..
@@ -98,6 +100,7 @@ robocopy move .\chem_data %SP_DIR% /e /zb /j /move
 move .\phenix_examples %SP_DIR%
 move .\phenix_regression %SP_DIR%
 dir
+cd ..
 
 REM copy files in build
 REM not sure why directory changes, which is why "cd %SRC_DIR%" is needed
@@ -148,6 +151,25 @@ del /Q %LIBRARY_BIN%\*show_dist_paths.bat
 attrib -H %LIBRARY_BIN%\libtbx.show_build_path.bat
 attrib -H %LIBRARY_BIN%\libtbx.show_dist_paths.bat
 if %errorlevel% neq 0 exit /b %errorlevel%
+
+REM install dxtbx, dials, iota, and xia2
+rmdir /S /Q %SP_DIR%\dxtbx
+rmdir /S /Q %SP_DIR%\iota
+rmdir /S /Q %SP_DIR%\xia2
+cd modules
+cd .\dxtbx
+%PYTHON% -m pip install . -vv --no-deps
+cd ..
+cd .\iota
+%PYTHON% -m pip install . -vv --no-deps
+cd ..
+cd .\xia2
+%PYTHON% -m pip install . -vv --no-deps
+cd ..
+cd ..
+
+REM copy dxtbx_flumpy.so separately since it does not end it *_ext.so
+REM copy ./build/lib/dxtbx_flumpy.so ${SP_DIR}/../lib-dynload/
 
 REM clean up cbflib
 move %SP_DIR%\cbflib\pycbf\pycbf.py %SP_DIR%
