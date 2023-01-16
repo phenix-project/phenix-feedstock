@@ -1,0 +1,17 @@
+diff --git a/modules/cctbx_project/libtbx/auto_build/bootstrap.py b/modules/cctbx_project/libtbx/auto_build/bootstrap.py
+index 577ef70b03..904703ea17 100644
+--- a/modules/cctbx_project/libtbx/auto_build/bootstrap.py
++++ b/modules/cctbx_project/libtbx/auto_build/bootstrap.py
+@@ -1900,9 +1900,9 @@ environment exists in or is defined by {conda_env}.
+       ))
+ 
+     # write extra setpaths script for conda
+-    if self.use_conda is not None:
+-      self.add_command('libtbx.install_conda', args=['--write_setpaths'],
+-                       description='Writing additional setup scripts for conda.')
++    # if self.use_conda is not None:
++    #   self.add_command('libtbx.install_conda', args=['--write_setpaths'],
++    #                    description='Writing additional setup scripts for conda.')
+ 
+   def add_make(self):
+     self.add_command('libtbx.scons', args=['-j',
