@@ -62,6 +62,7 @@ del /S /Q .\modules\iota\libtbx_refresh.py
 del /S /Q .\modules\xia2\libtbx_refresh.py
 
 REM shorten PATH
+set OLDPATH=%PATH%
 set PATH=%BUILD_PREFIX%;%BUILD_PREFIX%\Library\mingw-w64\bin;%BUILD_PREFIX%\Library\usr\bin;%BUILD_PREFIX%\Library\bin;%BUILD_PREFIX%\Scripts;%BUILD_PREFIX%\bin;%PREFIX%;%PREFIX%\Library\mingw-w64\bin;%PREFIX%\Library\usr\bin;%PREFIX%\Library\bin;%PREFIX%\Scripts;%PREFIX%\bin;C:\Miniforge;C:\Miniforge\Library\mingw-w64\bin;C:\Miniforge\Library\usr\bin;C:\Miniforge\Library\bin;C:\Miniforge\Scripts;C:\Miniforge\bin;C:\Miniforge\condabin;C:\Miniforge\Scripts
 call "%VSINSTALLDIR%\VC\Auxiliary\Build\vcvarsall.bat" x64
 
@@ -108,9 +109,9 @@ cd ..
 
 REM copy files in build
 REM not sure why directory changes, which is why "cd %SRC_DIR%" is needed
-SET EXTRA_CCTBX_DIR=%LIBRARY_PREFIX%\share\cctbx
+set EXTRA_CCTBX_DIR=%LIBRARY_PREFIX%\share\cctbx
 mkdir  %EXTRA_CCTBX_DIR%
-SET CCTBX_CONDA_BUILD=.\modules\cctbx_project\libtbx\auto_build\conda_build
+set CCTBX_CONDA_BUILD=.\modules\cctbx_project\libtbx\auto_build\conda_build
 cd %SRC_DIR%
 cd phenix-installer*
 dir
@@ -133,7 +134,7 @@ if %errorlevel% neq 0 exit /b %errorlevel%
 cd ..\..
 
 REM copy Phenix environment files
-SET EXTRA_PHENIX_DIR=%LIBRARY_PREFIX%\share\phenix
+set EXTRA_PHENIX_DIR=%LIBRARY_PREFIX%\share\phenix
 mkdir  %EXTRA_PHENIX_DIR%
 cd %SRC_DIR%
 cd phenix-installer*
@@ -148,6 +149,7 @@ if %errorlevel% neq 0 exit /b %errorlevel%
 if %errorlevel% neq 0 exit /b %errorlevel%
 
 REM remove extra copies of dispatchers
+set PATH=%OLDPATH%
 attrib +H %LIBRARY_BIN%\libtbx.show_build_path.bat
 attrib +H %LIBRARY_BIN%\libtbx.show_dist_paths.bat
 del /Q %LIBRARY_BIN%\*show_build_path.bat
