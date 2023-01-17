@@ -22,7 +22,7 @@ dir
 del /S /Q %SRC_DIR%\phenix.enc
 tar -xf phenix.tar.xz
 dir
-del phenix.tar.xz
+del /S /Q phenix.tar.xz
 cd phenix-installer*
 dir
 call %CONDA%\condabin\conda.bat deactivate
@@ -66,6 +66,7 @@ set PATH=%BUILD_PREFIX%;%BUILD_PREFIX%\Library\mingw-w64\bin;%BUILD_PREFIX%\Libr
 call "%VSINSTALLDIR%\VC\Auxiliary\Build\vcvarsall.bat" x64
 
 REM build
+set CCTBX_SKIP_CHEMDATA_CACHE_REBUILD=1
 %PYTHON% bootstrap.py build ^
   --builder=phenix_voyager ^
   --use-conda %PREFIX% ^
@@ -74,15 +75,13 @@ REM build
 if %errorlevel% neq 0 exit /b %errorlevel%
 cd ..
 
-REM rebuild rotarama and cablam caches
+REM delete rotarama and cablam caches
 cd %SRC_DIR%
 cd phenix-installer*
 del /S /Q .\modules\chem_data\rotarama_data\*.pickle
 del /S /Q .\modules\chem_data\rotarama_data\*.dlite
 del /S /Q .\modules\chem_data\cablam_data\*.pickle
 del /S /Q .\modules\chem_data\cablam_data\*.dlite
-call ./build/bin/mmtbx.rebuild_rotarama_cache
-call ./build/bin/mmtbx.rebuild_cablam_cache
 
 REM remove intermediate objects in build directory
 cd %SRC_DIR%
