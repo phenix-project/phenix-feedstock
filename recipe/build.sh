@@ -129,11 +129,12 @@ cd ./modules/cctbx_project
 ${PYTHON} setup.py install
 cd ../..
 
-# copy Phenix environment files
+# copy Phenix environment files and changelog
 echo Copying Phenix environment files
 EXTRA_PHENIX_DIR=${PREFIX}/share/phenix
 mkdir -p ${EXTRA_PHENIX_DIR}
 cp -a ./modules/phenix/conda_envs ${EXTRA_PHENIX_DIR}
+cp ./modules/phenix/CHANGES ${EXTRA_PHENIX_DIR}
 
 # copy libtbx_env and update dispatchers
 echo Copying libtbx_env
