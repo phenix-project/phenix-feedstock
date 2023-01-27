@@ -69,7 +69,7 @@ call "%VSINSTALLDIR%\VC\Auxiliary\Build\vcvarsall.bat" x64
 REM build
 set CCTBX_SKIP_CHEMDATA_CACHE_REBUILD=1
 %PYTHON% bootstrap.py build ^
-  --builder=phenix_voyager ^
+  --builder=phenix_release ^
   --use-conda %PREFIX% ^
   --nproc 4 ^
   --config-flags="--no_bin_python"
