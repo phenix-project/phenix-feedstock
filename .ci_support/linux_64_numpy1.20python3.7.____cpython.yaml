@@ -19,7 +19,7 @@ docker_image:
 gdk_pixbuf:
 - '2'
 hdf5:
-- 1.12.1
+- 1.12.2
 libsvm:
 - '325'
 libtiff:
