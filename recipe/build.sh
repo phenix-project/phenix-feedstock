@@ -145,6 +145,10 @@ else
   ${PYTHON} ${CCTBX_CONDA_BUILD}/update_libtbx_env.py
 fi
 
+# copy REST credentials
+echo Copying REST credentials
+cp -a ./rest ${EXTRA_CCTBX_DIR}
+
 # remove extra copies of dispatchers
 echo Removing some duplicate dispatchers
 find ${PREFIX}/bin -name "*show_dist_paths" -not -name "libtbx.show_dist_paths" -type f -delete
