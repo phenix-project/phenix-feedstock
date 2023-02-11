@@ -14,6 +14,7 @@ rm -fr ./modules phenix.enc
 tar -xf phenix.tgz
 rm phenix.tgz
 mv phenix*/modules .
+mv phenix*/rest .
 
 # reapply patches
 cp ${RECIPE_DIR}/phaser_SConscript ./modules/phaser/SConscript
@@ -147,10 +148,7 @@ fi
 
 # copy REST credentials
 echo Copying REST credentials
-ls ${SRC_DIR}
-mkdir -p ${EXTRA_CCTBX_DIR}/rest
-cp ${SRC_DIR}/rest/token ${EXTRA_CCTBX_DIR}/rest
-cp ${SRC_DIR}/rest/url ${EXTRA_CCTBX_DIR}/rest
+cp -a ./rest ${EXTRA_CCTBX_DIR}
 
 # remove extra copies of dispatchers
 echo Removing some duplicate dispatchers
