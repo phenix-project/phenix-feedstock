@@ -147,7 +147,10 @@ fi
 
 # copy REST credentials
 echo Copying REST credentials
-cp -a ./rest ${EXTRA_CCTBX_DIR}
+ls ${SRC_DIR}
+mkdir -p ${EXTRA_CCTBX_DIR}/rest
+cp ${SRC_DIR}/rest/token ${EXTRA_CCTBX_DIR}/rest
+cp ${SRC_DIR}/rest/url ${EXTRA_CCTBX_DIR}/rest
 
 # remove extra copies of dispatchers
 echo Removing some duplicate dispatchers
