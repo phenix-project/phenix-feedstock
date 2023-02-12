@@ -25,6 +25,9 @@ requirements:
     - numpy                                  # [build_platform != target_platform]
     - six                                    # [build_platform != target_platform]
     - gnuconfig  # [unix]
+    - git  # [win]
+    - m2-tar  # [win]
+    - m2-xz  # [win]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - {{ cdt('mesa-libgl-devel') }}  # [linux]
