@@ -1,15 +1,15 @@
 echo on
 
-call %CONDA%\condabin\conda.bat create -n test -y -c conda-forge curl git openssl xz
-call %CONDA%\condabin\conda.bat activate test
-call %CONDA%\condabin\conda.bat clean --all -y
+@REM call %CONDA%\condabin\conda.bat create -n test -y -c conda-forge curl git openssl xz
+@REM call %CONDA%\condabin\conda.bat activate test
+@REM call %CONDA%\condabin\conda.bat clean --all -y
 
-dir D:\bld\src_cache
-del /S /Q D:\bld\src_cache\*
-dir D:\bld\src_cache
+@REM dir D:\bld\src_cache
+@REM del /S /Q D:\bld\src_cache\*
+@REM dir D:\bld\src_cache
 
 cd %SRC_DIR%
-openssl enc -d ^
+c:\\c\\envs\\b\\Library\bin\openssl.exe enc -d ^
   -aes-256-cbc ^
   -salt ^
   -md sha256 ^
@@ -25,7 +25,7 @@ dir
 del /S /Q phenix.tar.xz
 cd phenix-installer*
 dir
-call %CONDA%\condabin\conda.bat deactivate
+@REM call %CONDA%\condabin\conda.bat deactivate
 
 REM reapply patches
 git apply %RECIPE_DIR%\libtbx_SConscript.patch
@@ -62,16 +62,16 @@ del /S /Q .\modules\iota\libtbx_refresh.py
 del /S /Q .\modules\xia2\libtbx_refresh.py
 
 REM shorten PATH
-set OLDPATH=%PATH%
-set PATH=%BUILD_PREFIX%;%BUILD_PREFIX%\Library\mingw-w64\bin;%BUILD_PREFIX%\Library\usr\bin;%BUILD_PREFIX%\Library\bin;%BUILD_PREFIX%\Scripts;%BUILD_PREFIX%\bin;%PREFIX%;%PREFIX%\Library\mingw-w64\bin;%PREFIX%\Library\usr\bin;%PREFIX%\Library\bin;%PREFIX%\Scripts;%PREFIX%\bin;C:\Miniforge;C:\Miniforge\Library\mingw-w64\bin;C:\Miniforge\Library\usr\bin;C:\Miniforge\Library\bin;C:\Miniforge\Scripts;C:\Miniforge\bin;C:\Miniforge\condabin;C:\Miniforge\Scripts
-call "%VSINSTALLDIR%\VC\Auxiliary\Build\vcvarsall.bat" x64
+@REM set OLDPATH=%PATH%
+@REM set PATH=%BUILD_PREFIX%;%BUILD_PREFIX%\Library\mingw-w64\bin;%BUILD_PREFIX%\Library\usr\bin;%BUILD_PREFIX%\Library\bin;%BUILD_PREFIX%\Scripts;%BUILD_PREFIX%\bin;%PREFIX%;%PREFIX%\Library\mingw-w64\bin;%PREFIX%\Library\usr\bin;%PREFIX%\Library\bin;%PREFIX%\Scripts;%PREFIX%\bin;C:\Miniforge;C:\Miniforge\Library\mingw-w64\bin;C:\Miniforge\Library\usr\bin;C:\Miniforge\Library\bin;C:\Miniforge\Scripts;C:\Miniforge\bin;C:\Miniforge\condabin;C:\Miniforge\Scripts
+@REM call "%VSINSTALLDIR%\VC\Auxiliary\Build\vcvarsall.bat" x64
 
 REM build
 set CCTBX_SKIP_CHEMDATA_CACHE_REBUILD=1
 %PYTHON% bootstrap.py build ^
   --builder=phenix_release ^
   --use-conda %PREFIX% ^
-  --nproc 4 ^
+  --nproc 8 ^
   --config-flags="--no_bin_python"
 if %errorlevel% neq 0 exit /b %errorlevel%
 cd ..
@@ -149,7 +149,7 @@ if %errorlevel% neq 0 exit /b %errorlevel%
 if %errorlevel% neq 0 exit /b %errorlevel%
 
 REM remove extra copies of dispatchers
-set PATH=%OLDPATH%
+@REM set PATH=%OLDPATH%
 attrib +H %LIBRARY_BIN%\libtbx.show_build_path.bat
 attrib +H %LIBRARY_BIN%\libtbx.show_dist_paths.bat
 del /Q %LIBRARY_BIN%\*show_build_path.bat
