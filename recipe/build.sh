@@ -69,12 +69,16 @@ rm -fr ./modules/iota/libtbx_refresh.py
 rm -fr ./modules/xia2/libtbx_refresh.py
 
 # build
+NPROC=4
+if [[ ! -z "$MACOSX_DEPLOYMENT_TARGET" ]]; then
+  NPROC=6
+fi
 export CCTBX_SKIP_CHEMDATA_CACHE_REBUILD=1
 if [[ "$CC" == *"arm64"* ]]; then
   ${PYTHON} bootstrap.py build \
     --builder=phenix_release \
     --use-conda ${PREFIX} \
-    --nproc 4 \
+    --nproc ${NPROC} \
     --verbose \
     --config-flags="--compiler=conda" \
     --config-flags="--use_environment_flags" \
@@ -84,7 +88,7 @@ else
   ${PYTHON} bootstrap.py build \
     --builder=phenix_release \
     --use-conda ${PREFIX} \
-    --nproc 4 \
+    --nproc ${NPROC} \
     --verbose \
     --config-flags="--compiler=conda" \
     --config-flags="--use_environment_flags" \
