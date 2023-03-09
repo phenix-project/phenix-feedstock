@@ -20,4 +20,4 @@ test: native
 upload_on_branch: upload
 conda_build:
   pkg_format: '2'
-  zstd_compression_level: 21
+  zstd_compression_level: 20
