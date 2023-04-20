@@ -2,12 +2,15 @@ channel_sources:
   - cctbx202211,conda-forge,phenix-project
 channel_targets:
   - cctbx-dev main
-c_compiler_version:            # [osx and x86_64]
+c_compiler_version:            # [osx]
   - 13                         # [osx and x86_64]
-cxx_compiler_version:          # [osx and x86_64]
+  - 14                         # [arm64]
+cxx_compiler_version:          # [osx]
   - 13                         # [osx and x86_64]
-llvm_openmp:                   # [osx and x86_64]
+  - 14                         # [arm64]
+llvm_openmp:                   # [osx]
   - 13                         # [osx and x86_64]
+  - 14                         # [arm64]
 python:
   - 3.7.* *_cpython            # [x86_64]
   - 3.8.* *_cpython
