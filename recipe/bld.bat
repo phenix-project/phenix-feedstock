@@ -148,6 +148,12 @@ if %errorlevel% neq 0 exit /b %errorlevel%
 %PYTHON% %CCTBX_CONDA_BUILD%\update_libtbx_env.py
 if %errorlevel% neq 0 exit /b %errorlevel%
 
+REM cop REST credentials
+echo Copying REST credentials
+mkdir %EXTRA_CCTBX_DIR%\rest
+copy C:\rest\token %EXTRA_CCTBX_DIR%\rest\token
+copy C:\rest\url %EXTRA_CCTBX_DIR%\rest\url
+
 REM remove extra copies of dispatchers
 @REM set PATH=%OLDPATH%
 attrib +H %LIBRARY_BIN%\libtbx.show_build_path.bat
