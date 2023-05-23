@@ -183,6 +183,19 @@ cd ..
 REM copy dxtbx_flumpy.so separately since it does not end it *_ext.so
 REM copy ./build/lib/dxtbx_flumpy.so ${SP_DIR}/../lib-dynload/
 
+REM copy items for Start Menu
+set MENU_DIR=%PREFIX%\Menu
+mkdir %MENU_DIR%
+
+copy .\modules\gui_resources\icons\custom\phenix.ico %MENU_DIR%
+if %errorlevel% neq 0 exit /b %errorlevel%
+
+%PYTHON% %RECIPE_DIR%\scripts\win_update_menu.py --file %RECIPE_DIR%\menu-windows.json --version %PKG_VERSION%
+if %errorlevel% neq 0 exit /b %errorlevel%
+
+copy %RECIPE_DIR%\menu-windows.json %MENU_DIR%\phenix.json
+if %errorlevel% neq 0 exit /b %errorlevel%
+
 REM clean up cbflib
 move %SP_DIR%\cbflib\pycbf\pycbf.py %SP_DIR%
 rmdir /S /Q %SP_DIR%\cbflib
