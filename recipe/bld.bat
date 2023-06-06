@@ -1,15 +1,28 @@
 echo on
 
-@REM call %CONDA%\condabin\conda.bat create -n test -y -c conda-forge curl git openssl xz
-@REM call %CONDA%\condabin\conda.bat activate test
-@REM call %CONDA%\condabin\conda.bat clean --all -y
+call %CONDA%\condabin\conda.bat create -n test -y -c conda-forge curl git openssl xz
+call %CONDA%\condabin\conda.bat activate test
+call %CONDA%\condabin\conda.bat clean --all -y
 
-@REM dir D:\bld\src_cache
-@REM del /S /Q D:\bld\src_cache\*
-@REM dir D:\bld\src_cache
+REM clear up more disk space
+dir D:\bld\src_cache
+del /S /Q D:\bld\src_cache\*
+dir D:\bld\src_cache
+
+rmdir /S /Q %ANDROID_HOME%
+rmdir /S /Q %JAVA_HOME_8_X64%
+rmdir /S /Q %JAVA_HOME_11_X64%
+rmdir /S /Q %JAVA_HOME_13_X64%
+rmdir /S /Q %JAVA_HOME_17_X64%
+rmdir /S /Q %CHROMEWEBDRIVER%
+rmdir /S /Q %EDGEWEBDRIVER%
+rmdir /S /Q %GECKOWEBDRIVER%
 
 cd %SRC_DIR%
-c:\\c\\envs\\b\\Library\bin\openssl.exe enc -d ^
+dir
+@REM c:\\c\\envs\\b\\Library\bin\openssl.exe ^
+openssl ^
+  enc -d ^
   -aes-256-cbc ^
   -salt ^
   -md sha256 ^
@@ -25,7 +38,7 @@ dir
 del /S /Q phenix.tar.xz
 cd phenix-installer*
 dir
-@REM call %CONDA%\condabin\conda.bat deactivate
+call %CONDA%\condabin\conda.bat deactivate
 
 REM reapply patches
 git apply %RECIPE_DIR%\libtbx_SConscript.patch
