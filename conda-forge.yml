@@ -14,6 +14,9 @@ azure:
   user_or_org: phenix-release
   project_name: feedstock-builds
   store_build_artifacts: true
+  settings_win:
+    variables:
+      CONDA_BLD_PATH: C:\\Miniconda\\envs\\
 build_platform:
   osx_arm64: osx_64
 test: native

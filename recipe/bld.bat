@@ -1,5 +1,7 @@
 echo on
 
+dir C:\
+
 call %CONDA%\condabin\conda.bat create -n test -y -c conda-forge curl git openssl xz
 call %CONDA%\condabin\conda.bat activate test
 call %CONDA%\condabin\conda.bat clean --all -y
@@ -8,16 +10,6 @@ REM clear up more disk space
 dir D:\bld\src_cache
 del /S /Q D:\bld\src_cache\*
 dir D:\bld\src_cache
-
-rmdir /S /Q %ANDROID_HOME%
-rmdir /S /Q %JAVA_HOME_8_X64%
-rmdir /S /Q %JAVA_HOME_11_X64%
-rmdir /S /Q %JAVA_HOME_13_X64%
-rmdir /S /Q %JAVA_HOME_17_X64%
-rmdir /S /Q %CHROMEWEBDRIVER%
-rmdir /S /Q %EDGEWEBDRIVER%
-rmdir /S /Q %GECKOWEBDRIVER%
-dir c:\
 
 cd %SRC_DIR%
 dir
