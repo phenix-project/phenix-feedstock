@@ -17,6 +17,7 @@ rmdir /S /Q %JAVA_HOME_17_X64%
 rmdir /S /Q %CHROMEWEBDRIVER%
 rmdir /S /Q %EDGEWEBDRIVER%
 rmdir /S /Q %GECKOWEBDRIVER%
+dir c:\
 
 cd %SRC_DIR%
 dir
@@ -31,9 +32,11 @@ openssl ^
   -in %SRC_DIR%\phenix.enc ^
   -out %SRC_DIR%\phenix.tar.xz ^
   -pass env:TARBALL_PASSWORD
+if %errorlevel% neq 0 exit /b %errorlevel%
 dir
 del /S /Q %SRC_DIR%\phenix.enc
 tar -xf phenix.tar.xz
+if %errorlevel% neq 0 exit /b %errorlevel%
 dir
 del /S /Q phenix.tar.xz
 cd phenix-installer*
@@ -75,16 +78,16 @@ del /S /Q .\modules\iota\libtbx_refresh.py
 del /S /Q .\modules\xia2\libtbx_refresh.py
 
 REM shorten PATH
-@REM set OLDPATH=%PATH%
-@REM set PATH=%BUILD_PREFIX%;%BUILD_PREFIX%\Library\mingw-w64\bin;%BUILD_PREFIX%\Library\usr\bin;%BUILD_PREFIX%\Library\bin;%BUILD_PREFIX%\Scripts;%BUILD_PREFIX%\bin;%PREFIX%;%PREFIX%\Library\mingw-w64\bin;%PREFIX%\Library\usr\bin;%PREFIX%\Library\bin;%PREFIX%\Scripts;%PREFIX%\bin;C:\Miniforge;C:\Miniforge\Library\mingw-w64\bin;C:\Miniforge\Library\usr\bin;C:\Miniforge\Library\bin;C:\Miniforge\Scripts;C:\Miniforge\bin;C:\Miniforge\condabin;C:\Miniforge\Scripts
-@REM call "%VSINSTALLDIR%\VC\Auxiliary\Build\vcvarsall.bat" x64
+set OLDPATH=%PATH%
+set PATH=%BUILD_PREFIX%;%BUILD_PREFIX%\Library\mingw-w64\bin;%BUILD_PREFIX%\Library\usr\bin;%BUILD_PREFIX%\Library\bin;%BUILD_PREFIX%\Scripts;%BUILD_PREFIX%\bin;%PREFIX%;%PREFIX%\Library\mingw-w64\bin;%PREFIX%\Library\usr\bin;%PREFIX%\Library\bin;%PREFIX%\Scripts;%PREFIX%\bin;C:\Miniforge;C:\Miniforge\Library\mingw-w64\bin;C:\Miniforge\Library\usr\bin;C:\Miniforge\Library\bin;C:\Miniforge\Scripts;C:\Miniforge\bin;C:\Miniforge\condabin;C:\Miniforge\Scripts
+call "%VSINSTALLDIR%\VC\Auxiliary\Build\vcvarsall.bat" x64
 
 REM build
 set CCTBX_SKIP_CHEMDATA_CACHE_REBUILD=1
 %PYTHON% bootstrap.py build ^
   --builder=phenix_release ^
   --use-conda %PREFIX% ^
-  --nproc 8 ^
+  --nproc 4 ^
   --config-flags="--no_bin_python"
 if %errorlevel% neq 0 exit /b %errorlevel%
 cd ..
@@ -168,7 +171,7 @@ copy C:\rest\token %EXTRA_CCTBX_DIR%\rest\token
 copy C:\rest\url %EXTRA_CCTBX_DIR%\rest\url
 
 REM remove extra copies of dispatchers
-@REM set PATH=%OLDPATH%
+set PATH=%OLDPATH%
 attrib +H %LIBRARY_BIN%\libtbx.show_build_path.bat
 attrib +H %LIBRARY_BIN%\libtbx.show_dist_paths.bat
 del /Q %LIBRARY_BIN%\*show_build_path.bat
