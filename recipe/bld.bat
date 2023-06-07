@@ -70,9 +70,9 @@ del /S /Q .\modules\iota\libtbx_refresh.py
 del /S /Q .\modules\xia2\libtbx_refresh.py
 
 REM shorten PATH
-set OLDPATH=%PATH%
-set PATH=%BUILD_PREFIX%;%BUILD_PREFIX%\Library\mingw-w64\bin;%BUILD_PREFIX%\Library\usr\bin;%BUILD_PREFIX%\Library\bin;%BUILD_PREFIX%\Scripts;%BUILD_PREFIX%\bin;%PREFIX%;%PREFIX%\Library\mingw-w64\bin;%PREFIX%\Library\usr\bin;%PREFIX%\Library\bin;%PREFIX%\Scripts;%PREFIX%\bin;C:\Miniforge;C:\Miniforge\Library\mingw-w64\bin;C:\Miniforge\Library\usr\bin;C:\Miniforge\Library\bin;C:\Miniforge\Scripts;C:\Miniforge\bin;C:\Miniforge\condabin;C:\Miniforge\Scripts
-call "%VSINSTALLDIR%\VC\Auxiliary\Build\vcvarsall.bat" x64
+@REM set OLDPATH=%PATH%
+@REM set PATH=%BUILD_PREFIX%;%BUILD_PREFIX%\Library\mingw-w64\bin;%BUILD_PREFIX%\Library\usr\bin;%BUILD_PREFIX%\Library\bin;%BUILD_PREFIX%\Scripts;%BUILD_PREFIX%\bin;%PREFIX%;%PREFIX%\Library\mingw-w64\bin;%PREFIX%\Library\usr\bin;%PREFIX%\Library\bin;%PREFIX%\Scripts;%PREFIX%\bin;C:\Miniforge;C:\Miniforge\Library\mingw-w64\bin;C:\Miniforge\Library\usr\bin;C:\Miniforge\Library\bin;C:\Miniforge\Scripts;C:\Miniforge\bin;C:\Miniforge\condabin;C:\Miniforge\Scripts
+@REM call "%VSINSTALLDIR%\VC\Auxiliary\Build\vcvarsall.bat" x64
 
 REM build
 set CCTBX_SKIP_CHEMDATA_CACHE_REBUILD=1
@@ -163,7 +163,7 @@ copy C:\rest\token %EXTRA_CCTBX_DIR%\rest\token
 copy C:\rest\url %EXTRA_CCTBX_DIR%\rest\url
 
 REM remove extra copies of dispatchers
-set PATH=%OLDPATH%
+@REM set PATH=%OLDPATH%
 attrib +H %LIBRARY_BIN%\libtbx.show_build_path.bat
 attrib +H %LIBRARY_BIN%\libtbx.show_dist_paths.bat
 del /Q %LIBRARY_BIN%\*show_build_path.bat
