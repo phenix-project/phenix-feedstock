@@ -13,6 +13,7 @@ channel_priority: flexible
 azure:
   user_or_org: phenix-release
   project_name: feedstock-builds
+  free_disk_space: true
   store_build_artifacts: true
   settings_win:
     variables:
