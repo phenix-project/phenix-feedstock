@@ -23,7 +23,7 @@ hdf5:
 libsvm:
 - '325'
 libtiff:
-- '4.5'
+- '4.4'
 numpy:
 - '1.21'
 pin_run_as_build:
