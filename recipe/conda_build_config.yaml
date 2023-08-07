@@ -8,6 +8,8 @@ c_compiler_version:            # [osx]
 cxx_compiler_version:          # [osx]
   - 13                         # [osx and x86_64]
   - 14                         # [arm64]
+libtiff:
+  - 4.4
 llvm_openmp:                   # [osx]
   - 13                         # [osx and x86_64]
   - 14                         # [arm64]
