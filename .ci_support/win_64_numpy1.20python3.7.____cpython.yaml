@@ -11,7 +11,7 @@ cxx_compiler:
 hdf5:
 - 1.12.2
 libsvm:
-- '325'
+- '332'
 libtiff:
 - '4.4'
 numpy:
