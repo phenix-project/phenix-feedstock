@@ -13,6 +13,8 @@ libtiff:
 llvm_openmp:                   # [osx]
   - 13                         # [osx and x86_64]
   - 14                         # [arm64]
+msgpack_c:
+  - 3
 python:
   - 3.7.* *_cpython            # [x86_64]
   - 3.8.* *_cpython
