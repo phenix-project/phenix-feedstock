@@ -23,7 +23,7 @@ libtiff:
 macos_machine:
 - x86_64-apple-darwin13.4.0
 msgpack_c:
-- '6'
+- '3'
 numpy:
 - '1.21'
 pin_run_as_build:
