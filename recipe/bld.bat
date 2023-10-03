@@ -73,9 +73,13 @@ REM shorten PATH
 set OLDPATH=%PATH%
 echo "OLD PATH"
 echo %PATH%
-%PYTHON% %RECIPE_DIR%\scripts\fix_windows_path.py > new_path.txt
-more new_path.txt
-set PATH /P PATH=< new_path.txt
+%PYTHON% %RECIPE_DIR%\scripts\get_visual_studio_paths.py > log.txt
+echo "SCRIPT OUTPUT"
+more log.txt
+set /P VSPATH=< log.txt
+echo "VSPATH"
+echo %VSPATH%
+set PATH=%VSPATH%;%BUILD_PREFIX%;%BUILD_PREFIX%\Library\mingw-w64\bin;%BUILD_PREFIX%\Library\usr\bin;%BUILD_PREFIX%\Library\bin;%BUILD_PREFIX%\Scripts;%BUILD_PREFIX%\bin;%BUILD_PREFIX%;%BUILD_PREFIX%\Library\mingw-w64\bin;%BUILD_PREFIX%\Library\usr\bin;%BUILD_PREFIX%\Library\bin;%BUILD_PREFIX%\Scripts;%BUILD_PREFIX%\bin;%PREFIX%;%PREFIX%\Library\mingw-w64\bin;%PREFIX%\Library\usr\bin;%PREFIX%\Library\bin;%PREFIX%\Scripts;%PREFIX%\bin;%PREFIX%;%PREFIX%\Library\mingw-w64\bin;%PREFIX%\Library\usr\bin;%PREFIX%\Library\bin;%PREFIX%\Scripts;%PREFIX%\bin;C:\Miniforge\condabin;C:\Miniforge\Scripts;C:\agents\3.225.0\externals\git\cmd;C:\agents\3.225.0\externals\git\mingw64\bin
 echo "NEW PATH"
 echo %PATH%
 
