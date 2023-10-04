@@ -13,7 +13,8 @@ def unique_paths(paths):
   for path in paths:
     try: path_normcase = abs(path.normcase())
     except AttributeError: path_normcase = op.normcase(path)
-    if (path_normcase in hash or "visual studio" not in path_normcase): continue
+    # if (path_normcase in hash or "visual studio" not in path_normcase): continue
+    if (path_normcase in hash): continue
     hash.add(path_normcase)
     result.append(path)
   return result
