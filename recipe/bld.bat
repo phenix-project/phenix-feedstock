@@ -73,13 +73,13 @@ REM shorten PATH
 set OLDPATH=%PATH%
 echo "OLD PATH"
 echo %PATH%
-%PYTHON% %RECIPE_DIR%\scripts\get_visual_studio_paths.py > log.txt
+%PYTHON% %RECIPE_DIR%\scripts\get_unique_paths.py > unique_paths.txt
 echo "SCRIPT OUTPUT"
-more log.txt
-for /F "tokens=*" %%A in (log.txt) do set VSPATH=%%A;%VSPATH%
-echo "VSPATH"
-echo %VSPATH%
-set PATH=%VSPATH%
+more unique_paths.txt
+for /F "tokens=*" %%A in (unique_paths.txt) do set UNIQUE_PATH=%%A;%UNIQUE_PATH%
+echo "UNIQUE_PATH"
+echo %UNIQUE_PATH%
+set PATH=%UNIQUE_PATH%
 echo "NEW PATH"
 echo %PATH%
 

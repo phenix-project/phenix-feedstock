@@ -13,7 +13,6 @@ def unique_paths(paths):
   for path in paths:
     try: path_normcase = abs(path.normcase())
     except AttributeError: path_normcase = op.normcase(path)
-    # if (path_normcase in hash or "visual studio" not in path_normcase): continue
     if (path_normcase in hash): continue
     hash.add(path_normcase)
     result.append(path)
@@ -27,8 +26,6 @@ if __name__ == '__main__':
   new_paths = unique_paths(paths)
   new_paths = ';'.join(new_paths)
   print(new_paths)
-  with open('visual_studio_paths.txt', 'w') as f:
-    f.write(new_paths)
 
 # =============================================================================
 # end
