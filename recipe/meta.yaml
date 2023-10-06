@@ -10,7 +10,7 @@ source:
 
 build:
   number: 0
-  skip: true  # [not win]
+  # skip: true  # [not win]
   skip_compile_pyc:
     - "*/*.py"
   preserve_egg_dir: true
