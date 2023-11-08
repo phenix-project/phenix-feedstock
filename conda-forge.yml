@@ -3,9 +3,6 @@ github:
   repo_name: phenix-feedstock
   branch_name: main
   tooling_branch_name: main
-channels:
-  targets:
-    - [cctbx-dev]
 secrets:
   - TARBALL_PASSWORD
 
