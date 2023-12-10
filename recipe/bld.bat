@@ -39,8 +39,10 @@ REM reapply patches
 git apply %RECIPE_DIR%\libtbx_SConscript.patch
 git apply %RECIPE_DIR%\bootstrap_win.patch
 @REM copy %RECIPE_DIR%\phaser_SConscript .\modules\phaser\SConscript
-git apply ${RECIPE_DIR}/phaser_install.patch
-git apply ${RECIPE_DIR}/timer.patch
+copy %RECIPE_DIR%\phaser_replacements\install_build.py .\modules\cctbx_project\libtbx\auto_build\conda_build\install_build.py
+@REM fix boost/timer.hpp
+copy %RECIPE_DIR%\phaser_replacements\libtbx_SConscript .\modules\cctbx_project\libtbx\SConscript
+copy %RECIPE_DIR%\phaser_replacements\boost_adaptbx_SConscript .\modules\cctbx_project\boost_adaptbx\SConscript
 
 REM clean up sources
 rmdir /S /Q .\modules\cctbx_project\xfel\euxfel\definitions
