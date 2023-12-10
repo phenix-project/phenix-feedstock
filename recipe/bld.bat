@@ -38,7 +38,9 @@ call %CONDA%\condabin\conda.bat deactivate
 REM reapply patches
 git apply %RECIPE_DIR%\libtbx_SConscript.patch
 git apply %RECIPE_DIR%\bootstrap_win.patch
-copy %RECIPE_DIR%\phaser_SConscript .\modules\phaser\SConscript
+@REM copy %RECIPE_DIR%\phaser_SConscript .\modules\phaser\SConscript
+git apply ${RECIPE_DIR}/phaser_install.patch
+git apply ${RECIPE_DIR}/timer.patch
 
 REM clean up sources
 rmdir /S /Q .\modules\cctbx_project\xfel\euxfel\definitions

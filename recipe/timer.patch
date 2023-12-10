@@ -1,0 +1,30 @@
+diff --git a/modules/cctbx_project/boost_adaptbx/SConscript b/modules/cctbx_project/boost_adaptbx/SConscript
+index 02670e92ff..7d6bee0a36 100644
+--- a/modules/cctbx_project/boost_adaptbx/SConscript
++++ b/modules/cctbx_project/boost_adaptbx/SConscript
+@@ -88,6 +88,10 @@ if (not env_etc.no_boost_python):
+   # boost_adaptbx/meta_ext.cpp
+   if (libtbx.env.build_options.use_conda):
+     env_etc.cxxflags_bpl_defines_base.append("-DUSE_CONDA")
++    if sys.platform == 'win32':
++      env_etc.cxxflags_bpl_defines_base.append("/DBOOST_TIMER_ENABLE_DEPRECATED")
++    else:
++      env_etc.cxxflags_bpl_defines_base.append("-DBOOST_TIMER_ENABLE_DEPRECATED")
+   env_no_includes_boost_python_ext = env_base.Clone(
+     SHLINKFLAGS=env_etc.shlinkflags_bpl,
+     SHLIBPREFIX="")
+diff --git a/modules/cctbx_project/libtbx/SConscript b/modules/cctbx_project/libtbx/SConscript
+index 3dcd2c53e0..167d8a1106 100644
+--- a/modules/cctbx_project/libtbx/SConscript
++++ b/modules/cctbx_project/libtbx/SConscript
+@@ -863,6 +863,10 @@ int main() {
+         SHLINK=cxx,
+       )
+     env_base.Replace(SHLIBSUFFIX=env_etc.shlibsuffix)
++    if sys.platform == 'win32':
++      env_etc.cxxflags_base.append('/DBOOST_TIMER_ENABLE_DEPRECATED')
++    else:
++      env_etc.cxxflags_base.append('-DBOOST_TIMER_ENABLE_DEPRECATED')
+ 
+   elif env_etc.compiler.startswith("darwin"):
+     cc  = env_etc.compiler.replace('darwin_','')

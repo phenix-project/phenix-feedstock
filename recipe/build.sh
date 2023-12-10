@@ -19,6 +19,7 @@ mv phenix*/rest .
 # reapply patches
 # cp ${RECIPE_DIR}/phaser_SConscript ./modules/phaser/SConscript
 git apply ${RECIPE_DIR}/phaser_install.patch
+git apply ${RECIPE_DIR}/timer.patch
 
 # clean up sources
 rm -fr ./modules/cctbx_project/xfel/euxfel/definitions
