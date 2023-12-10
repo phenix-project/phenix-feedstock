@@ -64,7 +64,6 @@ outputs:
       run:
         - boost =1.78             # [py<38]
         - boost-cpp =1.78         # [py<38]
-        - cctbx-base
         - python
         - python.app  # [osx]
     test:
