@@ -1,7 +1,7 @@
-{% set version = "1.21rc1.5174" %}
+{% set version = "20231209" %}
 
 package:
-  name: phenix
+  name: phaser
   version: {{ version }}
 
 source:
@@ -37,10 +37,10 @@ requirements:
     - {{ cdt('libxxf86vm') }}  # [linux]
     - {{ cdt('libxext') }}     # [linux]
   host:
-    - boost =1.74  # [not arm64]
-    - boost =1.78  # [arm64]
-    - boost-cpp =1.74  # [not arm64]
-    - boost-cpp =1.78  # [arm64]
+    - boost =1.78             # [py<38]
+    - boost-cpp =1.78         # [py<38]
+    - libboost-python-devel
+    - libboost-devel
     - eigen
     - future
     - libglu  # [linux]
@@ -59,63 +59,14 @@ requirements:
     - pybind11
 
 outputs:
-  - name: phenix
+  - name: phaser
     requirements:
       run:
-        - biopython
-        - {{ pin_compatible('boost') }}
-        - boost-cpp
-        - future
-        - {{ pin_compatible('libglu') }}  # [linux]
-        - libsvm
-        - matplotlib-base
-        - mrcfile
-        - {{ pin_compatible('numpy') }}
-        - pillow
-        - psutil
+        - boost =1.78             # [py<38]
+        - boost-cpp =1.78         # [py<38]
+        - cctbx-base
         - python
         - python.app  # [osx]
-        - reportlab
-        - requests
-        - scipy
-        - six
-
-        # - amber_phenix  # [not win and x86_64]
-        - flask
-        - gdk-pixbuf  # [linux and not py==39]
-        - onedep_api
-        - pyrtf
-        - rdkit
-        - wxpython
-        - pyside2  # [x86_64]
-        - restraintlib
-
-        # pathwalker
-        - absl-py
-        - pip
-        - protobuf
-
-        # phasertng
-        - bokeh
-        - networkx
-
-        # dxtbx
-        - h5py
-        - hdf5
-        - hdf5plugin
-        - libtiff
-        - pint
-        - procrunner
-        - pybind11
-
-        # dials
-        - colorlog
-        - msgpack-c
-        - msgpack-python
-        - orderedset
-        - scikit-learn
-        - tabulate
-        - tqdm
     test:
       imports:
         - scitbx.array_family.flex
