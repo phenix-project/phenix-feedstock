@@ -1,0 +1,13 @@
+diff --git a/modules/cctbx_project/libtbx/auto_build/conda_build/install_build.py b/modules/cctbx_project/libtbx/auto_build/conda_build/install_build.py
+index 7771c07aae..e2b3c75e81 100644
+--- a/modules/cctbx_project/libtbx/auto_build/conda_build/install_build.py
++++ b/modules/cctbx_project/libtbx/auto_build/conda_build/install_build.py
+@@ -256,7 +256,7 @@ def copy_modules(env, sp_dir=None, link=False):
+     print('-'*79)
+     try:
+       for dist_path in env.module_dict[module].dist_paths:
+-        if dist_path is not None:
++        if dist_path is not None and module in ['phaser', 'phaser_regression']:
+           src = abs(dist_path)
+           # skip boost
+           if module == 'boost' and src.endswith('boost'):
