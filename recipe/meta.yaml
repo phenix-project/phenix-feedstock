@@ -53,7 +53,7 @@ requirements:
 
     - hdf5
     - libtiff
-    - msgpack-c
+    - msgpack-cxx
     - pybind11
 
 outputs:
