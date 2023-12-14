@@ -14,6 +14,10 @@ cxx_compiler_version:
 - '16'
 hdf5:
 - 1.14.3
+libboost_devel:
+- '1.82'
+libboost_python_devel:
+- '1.82'
 libtiff:
 - '4.5'
 macos_machine:
