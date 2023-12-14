@@ -93,7 +93,8 @@ set CCTBX_SKIP_CHEMDATA_CACHE_REBUILD=1
   --builder=phenix_release ^
   --use-conda %PREFIX% ^
   --nproc 4 ^
-  --config-flags="--no_bin_python"
+  --config-flags="--no_bin_python" ^
+  --config-flags="--cxxstd=c++14"
 if %errorlevel% neq 0 exit /b %errorlevel%
 cd ..
 

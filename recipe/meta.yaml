@@ -37,8 +37,6 @@ requirements:
     - {{ cdt('libxxf86vm') }}  # [linux]
     - {{ cdt('libxext') }}     # [linux]
   host:
-    - boost =1.78             # [py<38]
-    - boost-cpp =1.78         # [py<38]
     - libboost-python-devel
     - libboost-devel
     - eigen
@@ -62,8 +60,6 @@ outputs:
   - name: phaser
     requirements:
       run:
-        - boost =1.78             # [py<38]
-        - boost-cpp =1.78         # [py<38]
         - python
         - python.app  # [osx]
     test:

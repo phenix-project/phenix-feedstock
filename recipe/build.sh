@@ -96,7 +96,8 @@ else
     --verbose \
     --config-flags="--compiler=conda" \
     --config-flags="--use_environment_flags" \
-    --config-flags="--no_bin_python"
+    --config-flags="--no_bin_python" \
+    --config-flags="--cxxstd=c++14"
 fi
 
 # remove intermediate objects in build directory
