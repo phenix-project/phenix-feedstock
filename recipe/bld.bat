@@ -120,14 +120,14 @@ cd phenix-installer*
 %PYTHON% -Bc "import pathlib; import shutil; [shutil.rmtree(p) for p in pathlib.Path('.\modules').rglob('__pycache__')]"
 
 REM move chem_data, phenix_examples, and phenix_regression
-cd %SRC_DIR%
-cd phenix-installer*
-cd .\modules
-move .\chem_data %SP_DIR%
-move .\phenix_examples %SP_DIR%
-move .\phenix_regression %SP_DIR%
-dir
-cd ..
+@REM cd %SRC_DIR%
+@REM cd phenix-installer*
+@REM cd .\modules
+@REM move .\chem_data %SP_DIR%
+@REM move .\phenix_examples %SP_DIR%
+@REM move .\phenix_regression %SP_DIR%
+@REM dir
+@REM cd ..
 
 REM copy files in build
 REM not sure why directory changes, which is why "cd %SRC_DIR%" is needed
@@ -145,23 +145,23 @@ call .\build\bin\libtbx.python %CCTBX_CONDA_BUILD%\install_build.py ^
 if %errorlevel% neq 0 exit /b %errorlevel%
 
 REM copy version and copyright files
-%PYTHON% .\modules\cctbx_project\libtbx\version.py --version=%PKG_VERSION%
-if %errorlevel% neq 0 exit /b %errorlevel%
-copy .\modules\cctbx_project\COPYRIGHT.txt %EXTRA_CCTBX_DIR%
-copy .\modules\cctbx_project\cctbx_version.txt %EXTRA_CCTBX_DIR%
-copy .\modules\cctbx_project\cctbx_version.h %LIBRARY_INC%\cctbx
-cd .\modules\cctbx_project
-%PYTHON% setup.py install
-if %errorlevel% neq 0 exit /b %errorlevel%
-cd ..\..
+@REM %PYTHON% .\modules\cctbx_project\libtbx\version.py --version=%PKG_VERSION%
+@REM if %errorlevel% neq 0 exit /b %errorlevel%
+@REM copy .\modules\cctbx_project\COPYRIGHT.txt %EXTRA_CCTBX_DIR%
+@REM copy .\modules\cctbx_project\cctbx_version.txt %EXTRA_CCTBX_DIR%
+@REM copy .\modules\cctbx_project\cctbx_version.h %LIBRARY_INC%\cctbx
+@REM cd .\modules\cctbx_project
+@REM %PYTHON% setup.py install
+@REM if %errorlevel% neq 0 exit /b %errorlevel%
+@REM cd ..\..
 
 REM copy Phenix environment files
-set EXTRA_PHENIX_DIR=%LIBRARY_PREFIX%\share\phenix
-mkdir  %EXTRA_PHENIX_DIR%
-cd %SRC_DIR%
-cd phenix-installer*
-move .\modules\phenix\conda_envs %EXTRA_PHENIX_DIR%
-if %errorlevel% neq 0 exit /b %errorlevel%
+@REM set EXTRA_PHENIX_DIR=%LIBRARY_PREFIX%\share\phenix
+@REM mkdir  %EXTRA_PHENIX_DIR%
+@REM cd %SRC_DIR%
+@REM cd phenix-installer*
+@REM move .\modules\phenix\conda_envs %EXTRA_PHENIX_DIR%
+@REM if %errorlevel% neq 0 exit /b %errorlevel%
 
 REM copy libtbx_env and update dispatchers
 echo Copying libtbx_env
@@ -171,10 +171,10 @@ if %errorlevel% neq 0 exit /b %errorlevel%
 if %errorlevel% neq 0 exit /b %errorlevel%
 
 REM copy REST credentials
-echo Copying REST credentials
-mkdir %EXTRA_CCTBX_DIR%\rest
-copy .\rest\token %EXTRA_CCTBX_DIR%\rest\token
-copy .\rest\url %EXTRA_CCTBX_DIR%\rest\url
+@REM echo Copying REST credentials
+@REM mkdir %EXTRA_CCTBX_DIR%\rest
+@REM copy .\rest\token %EXTRA_CCTBX_DIR%\rest\token
+@REM copy .\rest\url %EXTRA_CCTBX_DIR%\rest\url
 
 REM remove extra copies of dispatchers
 @REM set PATH=%OLDPATH%
@@ -190,17 +190,17 @@ REM install dxtbx, dials, iota, and xia2
 rmdir /S /Q %SP_DIR%\dxtbx
 rmdir /S /Q %SP_DIR%\iota
 rmdir /S /Q %SP_DIR%\xia2
-cd modules
-cd .\dxtbx
-%PYTHON% -m pip install . -vv --no-deps
-cd ..
-cd .\iota
-%PYTHON% -m pip install . -vv --no-deps
-cd ..
-cd .\xia2
-%PYTHON% -m pip install . -vv --no-deps
-cd ..
-cd ..
+@REM cd modules
+@REM cd .\dxtbx
+@REM %PYTHON% -m pip install . -vv --no-deps
+@REM cd ..
+@REM cd .\iota
+@REM %PYTHON% -m pip install . -vv --no-deps
+@REM cd ..
+@REM cd .\xia2
+@REM %PYTHON% -m pip install . -vv --no-deps
+@REM cd ..
+@REM cd ..
 
 REM copy dxtbx_flumpy.so separately since it does not end it *_ext.so
 REM copy ./build/lib/dxtbx_flumpy.so ${SP_DIR}/../lib-dynload/
@@ -219,7 +219,7 @@ REM copy items for Start Menu
 @REM if %errorlevel% neq 0 exit /b %errorlevel%
 
 REM clean up cbflib
-move %SP_DIR%\cbflib\pycbf\pycbf.py %SP_DIR%
+@REM move %SP_DIR%\cbflib\pycbf\pycbf.py %SP_DIR%
 rmdir /S /Q %SP_DIR%\cbflib
 if %errorlevel% neq 0 exit /b %errorlevel%
 

@@ -120,7 +120,7 @@ echo Check disk space
 df -h
 
 # move chem_data manually to avoid copy
-mv ./modules/chem_data ${SP_DIR}
+# mv ./modules/chem_data ${SP_DIR}
 
 # copy files in build
 echo Copying build
@@ -130,21 +130,21 @@ CCTBX_CONDA_BUILD=./modules/cctbx_project/libtbx/auto_build/conda_build
 ./build/bin/libtbx.python ${CCTBX_CONDA_BUILD}/install_build.py --preserve-egg-dir
 
 # copy version and copyright files
-echo Copying version and copyright files
-${PYTHON} ./modules/cctbx_project/libtbx/version.py --version=${PKG_VERSION}
-cp ./modules/cctbx_project/COPYRIGHT.txt ${EXTRA_CCTBX_DIR}
-cp ./modules/cctbx_project/cctbx_version.txt ${EXTRA_CCTBX_DIR}
-cp ./modules/cctbx_project/cctbx_version.h ${PREFIX}/include/cctbx
-cd ./modules/cctbx_project
-${PYTHON} setup.py install
-cd ../..
+# echo Copying version and copyright files
+# ${PYTHON} ./modules/cctbx_project/libtbx/version.py --version=${PKG_VERSION}
+# cp ./modules/cctbx_project/COPYRIGHT.txt ${EXTRA_CCTBX_DIR}
+# cp ./modules/cctbx_project/cctbx_version.txt ${EXTRA_CCTBX_DIR}
+# cp ./modules/cctbx_project/cctbx_version.h ${PREFIX}/include/cctbx
+# cd ./modules/cctbx_project
+# ${PYTHON} setup.py install
+# cd ../..
 
 # copy Phenix environment files and changelog
-echo Copying Phenix environment files
-EXTRA_PHENIX_DIR=${PREFIX}/share/phenix
-mkdir -p ${EXTRA_PHENIX_DIR}
-cp -a ./modules/phenix/conda_envs ${EXTRA_PHENIX_DIR}
-cp ./modules/phenix/CHANGES ${EXTRA_PHENIX_DIR}
+# echo Copying Phenix environment files
+# EXTRA_PHENIX_DIR=${PREFIX}/share/phenix
+# mkdir -p ${EXTRA_PHENIX_DIR}
+# cp -a ./modules/phenix/conda_envs ${EXTRA_PHENIX_DIR}
+# cp ./modules/phenix/CHANGES ${EXTRA_PHENIX_DIR}
 
 # copy libtbx_env and update dispatchers
 echo Copying libtbx_env
@@ -156,8 +156,8 @@ else
 fi
 
 # copy REST credentials
-echo Copying REST credentials
-cp -a ./rest ${EXTRA_CCTBX_DIR}
+# echo Copying REST credentials
+# cp -a ./rest ${EXTRA_CCTBX_DIR}
 
 # remove extra copies of dispatchers
 echo Removing some duplicate dispatchers
@@ -168,23 +168,23 @@ find ${PREFIX}/bin -name "*show_build_path" -not -name "libtbx.show_build_path" 
 cd modules
 for m in dxtbx dials iota xia2; do
   rm -fr ${SP_DIR}/${m}
-  cd ./${m}
-  ${PYTHON} -m pip install . -vv --no-deps
-  cd ..
+  # cd ./${m}
+  # ${PYTHON} -m pip install . -vv --no-deps
+  # cd ..
 done
 cd ..
 
 # copy dxtbx_flumpy.so separately since it does not end it *_ext.so
-cp ./build/lib/dxtbx_flumpy.so ${SP_DIR}/../lib-dynload/
+# cp ./build/lib/dxtbx_flumpy.so ${SP_DIR}/../lib-dynload/
 
 # clean up cbflib
 echo Fix cbflib
-cp ./build/lib/*cbf* ${PREFIX}/lib
-for f in _pycbf.so cbflib_ext.so; do
-  mv ${PREFIX}/lib/${f} ${PREFIX}/lib/python${PY_VER}/lib-dynload/${f}
-done
+# cp ./build/lib/*cbf* ${PREFIX}/lib
+# for f in _pycbf.so cbflib_ext.so; do
+#   mv ${PREFIX}/lib/${f} ${PREFIX}/lib/python${PY_VER}/lib-dynload/${f}
+# done
 rm -f ${PREFIX}/lib/pycbf.py
-mv ${SP_DIR}/cbflib/pycbf/pycbf.py ${SP_DIR}
+# mv ${SP_DIR}/cbflib/pycbf/pycbf.py ${SP_DIR}
 rm -fr ${SP_DIR}/cbflib
 
 # clean source cache
