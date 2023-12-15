@@ -41,8 +41,8 @@ git apply %RECIPE_DIR%\bootstrap_win.patch
 @REM copy %RECIPE_DIR%\phaser_SConscript .\modules\phaser\SConscript
 copy %RECIPE_DIR%\phaser_replacements\install_build.py .\modules\cctbx_project\libtbx\auto_build\conda_build\install_build.py
 @REM fix boost/timer.hpp
-copy %RECIPE_DIR%\phaser_replacements\libtbx_SConscript .\modules\cctbx_project\libtbx\SConscript
-copy %RECIPE_DIR%\phaser_replacements\boost_adaptbx_SConscript .\modules\cctbx_project\boost_adaptbx\SConscript
+@REM copy %RECIPE_DIR%\phaser_replacements\libtbx_SConscript .\modules\cctbx_project\libtbx\SConscript
+@REM copy %RECIPE_DIR%\phaser_replacements\boost_adaptbx_SConscript .\modules\cctbx_project\boost_adaptbx\SConscript
 
 REM clean up sources
 rmdir /S /Q .\modules\cctbx_project\xfel\euxfel\definitions
@@ -141,7 +141,6 @@ call .\build\bin\libtbx.python %CCTBX_CONDA_BUILD%\install_build.py ^
   --prefix %LIBRARY_PREFIX% ^
   --sp-dir %SP_DIR% ^
   --ext-dir %PREFIX%\lib ^
-  --preserve-egg-dir
 if %errorlevel% neq 0 exit /b %errorlevel%
 
 REM copy version and copyright files
@@ -165,10 +164,12 @@ REM copy Phenix environment files
 
 REM copy libtbx_env and update dispatchers
 echo Copying libtbx_env
+move .\modules\cctbx_project\libtbx %SP_DIR%
 call .\build\bin\libtbx.python %CCTBX_CONDA_BUILD%\update_libtbx_env.py
 if %errorlevel% neq 0 exit /b %errorlevel%
 %PYTHON% %CCTBX_CONDA_BUILD%\update_libtbx_env.py
 if %errorlevel% neq 0 exit /b %errorlevel%
+move %SP_DIR%\libtbx .\modules\cctbx_project
 
 REM copy REST credentials
 @REM echo Copying REST credentials

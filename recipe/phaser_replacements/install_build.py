@@ -165,6 +165,11 @@ def copy_build(env, prefix=None, ext_dir=None, sp_dir=None, copy_egg=False, link
     dst_path = os.path.join(prefix, name_dir)
     if os.path.isdir(src_path):
       filenames = os.listdir(src_path)
+      phaser_filenames = []
+      for filename in filenames:
+        if 'phaser' in filename:
+          phaser_filenames.append(filename)
+      filenames = phaser_filenames
       loop_copy(src_path, dst_path, name, filenames)
   src_path = abs(env.build_path)
   dst_path = os.path.join(prefix, 'bin')
@@ -177,7 +182,8 @@ def copy_build(env, prefix=None, ext_dir=None, sp_dir=None, copy_egg=False, link
   for module_name in module_names:
     src_path = os.path.join(abs(env.build_path), module_name, 'exe')
     filenames = os.listdir(src_path)
-    loop_copy(src_path, dst_path, '{} binaries'.format(module_name), filenames)
+    if module_name in ['phaser', 'phaser_regression']:
+      loop_copy(src_path, dst_path, '{} binaries'.format(module_name), filenames)
 
   # libraries
   # ---------------------------------------------------------------------------
@@ -190,7 +196,8 @@ def copy_build(env, prefix=None, ext_dir=None, sp_dir=None, copy_egg=False, link
   for name in all_names:
     if name.endswith('egg-info'):
       continue
-    lib_names.append(name)
+    if 'phaser' in name:
+      lib_names.append(name)
   loop_copy(src_path, dst_path, 'libraries', lib_names)
 
   # Python extensions
@@ -202,7 +209,8 @@ def copy_build(env, prefix=None, ext_dir=None, sp_dir=None, copy_egg=False, link
   for name in all_names:
     if name.endswith('egg-info'):
       continue
-    ext_names.append(name)
+    if 'phaser' in name:
+      ext_names.append(name)
   loop_copy(src_path, dst_path, 'Python extensions', ext_names)
 
   # .egg-info directories
@@ -223,7 +231,8 @@ The site-packages directory ("sp_dir") parameter must be set for copying egg dir
     os.mkdir(share_dir)
   directory_names = []
   for module in env.module_list:
-    directory_names += module.names_active()
+    if module in ['phaser', 'phaser_regression']:
+      directory_names += module.names_active()
   loop_copy(abs(env.build_path), share_dir, 'extra build directories', directory_names)
 
   os.chdir(old_cwd)

@@ -20,8 +20,8 @@ mv phenix*/rest .
 # cp ${RECIPE_DIR}/phaser_SConscript ./modules/phaser/SConscript
 cp ${RECIPE_DIR}/phaser_replacements/install_build.py ./modules/cctbx_project/libtbx/auto_build/conda_build/install_build.py
 # fix boost/timer.hpp
-cp ${RECIPE_DIR}/phaser_replacements/libtbx_SConscript ./modules/cctbx_project/libtbx/SConscript
-cp ${RECIPE_DIR}/phaser_replacements/boost_adaptbx_SConscript ./modules/cctbx_project/boost_adaptbx/SConscript
+# cp ${RECIPE_DIR}/phaser_replacements/libtbx_SConscript ./modules/cctbx_project/libtbx/SConscript
+# cp ${RECIPE_DIR}/phaser_replacements/boost_adaptbx_SConscript ./modules/cctbx_project/boost_adaptbx/SConscript
 
 # clean up sources
 rm -fr ./modules/cctbx_project/xfel/euxfel/definitions
@@ -127,7 +127,7 @@ echo Copying build
 EXTRA_CCTBX_DIR=${PREFIX}/share/cctbx
 mkdir -p ${EXTRA_CCTBX_DIR}
 CCTBX_CONDA_BUILD=./modules/cctbx_project/libtbx/auto_build/conda_build
-./build/bin/libtbx.python ${CCTBX_CONDA_BUILD}/install_build.py --preserve-egg-dir
+./build/bin/libtbx.python ${CCTBX_CONDA_BUILD}/install_build.py
 
 # copy version and copyright files
 # echo Copying version and copyright files
@@ -148,12 +148,14 @@ CCTBX_CONDA_BUILD=./modules/cctbx_project/libtbx/auto_build/conda_build
 
 # copy libtbx_env and update dispatchers
 echo Copying libtbx_env
+cp -a ./modules/cctbx_project/libtbx ${SP_DIR}/libtbx
 ./build/bin/libtbx.python ${CCTBX_CONDA_BUILD}/update_libtbx_env.py
 if [[ -f "${PREFIX}/python.app/Contents/MacOS/python" ]]; then
   ${PREFIX}/python.app/Contents/MacOS/python ${CCTBX_CONDA_BUILD}/update_libtbx_env.py
 else
   ${PYTHON} ${CCTBX_CONDA_BUILD}/update_libtbx_env.py
 fi
+rm -fr ${SP_DIR}/libtbx
 
 # copy REST credentials
 # echo Copying REST credentials
