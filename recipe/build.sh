@@ -80,7 +80,7 @@ fi
 export CCTBX_SKIP_CHEMDATA_CACHE_REBUILD=1
 if [[ "$CC" == *"arm64"* ]]; then
   ${PYTHON} bootstrap.py build \
-    --builder=phenix_release \
+    --builder=phaser \
     --use-conda ${PREFIX} \
     --nproc ${NPROC} \
     --verbose \
@@ -90,7 +90,7 @@ if [[ "$CC" == *"arm64"* ]]; then
     --config-flags="--cxxstd=c++14"
 else
   ${PYTHON} bootstrap.py build \
-    --builder=phenix_release \
+    --builder=phaser \
     --use-conda ${PREFIX} \
     --nproc ${NPROC} \
     --verbose \
