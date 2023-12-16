@@ -140,7 +140,7 @@ dir
 call .\build\bin\libtbx.python %CCTBX_CONDA_BUILD%\install_build.py ^
   --prefix %LIBRARY_PREFIX% ^
   --sp-dir %SP_DIR% ^
-  --ext-dir %PREFIX%\lib ^
+  --ext-dir %PREFIX%\lib
 if %errorlevel% neq 0 exit /b %errorlevel%
 
 REM copy version and copyright files
