@@ -159,6 +159,12 @@ fi
 rm -fr ${SP_DIR}/libtbx
 rm -fr ${SP_DIR}/scitbx
 
+# remove libtbx and scitbx from installation
+rm -fr ${PREFIX}/bin/libtbx.*
+rm -fr ${PREFIX}/bin/scitbx.*
+rm -fr ${PREFIX}/bin/sphinx.*
+rm -fr ${EXTRA_CCTBX_DIR}
+
 # copy REST credentials
 # echo Copying REST credentials
 # cp -a ./rest ${EXTRA_CCTBX_DIR}

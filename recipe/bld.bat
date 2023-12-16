@@ -173,6 +173,12 @@ if %errorlevel% neq 0 exit /b %errorlevel%
 move %SP_DIR%\libtbx .\modules\cctbx_project
 move %SP_DIR%\scitbx .\modules\cctbx_project
 
+REM remove libtbx and scitbx from installation
+del /Q %LIBRARY_BIN%\libtbx.*
+del /Q %LIBRARY_BIN%\scitbx.*
+del /Q %LIBRARY_BIN%\sphinx.*
+rmdir /S /Q %EXTRA_CCTBX_DIR%
+
 REM copy REST credentials
 @REM echo Copying REST credentials
 @REM mkdir %EXTRA_CCTBX_DIR%\rest
