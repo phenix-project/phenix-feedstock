@@ -50,6 +50,7 @@ requirements:
     - setuptools
     - six
     - xorg-libxfixes  # [linux]
+    - zlib  # [win]
 
     - hdf5
     - libtiff
