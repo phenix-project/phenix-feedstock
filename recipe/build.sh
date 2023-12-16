@@ -149,6 +149,7 @@ CCTBX_CONDA_BUILD=./modules/cctbx_project/libtbx/auto_build/conda_build
 # copy libtbx_env and update dispatchers
 echo Copying libtbx_env
 cp -a ./modules/cctbx_project/libtbx ${SP_DIR}/libtbx
+cp -a ./modules/cctbx_project/scitbx ${SP_DIR}/scitbx
 ./build/bin/libtbx.python ${CCTBX_CONDA_BUILD}/update_libtbx_env.py
 if [[ -f "${PREFIX}/python.app/Contents/MacOS/python" ]]; then
   ${PREFIX}/python.app/Contents/MacOS/python ${CCTBX_CONDA_BUILD}/update_libtbx_env.py
@@ -156,6 +157,7 @@ else
   ${PYTHON} ${CCTBX_CONDA_BUILD}/update_libtbx_env.py
 fi
 rm -fr ${SP_DIR}/libtbx
+rm -fr ${SP_DIR}/scitbx
 
 # copy REST credentials
 # echo Copying REST credentials
