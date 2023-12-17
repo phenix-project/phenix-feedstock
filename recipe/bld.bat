@@ -90,7 +90,7 @@ echo %PATH%
 REM build
 set CCTBX_SKIP_CHEMDATA_CACHE_REBUILD=1
 %PYTHON% bootstrap.py build ^
-  --builder=phenix_release ^
+  --builder=phaser ^
   --use-conda %PREFIX% ^
   --nproc 4 ^
   --config-flags="--no_bin_python" ^
