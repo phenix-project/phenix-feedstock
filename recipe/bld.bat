@@ -164,14 +164,14 @@ REM copy Phenix environment files
 
 REM copy libtbx_env and update dispatchers
 echo Copying libtbx_env
-move .\modules\cctbx_project\libtbx %SP_DIR%
-move .\modules\cctbx_project\scitbx %SP_DIR%
+robocopy /E .\modules\cctbx_project\libtbx %SP_DIR%\libtbx
+robocopy /E .\modules\cctbx_project\scitbx %SP_DIR%\scitbx
 call .\build\bin\libtbx.python %CCTBX_CONDA_BUILD%\update_libtbx_env.py
 if %errorlevel% neq 0 exit /b %errorlevel%
 %PYTHON% %CCTBX_CONDA_BUILD%\update_libtbx_env.py
 if %errorlevel% neq 0 exit /b %errorlevel%
-move %SP_DIR%\libtbx .\modules\cctbx_project
-move %SP_DIR%\scitbx .\modules\cctbx_project
+rmdir /S /Q %SP_DIR%\libtbx
+rmdir /S /Q %SP_DIR%\scitbx
 
 REM remove libtbx and scitbx from installation
 del /Q %LIBRARY_BIN%\libtbx.*
