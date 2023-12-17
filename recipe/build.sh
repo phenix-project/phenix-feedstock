@@ -17,7 +17,7 @@ mv phenix*/modules .
 mv phenix*/rest .
 
 # reapply patches
-# cp ${RECIPE_DIR}/phaser_SConscript ./modules/phaser/SConscript
+cp ${RECIPE_DIR}/phaser_replacements/phaser_SConscript ./modules/phaser/SConscript
 cp ${RECIPE_DIR}/phaser_replacements/install_build.py ./modules/cctbx_project/libtbx/auto_build/conda_build/install_build.py
 # fix boost/timer.hpp
 # cp ${RECIPE_DIR}/phaser_replacements/libtbx_SConscript ./modules/cctbx_project/libtbx/SConscript

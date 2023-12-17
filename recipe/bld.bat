@@ -38,7 +38,7 @@ call %CONDA%\condabin\conda.bat deactivate
 REM reapply patches
 git apply %RECIPE_DIR%\libtbx_SConscript.patch
 git apply %RECIPE_DIR%\bootstrap_win.patch
-@REM copy %RECIPE_DIR%\phaser_SConscript .\modules\phaser\SConscript
+copy %RECIPE_DIR%\phaser_replacements\phaser_SConscript .\modules\phaser\SConscript
 copy %RECIPE_DIR%\phaser_replacements\install_build.py .\modules\cctbx_project\libtbx\auto_build\conda_build\install_build.py
 @REM fix boost/timer.hpp
 @REM copy %RECIPE_DIR%\phaser_replacements\libtbx_SConscript .\modules\cctbx_project\libtbx\SConscript
@@ -90,7 +90,7 @@ echo %PATH%
 REM build
 set CCTBX_SKIP_CHEMDATA_CACHE_REBUILD=1
 %PYTHON% bootstrap.py build ^
-  --builder=phaser ^
+  --builder=phenix ^
   --use-conda %PREFIX% ^
   --nproc 4 ^
   --config-flags="--no_bin_python" ^

@@ -182,6 +182,9 @@ def copy_build(env, prefix=None, ext_dir=None, sp_dir=None, copy_egg=False, link
   for module_name in module_names:
     src_path = os.path.join(abs(env.build_path), module_name, 'exe')
     filenames = os.listdir(src_path)
+    print(module_name)
+    print(src_path)
+    print(filenames)
     if module_name in ['phaser', 'phaser_regression']:
       loop_copy(src_path, dst_path, '{} binaries'.format(module_name), filenames)
 
