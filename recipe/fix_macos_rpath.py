@@ -10,7 +10,7 @@ from subprocess import check_output
 
 # =============================================================================
 if __name__ == '__main__':
-  exe_dev_files = glob.glob('build/exe_dev/*')
+  exe_dev_files = glob.glob('build/exe_dev/*') + glob.glob('build/*/exe/*')
   ext_files = glob.glob('build/lib/*_ext.so')
   lib_files = glob.glob('build/lib/*.dylib')
   test_files = glob.glob('build/**/tst_*', recursive=True) \
