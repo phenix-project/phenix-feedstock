@@ -1,7 +1,7 @@
 {% set version = "dev.5421" %}
 
 package:
-  name: phenix
+  name: chem_data
   version: {{ version }}
 
 source:
@@ -10,6 +10,8 @@ source:
 
 build:
   number: 0
+  noarch: python
+  binary_relocation: False
   # skip: true  # [not win]
   skip_compile_pyc:
     - "*/*.py"
@@ -20,115 +22,20 @@ build:
 requirements:
   build:
     - python                                 # [build_platform != target_platform]
-    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - future                                 # [build_platform != target_platform]
-    - numpy                                  # [build_platform != target_platform]
-    - six                                    # [build_platform != target_platform]
-    - gnuconfig  # [unix]
-    - git  # [win]
-    - libcxx =16.0.6  # [osx and x86_64]
-    - libcxx =17.0.6  # [arm64]
-    - m2-tar  # [win]
-    - m2-xz  # [win]
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - {{ cdt('mesa-libgl-devel') }}  # [linux]
-    - {{ cdt('mesa-dri-drivers') }}  # [linux]
-    - {{ cdt('libselinux') }}  # [linux]
-    - {{ cdt('libxdamage') }}  # [linux]
-    - {{ cdt('libxxf86vm') }}  # [linux]
-    - {{ cdt('libxext') }}     # [linux]
   host:
-    - boost =1.74  # [not arm64]
-    - boost =1.78  # [arm64]
-    - boost-cpp =1.74  # [not arm64]
-    - boost-cpp =1.78  # [arm64]
-    - eigen
-    - future
-    - libglu  # [linux]
-    - libxcrypt  # [linux and (py==37 or py==38)]
-    - numpy
-    - pip
     - python
     - python.app  # [osx]
-    - scons
-    - setuptools
-    - six
-    - xorg-libxfixes  # [linux]
-
-    - hdf5
-    - libtiff
-    - msgpack-c
-    - pybind11
 
 outputs:
-  - name: phenix
+  - name: chem_data
     requirements:
       run:
-        - biopython
-        - {{ pin_compatible('boost') }}
-        - boost-cpp
-        - future
-        - {{ pin_compatible('libglu') }}  # [linux]
-        - libsvm
-        - matplotlib-base
-        - mrcfile
-        - {{ pin_compatible('numpy') }}
-        - pillow
-        - psutil
         - python
         - python.app  # [osx]
-        - reportlab
-        - requests
-        - scipy
-        - six
-
-        # - amber_phenix  # [not win and x86_64]
-        - flask
-        - gdk-pixbuf  # [linux and not py==39]
-        - onedep_api
-        - pyrtf
-        - rdkit
-        - wxpython
-        - pyside2  # [x86_64]
-        - restraintlib
-
-        # pathwalker
-        - absl-py
-        - pip
-        - protobuf
-
-        # phasertng
-        - bokeh
-        - networkx
-
-        # dxtbx
-        - h5py
-        - hdf5
-        - hdf5plugin
-        - libtiff
-        - pint
-        - procrunner
-        - pybind11
-
-        # dials
-        - colorlog
-        - msgpack-c
-        - msgpack-python
-        - orderedset
-        - scikit-learn
-        - tabulate
-        - tqdm
     test:
       imports:
-        - scitbx.array_family.flex
-        - gltbx.gl  # [not (win and py==39)]
-        - gltbx.glu  # [not (win and py==39)]
-      commands:
-        - libtbx.show_commands
-        - pip check
-      requires:
-        - pip
+        - chem_data
+        - chem_data.geostd
 
 about:
   home: https://github.com/cctbx/cctbx_project
