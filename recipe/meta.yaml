@@ -1,7 +1,7 @@
 {% set version = "dev.5959" %}
 
 package:
-  name: phenix
+  name: chem_data
   version: {{ version }}
 
 source:
@@ -10,16 +10,24 @@ source:
 
 build:
   number: 0
+  noarch: python
+  binary_relocation: False
+  # skip: true  # [not win]
   skip_compile_pyc:
     - "*/*.py"
   preserve_egg_dir: true
   script_env:
     - TARBALL_PASSWORD
 
+requirements:
+  build:
+    - python                                 # [build_platform != target_platform]
+  host:
+    - python
+    - python.app  # [osx]
+
 outputs:
-  - name: phenix
-    script: build-pkg.sh  # [unix]
-    script: build-pkg.bat  # [win]
+  - name: chem_data
     requirements:
       build:
         - python                                # [build_platform != target_platform]
@@ -62,51 +70,12 @@ outputs:
         - pybind11
 
       run:
-        - biopython
-        - flask
-        - future
-        - ipython
-        - {{ pin_compatible('libglu') }}        # [linux]
-        - libsvm
-        - matplotlib-base
-        - mrcfile
-        - {{ pin_compatible('numpy') }}
-        - onedep_api
-        - pillow
-        - psutil
-        - py2app                                # [osx]
-        - pyopengl
-        - pyrtf
-        - pyside2                               # [py<312]
         - python
-        - python.app                            # [osx]
-        - pyzmq
-        - qt-webengine
-        - rdkit
-        - reportlab
-        - requests
-        - restraintlib
-        - scipy
-        - six
-        - websockets
-        - wxpython
-
-        # phasertng
-        - bokeh
-        - networkx
-        - pyvis
+        - python.app  # [osx]
     test:
       imports:
-        - scitbx.array_family.flex
-        - gltbx.gl  # [not win]
-        - gltbx.glu  # [not win]
-      commands:
-        - libtbx.show_commands
-        - pip check
-        - mkdir test; cd test; libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4  # [not win]
-        - mkdir test && cd test && libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4  # [win]
-      requires:
-        - pip
+        - chem_data
+        - chem_data.geostd
 
 about:
   home: https://github.com/cctbx/cctbx_project
