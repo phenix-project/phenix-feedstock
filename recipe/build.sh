@@ -26,6 +26,21 @@ cd ..
 echo Check disk space
 df -h
 
+# always rename files starting with AUX and NUL to avoid issues on Windows
+cd modules/chem_data/geostd/a
+for f in `/bin/ls AUX.*`; do
+  echo ${f}
+  mv -f ${f} data_${f}
+done
+cd ../../../..
+
+cd modules/chem_data/geostd/n
+for f in `/bin/ls NUL.*`; do
+  echo ${f}
+  mv -f ${f} data_${f}
+done
+cd ../../../..
+
 # move chem_data manually to avoid copy
 mv ./modules/chem_data ${SP_DIR}
 
