@@ -26,6 +26,14 @@ cd ..
 echo Check disk space
 df -h
 
+# always remove files starting with AUX to avoid issues on Windows
+cd modules/chem_data/geostd/a
+for f in `/bin/ls AUX.*`; do
+  echo ${f}
+  mv -f ${f} data_${f}
+done
+cd ../../../..
+
 # move chem_data manually to avoid copy
 mv ./modules/chem_data ${SP_DIR}
 
