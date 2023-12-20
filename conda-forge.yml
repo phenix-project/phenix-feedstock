@@ -20,5 +20,5 @@ build_platform:
 test: native
 upload_on_branch: upload
 conda_build:
-  pkg_format: None
-  # zstd_compression_level: 20
+  pkg_format: '2'
+  zstd_compression_level: 22

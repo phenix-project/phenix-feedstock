@@ -118,7 +118,8 @@ REM move chem_data, phenix_examples, and phenix_regression
 cd %SRC_DIR%
 cd phenix-installer*
 cd .\modules
-move .\chem_data %SP_DIR%
+@REM move .\chem_data %SP_DIR%
+rmdir /S /Q .\chem_data
 move .\phenix_examples %SP_DIR%
 move .\phenix_regression %SP_DIR%
 dir

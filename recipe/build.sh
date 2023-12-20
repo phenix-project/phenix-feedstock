@@ -115,7 +115,9 @@ echo Check disk space
 df -h
 
 # move chem_data manually to avoid copy
-mv ./modules/chem_data ${SP_DIR}
+# mv ./modules/chem_data ${SP_DIR}
+# remove chem_data
+rm -fr ./modules/chem_data
 
 # copy files in build
 echo Copying build
