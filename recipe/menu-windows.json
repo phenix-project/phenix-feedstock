@@ -1,0 +1,10 @@
+{
+  "menu_name": "Phenix REPLACEME",
+  "menu_items": [
+  {
+    "name": "Phenix REPLACEME",
+    "script": "${PREFIX}/Library/bin/phenix.bat",
+    "icon": "${MENU_DIR}/phenix.ico"
+  }
+  ]
+}
