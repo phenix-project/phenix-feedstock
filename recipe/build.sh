@@ -22,9 +22,6 @@ cp ${RECIPE_DIR}/phaser_SConscript ./modules/phaser/SConscript
 # clean up sources
 rm -fr ./modules/cctbx_project/xfel/euxfel/definitions
 
-cp ${RECIPE_DIR}/parseHHpred.py ./modules/phaser_voyager/old_storage/scripts/parseHHpred.py
-rm -fr ./modules/phaser_voyager/old_storage/VoyagerGUI-QTC/old_gui
-
 if [[ "$CC" != *"arm64"* ]]; then
   futurize -f libfuturize.fixes.fix_print_with_import -wn ./modules/phaser_regression
   futurize -f libfuturize.fixes.fix_print_with_import -wn ./modules/phaser_voyager

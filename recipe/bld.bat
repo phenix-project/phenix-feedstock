@@ -46,9 +46,6 @@ rmdir /S /Q .\modules\cctbx_project\xfel\euxfel\definitions
 call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\phaser_regression
 call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\phaser_voyager
 
-copy %RECIPE_DIR%\parseHHpred.py .\modules\phaser_voyager\old_storage\scripts\parseHHpred.py
-rmdir /S /Q .\modules\phaser_voyager\old_storage\VoyagerGUI-QTC\old_gui
-
 call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\reduce
 call futurize -f lib2to3.fixes.fix_except -wn .\modules\reduce
 
