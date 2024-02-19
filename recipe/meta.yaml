@@ -44,6 +44,7 @@ requirements:
     - eigen
     - future
     - libglu  # [linux]
+    - libxcrypt  # [linux and (py==37 or py==38)]
     - numpy
     - pip
     - python
