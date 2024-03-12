@@ -24,7 +24,7 @@ rm -fr ./modules/cctbx_project/xfel/euxfel/definitions
 
 if [[ "$CC" != *"arm64"* ]]; then
   futurize -f libfuturize.fixes.fix_print_with_import -wn ./modules/phaser_regression
-  futurize -f libfuturize.fixes.fix_print_with_import -wn ./modules/phaser_voyager
+  # futurize -f libfuturize.fixes.fix_print_with_import -wn ./modules/phaser_voyager
 
   futurize -f libfuturize.fixes.fix_print_with_import -wn ./modules/reduce
   futurize -f lib2to3.fixes.fix_except -wn ./modules/reduce
