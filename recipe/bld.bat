@@ -144,7 +144,7 @@ copy .\modules\cctbx_project\COPYRIGHT.txt %EXTRA_CCTBX_DIR%
 copy .\modules\cctbx_project\cctbx_version.txt %EXTRA_CCTBX_DIR%
 copy .\modules\cctbx_project\cctbx_version.h %LIBRARY_INC%\cctbx
 cd .\modules\cctbx_project
-%PYTHON% setup.py install
+%PYTHON% -m pip install . -vv > cctbx.log 2> cctbx_error.log
 if %errorlevel% neq 0 exit /b %errorlevel%
 cd ..\..
 
@@ -185,13 +185,13 @@ rmdir /S /Q %SP_DIR%\iota
 rmdir /S /Q %SP_DIR%\xia2
 cd modules
 cd .\dxtbx
-%PYTHON% -m pip install . -vv --no-deps
+%PYTHON% -m pip install . -vv --no-deps > dxtbx.log 2> dxtbx_error.log
 cd ..
 cd .\iota
-%PYTHON% -m pip install . -vv --no-deps
+%PYTHON% -m pip install . -vv --no-deps > iota.log 2> iota_error.log
 cd ..
 cd .\xia2
-%PYTHON% -m pip install . -vv --no-deps
+%PYTHON% -m pip install . -vv --no-deps > xia2.log 2> xia2_error.log
 cd ..
 cd ..
 
