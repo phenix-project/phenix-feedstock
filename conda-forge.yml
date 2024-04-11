@@ -14,7 +14,7 @@ azure:
   store_build_artifacts: true
   settings_win:
     variables:
-      CONDA_BLD_PATH: C:\\Miniconda\\envs\\
+      CONDA_BLD_PATH: C:\\bld\\
 build_platform:
   osx_arm64: osx_64
 test: native
