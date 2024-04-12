@@ -26,7 +26,7 @@ jobs:
         SHORT_CONFIG: win_64_numpy1.21python3.10.____cpython
   timeoutInMinutes: 360
   variables:
-    CONDA_BLD_PATH: C:\\Miniconda\\envs\\
+    CONDA_BLD_PATH: C:\\bld\\
     UPLOAD_TEMP: D:\\tmp
 
   steps:
