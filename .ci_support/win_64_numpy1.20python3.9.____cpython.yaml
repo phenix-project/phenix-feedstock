@@ -1,9 +1,5 @@
 c_compiler:
 - vs2019
-c_stdlib:
-- vs
-c_stdlib_version:
-- '2019'
 channel_sources:
 - cctbx202211,conda-forge,phenix-project
 channel_targets:

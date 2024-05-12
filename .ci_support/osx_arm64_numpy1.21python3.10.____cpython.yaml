@@ -4,10 +4,6 @@ c_compiler:
 - clang
 c_compiler_version:
 - '14'
-c_stdlib:
-- macosx_deployment_target
-c_stdlib_version:
-- '11.0'
 channel_sources:
 - cctbx202211,conda-forge,phenix-project
 channel_targets:
