@@ -10,6 +10,14 @@ cxx_compiler_version:          # [osx]
   - 14                         # [arm64]
 hdf5:
   - 1.12.2
+c_stdlib_version:              # [osx and x86_64]
+  - "10.9"                     # [osx and x86_64]
+MACOSX_DEPLOYMENT_TARGET:      # [osx and x86_64]
+  - "10.9"                     # [osx and x86_64]
+MACOSX_SDK_VERSION:            # [osx and x86_64]
+  - "10.9"                     # [osx and x86_64]
+libcxx:                        # [osx and x86_64]
+  - 16.0.6                     # [osx and x86_64]
 libtiff:
   - 4.4
 llvm_openmp:                   # [osx]
