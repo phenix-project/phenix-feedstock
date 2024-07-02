@@ -1,5 +1,5 @@
-About phenix-feedstock
-======================
+About chem_data-feedstock
+=========================
 
 Feedstock license: [BSD-3-Clause](https://github.com/phenix-project/phenix-feedstock/blob/main/LICENSE.txt)
 
@@ -26,128 +26,11 @@ Current build status
 ====================
 
 
-<table>
-    
-  <tr>
-    <td>Azure</td>
+<table><tr><td>All platforms:</td>
     <td>
-      <details>
-        <summary>
-          <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-            <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main">
-          </a>
-        </summary>
-        <table>
-          <thead><tr><th>Variant</th><th>Status</th></tr></thead>
-          <tbody><tr>
-              <td>linux_64_numpy1.20python3.7.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_numpy1.20python3.7.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_numpy1.20python3.8.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_numpy1.20python3.8.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_numpy1.20python3.9.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_numpy1.20python3.9.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_numpy1.21python3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_numpy1.21python3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_numpy1.20python3.7.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_numpy1.20python3.7.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_numpy1.20python3.8.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_numpy1.20python3.8.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_numpy1.20python3.9.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_numpy1.20python3.9.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_numpy1.21python3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_numpy1.21python3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_arm64_numpy1.20python3.8.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_numpy1.20python3.8.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_arm64_numpy1.20python3.9.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_numpy1.20python3.9.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_arm64_numpy1.21python3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_numpy1.21python3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_numpy1.20python3.7.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=win&configuration=win%20win_64_numpy1.20python3.7.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_numpy1.20python3.8.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=win&configuration=win%20win_64_numpy1.20python3.8.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_numpy1.20python3.9.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=win&configuration=win%20win_64_numpy1.20python3.9.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_numpy1.21python3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=win&configuration=win%20win_64_numpy1.21python3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </details>
+      <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
+        <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main">
+      </a>
     </td>
   </tr>
 </table>
@@ -157,69 +40,69 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-phenix-green.svg)](https://anaconda.org/cctbx-dev/phenix) | [![Conda Downloads](https://img.shields.io/conda/dn/cctbx-dev/phenix.svg)](https://anaconda.org/cctbx-dev/phenix) | [![Conda Version](https://img.shields.io/conda/vn/cctbx-dev/phenix.svg)](https://anaconda.org/cctbx-dev/phenix) | [![Conda Platforms](https://img.shields.io/conda/pn/cctbx-dev/phenix.svg)](https://anaconda.org/cctbx-dev/phenix) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-chem_data-green.svg)](https://anaconda.org/cctbx-dev/chem_data) | [![Conda Downloads](https://img.shields.io/conda/dn/cctbx-dev/chem_data.svg)](https://anaconda.org/cctbx-dev/chem_data) | [![Conda Version](https://img.shields.io/conda/vn/cctbx-dev/chem_data.svg)](https://anaconda.org/cctbx-dev/chem_data) | [![Conda Platforms](https://img.shields.io/conda/pn/cctbx-dev/chem_data.svg)](https://anaconda.org/cctbx-dev/chem_data) |
 
-Installing phenix
-=================
+Installing chem_data
+====================
 
-Installing `phenix` from the `cctbx-dev` channel can be achieved by adding `cctbx-dev` to your channels with:
+Installing `chem_data` from the `cctbx-dev` channel can be achieved by adding `cctbx-dev` to your channels with:
 
 ```
 conda config --add channels cctbx-dev
 conda config --set channel_priority strict
 ```
 
-Once the `cctbx-dev` channel has been enabled, `phenix` can be installed with `conda`:
+Once the `cctbx-dev` channel has been enabled, `chem_data` can be installed with `conda`:
 
 ```
-conda install phenix
-```
-
-or with `mamba`:
-
-```
-mamba install phenix
-```
-
-It is possible to list all of the versions of `phenix` available on your platform with `conda`:
-
-```
-conda search phenix --channel cctbx-dev
+conda install chem_data
 ```
 
 or with `mamba`:
 
 ```
-mamba search phenix --channel cctbx-dev
+mamba install chem_data
+```
+
+It is possible to list all of the versions of `chem_data` available on your platform with `conda`:
+
+```
+conda search chem_data --channel cctbx-dev
+```
+
+or with `mamba`:
+
+```
+mamba search chem_data --channel cctbx-dev
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search phenix --channel cctbx-dev
+mamba repoquery search chem_data --channel cctbx-dev
 
-# List packages depending on `phenix`:
-mamba repoquery whoneeds phenix --channel cctbx-dev
+# List packages depending on `chem_data`:
+mamba repoquery whoneeds chem_data --channel cctbx-dev
 
-# List dependencies of `phenix`:
-mamba repoquery depends phenix --channel cctbx-dev
+# List dependencies of `chem_data`:
+mamba repoquery depends chem_data --channel cctbx-dev
 ```
 
 
 
 
-Updating phenix-feedstock
-=========================
+Updating chem_data-feedstock
+============================
 
-If you would like to improve the phenix recipe or build a new
+If you would like to improve the chem_data recipe or build a new
 package version, please fork this repository and submit a PR. Upon submission,
 your changes will be run on the appropriate platforms to give the reviewer an
 opportunity to confirm that the changes result in a successful build. Once
 merged, the recipe will be re-built and uploaded automatically to the
 `cctbx-dev` channel, whereupon the built conda packages will be available for
 everybody to install and use from the `cctbx-dev` channel.
-Note that all branches in the phenix-project/phenix-feedstock are
+Note that all branches in the phenix-project/chem_data-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
 on branches in forks and branches in the main repository should only be used to
 build distinct package versions.
