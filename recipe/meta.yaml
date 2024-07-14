@@ -27,6 +27,7 @@ requirements:
     - gnuconfig  # [unix]
     - git  # [win]
     - libcxx =16.0.6  # [osx and x86_64]
+    - libcxx =17.0.6  # [arm64]
     - m2-tar  # [win]
     - m2-xz  # [win]
     - {{ compiler('c') }}
