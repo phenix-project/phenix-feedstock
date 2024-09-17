@@ -1,12 +1,3 @@
-github:
-  user_or_org: phenix-project
-  repo_name: phenix-feedstock
-  branch_name: main
-  tooling_branch_name: main
-secrets:
-  - TARBALL_PASSWORD
-
-channel_priority: flexible
 azure:
   user_or_org: phenix-release
   project_name: feedstock-builds
@@ -17,8 +8,16 @@ azure:
       CONDA_BLD_PATH: C:\\bld\\
 build_platform:
   osx_arm64: osx_64
-test: native
-upload_on_branch: upload
+channel_priority: flexible
 conda_build:
   pkg_format: '2'
   zstd_compression_level: 22
+github:
+  user_or_org: phenix-project
+  repo_name: phenix-feedstock
+  branch_name: main
+  tooling_branch_name: main
+secrets:
+  - TARBALL_PASSWORD
+test: native
+upload_on_branch: upload
