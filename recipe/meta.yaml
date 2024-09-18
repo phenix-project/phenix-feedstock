@@ -52,6 +52,7 @@ outputs:
         - setuptools
         - six
         - xorg-libxfixes                        # [linux]
+        - zlib
 
         - hdf5
         - libtiff
@@ -59,27 +60,37 @@ outputs:
 
       run:
         - biopython
+        - flask
         - future
-        - {{ pin_compatible('libglu') }}        # [linux]
         - ipython
+        - {{ pin_compatible('libglu') }}        # [linux]
         - libsvm
         - matplotlib-base
         - mrcfile
         - {{ pin_compatible('numpy') }}
+        - onedep_api
         - pillow
         - psutil
         - pyopengl
-        - pyside2                               # [(x86_64 or arm64) and py<312]
+        - pyrtf
+        - pyside2                               # [py<312]
         - python
         - python.app                            # [osx]
         - pyzmq
-        - qt-webengine                          # [x86_64 or arm64]
+        - qt-webengine
+        - rdkit
         - reportlab
         - requests
+        - restraintlib
         - scipy
         - six
         - websockets
-        - wxpython                              # [x86_64 or arm64]
+        - wxpython
+
+        # phasertng
+        - bokeh
+        - networkx
+        - pyvis
     test:
       imports:
         - scitbx.array_family.flex
