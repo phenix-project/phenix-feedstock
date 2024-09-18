@@ -64,6 +64,7 @@ outputs:
         - libsvm
         - matplotlib-base
         - mrcfile
+        - {{ pin_compatible('numpy') }}
         - pillow
         - psutil
         - pyopengl
