@@ -8,33 +8,25 @@ jobs:
     vmImage: windows-2022
   strategy:
     matrix:
-      win_64_numpy1.20python3.7.____cpython:
-        CONFIG: win_64_numpy1.20python3.7.____cpython
+      win_64_numpy1.22python3.10.____cpython:
+        CONFIG: win_64_numpy1.22python3.10.____cpython
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_numpy1.20python3.7.____cpython
-      win_64_numpy1.22python3.8.____cpython:
-        CONFIG: win_64_numpy1.22python3.8.____cpython
+        SHORT_CONFIG: win_64_numpy1.22python3.10.____cpython
+      win_64_numpy1.22python3.9.____cpython:
+        CONFIG: win_64_numpy1.22python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_numpy1.22python3.8.____cpython
-      win_64_numpy2.0python3.10.____cpython:
-        CONFIG: win_64_numpy2.0python3.10.____cpython
+        SHORT_CONFIG: win_64_numpy1.22python3.9.____cpython
+      win_64_numpy1.23python3.11.____cpython:
+        CONFIG: win_64_numpy1.23python3.11.____cpython
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_numpy2.0python3.10.____cpython
-      win_64_numpy2.0python3.11.____cpython:
-        CONFIG: win_64_numpy2.0python3.11.____cpython
+        SHORT_CONFIG: win_64_numpy1.23python3.11.____cpython
+      win_64_numpy1.26python3.12.____cpython:
+        CONFIG: win_64_numpy1.26python3.12.____cpython
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_numpy2.0python3.11.____cpython
-      win_64_numpy2.0python3.12.____cpython:
-        CONFIG: win_64_numpy2.0python3.12.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_numpy2.0python3.12.____cpython
-      win_64_numpy2.0python3.9.____cpython:
-        CONFIG: win_64_numpy2.0python3.9.____cpython
-        UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: win_64_numpy2.0python3.9.____cpython
+        SHORT_CONFIG: win_64_numpy1.26python3.12.____cpython
   timeoutInMinutes: 360
   variables:
-    CONDA_BLD_PATH: D:\\bld\\
+    CONDA_BLD_PATH: C:\\bld\\
     UPLOAD_TEMP: D:\\tmp
 
   steps:
@@ -68,8 +60,9 @@ jobs:
         sha: $(Build.SourceVersion)
         UPLOAD_PACKAGES: $(UPLOAD_PACKAGES)
         UPLOAD_TEMP: $(UPLOAD_TEMP)
-        UPLOAD_ON_BRANCH: main
+        UPLOAD_ON_BRANCH: upload
         BINSTAR_TOKEN: $(BINSTAR_TOKEN)
+        TARBALL_PASSWORD: $(TARBALL_PASSWORD)
     - script: |
         set CI=azure
         set CI_RUN_ID=$(build.BuildNumber).$(system.JobAttempt)
