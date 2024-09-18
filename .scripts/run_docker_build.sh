@@ -101,6 +101,7 @@ docker run ${DOCKER_RUN_ARGS} \
            -e remote_url \
            -e sha \
            -e BINSTAR_TOKEN \
+           -e TARBALL_PASSWORD \
            "${DOCKER_IMAGE}" \
            bash \
            "/home/conda/feedstock_root/${PROVIDER_DIR}/build_steps.sh"
