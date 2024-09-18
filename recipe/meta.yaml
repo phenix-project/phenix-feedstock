@@ -10,123 +10,84 @@ source:
 
 build:
   number: 0
-  # skip: true  # [not win]
   skip_compile_pyc:
     - "*/*.py"
   preserve_egg_dir: true
   script_env:
     - TARBALL_PASSWORD
 
-requirements:
-  build:
-    - python                                 # [build_platform != target_platform]
-    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - future                                 # [build_platform != target_platform]
-    - numpy                                  # [build_platform != target_platform]
-    - six                                    # [build_platform != target_platform]
-    - gnuconfig  # [unix]
-    - git  # [win]
-    - libcxx =16.0.6  # [osx and x86_64]
-    - libcxx =17.0.6  # [arm64]
-    - m2-tar  # [win]
-    - m2-xz  # [win]
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
-    - {{ cdt('mesa-libgl-devel') }}  # [linux]
-    - {{ cdt('mesa-dri-drivers') }}  # [linux]
-    - {{ cdt('libselinux') }}  # [linux]
-    - {{ cdt('libxdamage') }}  # [linux]
-    - {{ cdt('libxxf86vm') }}  # [linux]
-    - {{ cdt('libxext') }}     # [linux]
-  host:
-    - boost =1.74  # [not arm64]
-    - boost =1.78  # [arm64]
-    - boost-cpp =1.74  # [not arm64]
-    - boost-cpp =1.78  # [arm64]
-    - eigen
-    - future
-    - libglu  # [linux]
-    - libxcrypt  # [linux and (py==37 or py==38)]
-    - numpy
-    - pip
-    - python
-    - python.app  # [osx]
-    - scons
-    - setuptools
-    - six
-    - xorg-libxfixes  # [linux]
-
-    - hdf5
-    - libtiff
-    - msgpack-c
-    - pybind11
-
 outputs:
   - name: phenix
+    script: build-pkg.sh  # [unix]
+    script: build-pkg.bat  # [win]
     requirements:
+      build:
+        - python                                # [build_platform != target_platform]
+        - cross-python_{{ target_platform }}    # [build_platform != target_platform]
+        - numpy                                 # [build_platform != target_platform]
+        - {{ compiler('c') }}
+        - {{ stdlib("c") }}
+        - {{ compiler('cxx') }}
+        - git                                   # [win]
+        - gnuconfig                             # [unix]
+        - m2-tar                                # [win]
+        - m2-xz                                 # [win]
+        - {{ cdt('libselinux') }}               # [linux]
+        - {{ cdt('libxdamage') }}               # [linux]
+        - {{ cdt('libxext') }}                  # [linux]
+        - {{ cdt('libxxf86vm') }}               # [linux]
+        - {{ cdt('mesa-libgl-devel') }}         # [linux]
+        - {{ cdt('mesa-dri-drivers') }}         # [linux]
+      host:
+        - libboost-python-devel
+        - libboost-devel
+        - eigen
+        - future
+        - libglu                                # [linux]
+        - numpy
+        - pip
+        - python
+        - python.app                            # [osx]
+        - scons
+        - setuptools
+        - six
+        - xorg-libxfixes                        # [linux]
+
+        - hdf5
+        - pybind11
+
       run:
         - biopython
-        - {{ pin_compatible('boost') }}
-        - boost-cpp
         - future
-        - {{ pin_compatible('libglu') }}  # [linux]
+        - {{ pin_compatible('libglu') }}        # [linux]
+        - ipython
         - libsvm
         - matplotlib-base
         - mrcfile
-        - {{ pin_compatible('numpy') }}
         - pillow
         - psutil
+        - pyopengl
+        - pyside2                               # [(x86_64 or arm64) and py<312]
         - python
-        - python.app  # [osx]
+        - python.app                            # [osx]
+        - pyzmq
+        - qt-webengine                          # [x86_64 or arm64]
         - reportlab
         - requests
         - scipy
         - six
-
-        # - amber_phenix  # [not win and x86_64]
-        - flask
-        - gdk-pixbuf  # [linux and not py==39]
-        - onedep_api
-        - pyrtf
-        - rdkit
-        - wxpython
-        - pyside2  # [x86_64]
-        - restraintlib
-
-        # pathwalker
-        - absl-py
-        - pip
-        - protobuf
-
-        # phasertng
-        - bokeh
-        - networkx
-
-        # dxtbx
-        - h5py
-        - hdf5
-        - hdf5plugin
-        - libtiff
-        - pint
-        - procrunner
-        - pybind11
-
-        # dials
-        - colorlog
-        - msgpack-c
-        - msgpack-python
-        - orderedset
-        - scikit-learn
-        - tabulate
-        - tqdm
+        - websockets
+        - wxpython                              # [x86_64 or arm64]
     test:
       imports:
         - scitbx.array_family.flex
-        - gltbx.gl  # [not (win and py==39)]
-        - gltbx.glu  # [not (win and py==39)]
+        - gltbx.gl  # [not win]
+        - gltbx.glu  # [not win]
       commands:
         - libtbx.show_commands
         - pip check
+        - mkdir test; cd test; libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4  # [not win]
+        - mkdir test && cd test && libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4  # [win]
       requires:
         - pip
 
@@ -161,3 +122,4 @@ extra:
   recipe-maintainers:
     - bkpoon
     - phyy-nx
+  feedstock-name: phenix

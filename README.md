@@ -1,7 +1,7 @@
-About phenix-feedstock
-======================
+About cctbx-base-feedstock
+==========================
 
-Feedstock license: [BSD-3-Clause](https://github.com/phenix-project/phenix-feedstock/blob/main/LICENSE.txt)
+Feedstock license: [BSD-3-Clause](https://github.com/cctbx/nightly-feedstock/blob/main/LICENSE.txt)
 
 Home: https://github.com/cctbx/cctbx_project
 
@@ -33,8 +33,8 @@ Current build status
     <td>
       <details>
         <summary>
-          <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-            <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main">
+          <a href="https://dev.azure.com/cctbx-release/feedstock-builds/_build/latest?definitionId=11&branchName=main">
+            <img src="https://dev.azure.com/cctbx-release/feedstock-builds/_apis/build/status/nightly-feedstock?branchName=main">
           </a>
         </summary>
         <table>
@@ -42,106 +42,162 @@ Current build status
           <tbody><tr>
               <td>linux_64_numpy1.20python3.7.____cpython</td>
               <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_numpy1.20python3.7.____cpython" alt="variant">
+                <a href="https://dev.azure.com/cctbx-release/feedstock-builds/_build/latest?definitionId=11&branchName=main">
+                  <img src="https://dev.azure.com/cctbx-release/feedstock-builds/_apis/build/status/nightly-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_numpy1.20python3.7.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_numpy1.20python3.8.____cpython</td>
+              <td>linux_64_numpy1.22python3.8.____cpython</td>
               <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_numpy1.20python3.8.____cpython" alt="variant">
+                <a href="https://dev.azure.com/cctbx-release/feedstock-builds/_build/latest?definitionId=11&branchName=main">
+                  <img src="https://dev.azure.com/cctbx-release/feedstock-builds/_apis/build/status/nightly-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_numpy1.22python3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_numpy1.20python3.9.____cpython</td>
+              <td>linux_64_numpy2.0python3.10.____cpython</td>
               <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_numpy1.20python3.9.____cpython" alt="variant">
+                <a href="https://dev.azure.com/cctbx-release/feedstock-builds/_build/latest?definitionId=11&branchName=main">
+                  <img src="https://dev.azure.com/cctbx-release/feedstock-builds/_apis/build/status/nightly-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_numpy2.0python3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_numpy1.21python3.10.____cpython</td>
+              <td>linux_64_numpy2.0python3.11.____cpython</td>
               <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_numpy1.21python3.10.____cpython" alt="variant">
+                <a href="https://dev.azure.com/cctbx-release/feedstock-builds/_build/latest?definitionId=11&branchName=main">
+                  <img src="https://dev.azure.com/cctbx-release/feedstock-builds/_apis/build/status/nightly-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_numpy2.0python3.11.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_numpy2.0python3.12.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/cctbx-release/feedstock-builds/_build/latest?definitionId=11&branchName=main">
+                  <img src="https://dev.azure.com/cctbx-release/feedstock-builds/_apis/build/status/nightly-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_numpy2.0python3.12.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_64_numpy2.0python3.9.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/cctbx-release/feedstock-builds/_build/latest?definitionId=11&branchName=main">
+                  <img src="https://dev.azure.com/cctbx-release/feedstock-builds/_apis/build/status/nightly-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_numpy2.0python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>osx_64_numpy1.20python3.7.____cpython</td>
               <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_numpy1.20python3.7.____cpython" alt="variant">
+                <a href="https://dev.azure.com/cctbx-release/feedstock-builds/_build/latest?definitionId=11&branchName=main">
+                  <img src="https://dev.azure.com/cctbx-release/feedstock-builds/_apis/build/status/nightly-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_numpy1.20python3.7.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_numpy1.20python3.8.____cpython</td>
+              <td>osx_64_numpy1.22python3.8.____cpython</td>
               <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_numpy1.20python3.8.____cpython" alt="variant">
+                <a href="https://dev.azure.com/cctbx-release/feedstock-builds/_build/latest?definitionId=11&branchName=main">
+                  <img src="https://dev.azure.com/cctbx-release/feedstock-builds/_apis/build/status/nightly-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_numpy1.22python3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_numpy1.20python3.9.____cpython</td>
+              <td>osx_64_numpy2.0python3.10.____cpython</td>
               <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_numpy1.20python3.9.____cpython" alt="variant">
+                <a href="https://dev.azure.com/cctbx-release/feedstock-builds/_build/latest?definitionId=11&branchName=main">
+                  <img src="https://dev.azure.com/cctbx-release/feedstock-builds/_apis/build/status/nightly-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_numpy2.0python3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_numpy1.21python3.10.____cpython</td>
+              <td>osx_64_numpy2.0python3.11.____cpython</td>
               <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_numpy1.21python3.10.____cpython" alt="variant">
+                <a href="https://dev.azure.com/cctbx-release/feedstock-builds/_build/latest?definitionId=11&branchName=main">
+                  <img src="https://dev.azure.com/cctbx-release/feedstock-builds/_apis/build/status/nightly-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_numpy2.0python3.11.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_arm64_numpy1.20python3.8.____cpython</td>
+              <td>osx_64_numpy2.0python3.12.____cpython</td>
               <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_numpy1.20python3.8.____cpython" alt="variant">
+                <a href="https://dev.azure.com/cctbx-release/feedstock-builds/_build/latest?definitionId=11&branchName=main">
+                  <img src="https://dev.azure.com/cctbx-release/feedstock-builds/_apis/build/status/nightly-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_numpy2.0python3.12.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_arm64_numpy1.20python3.9.____cpython</td>
+              <td>osx_64_numpy2.0python3.9.____cpython</td>
               <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_numpy1.20python3.9.____cpython" alt="variant">
+                <a href="https://dev.azure.com/cctbx-release/feedstock-builds/_build/latest?definitionId=11&branchName=main">
+                  <img src="https://dev.azure.com/cctbx-release/feedstock-builds/_apis/build/status/nightly-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_numpy2.0python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_arm64_numpy1.21python3.10.____cpython</td>
+              <td>osx_arm64_numpy1.22python3.8.____cpython</td>
               <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_numpy1.21python3.10.____cpython" alt="variant">
+                <a href="https://dev.azure.com/cctbx-release/feedstock-builds/_build/latest?definitionId=11&branchName=main">
+                  <img src="https://dev.azure.com/cctbx-release/feedstock-builds/_apis/build/status/nightly-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_numpy1.22python3.8.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_arm64_numpy2.0python3.10.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/cctbx-release/feedstock-builds/_build/latest?definitionId=11&branchName=main">
+                  <img src="https://dev.azure.com/cctbx-release/feedstock-builds/_apis/build/status/nightly-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_numpy2.0python3.10.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_arm64_numpy2.0python3.11.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/cctbx-release/feedstock-builds/_build/latest?definitionId=11&branchName=main">
+                  <img src="https://dev.azure.com/cctbx-release/feedstock-builds/_apis/build/status/nightly-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_numpy2.0python3.11.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_arm64_numpy2.0python3.12.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/cctbx-release/feedstock-builds/_build/latest?definitionId=11&branchName=main">
+                  <img src="https://dev.azure.com/cctbx-release/feedstock-builds/_apis/build/status/nightly-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_numpy2.0python3.12.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_arm64_numpy2.0python3.9.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/cctbx-release/feedstock-builds/_build/latest?definitionId=11&branchName=main">
+                  <img src="https://dev.azure.com/cctbx-release/feedstock-builds/_apis/build/status/nightly-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_numpy2.0python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
               <td>win_64_numpy1.20python3.7.____cpython</td>
               <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=win&configuration=win%20win_64_numpy1.20python3.7.____cpython" alt="variant">
+                <a href="https://dev.azure.com/cctbx-release/feedstock-builds/_build/latest?definitionId=11&branchName=main">
+                  <img src="https://dev.azure.com/cctbx-release/feedstock-builds/_apis/build/status/nightly-feedstock?branchName=main&jobName=win&configuration=win%20win_64_numpy1.20python3.7.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_numpy1.20python3.8.____cpython</td>
+              <td>win_64_numpy1.22python3.8.____cpython</td>
               <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=win&configuration=win%20win_64_numpy1.20python3.8.____cpython" alt="variant">
+                <a href="https://dev.azure.com/cctbx-release/feedstock-builds/_build/latest?definitionId=11&branchName=main">
+                  <img src="https://dev.azure.com/cctbx-release/feedstock-builds/_apis/build/status/nightly-feedstock?branchName=main&jobName=win&configuration=win%20win_64_numpy1.22python3.8.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_numpy1.20python3.9.____cpython</td>
+              <td>win_64_numpy2.0python3.10.____cpython</td>
               <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=win&configuration=win%20win_64_numpy1.20python3.9.____cpython" alt="variant">
+                <a href="https://dev.azure.com/cctbx-release/feedstock-builds/_build/latest?definitionId=11&branchName=main">
+                  <img src="https://dev.azure.com/cctbx-release/feedstock-builds/_apis/build/status/nightly-feedstock?branchName=main&jobName=win&configuration=win%20win_64_numpy2.0python3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_numpy1.21python3.10.____cpython</td>
+              <td>win_64_numpy2.0python3.11.____cpython</td>
               <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=win&configuration=win%20win_64_numpy1.21python3.10.____cpython" alt="variant">
+                <a href="https://dev.azure.com/cctbx-release/feedstock-builds/_build/latest?definitionId=11&branchName=main">
+                  <img src="https://dev.azure.com/cctbx-release/feedstock-builds/_apis/build/status/nightly-feedstock?branchName=main&jobName=win&configuration=win%20win_64_numpy2.0python3.11.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64_numpy2.0python3.12.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/cctbx-release/feedstock-builds/_build/latest?definitionId=11&branchName=main">
+                  <img src="https://dev.azure.com/cctbx-release/feedstock-builds/_apis/build/status/nightly-feedstock?branchName=main&jobName=win&configuration=win%20win_64_numpy2.0python3.12.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>win_64_numpy2.0python3.9.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/cctbx-release/feedstock-builds/_build/latest?definitionId=11&branchName=main">
+                  <img src="https://dev.azure.com/cctbx-release/feedstock-builds/_apis/build/status/nightly-feedstock?branchName=main&jobName=win&configuration=win%20win_64_numpy2.0python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr>
@@ -157,69 +213,70 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-phenix-green.svg)](https://anaconda.org/cctbx-dev/phenix) | [![Conda Downloads](https://img.shields.io/conda/dn/cctbx-dev/phenix.svg)](https://anaconda.org/cctbx-dev/phenix) | [![Conda Version](https://img.shields.io/conda/vn/cctbx-dev/phenix.svg)](https://anaconda.org/cctbx-dev/phenix) | [![Conda Platforms](https://img.shields.io/conda/pn/cctbx-dev/phenix.svg)](https://anaconda.org/cctbx-dev/phenix) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-cctbx-green.svg)](https://anaconda.org/cctbx-nightly/cctbx) | [![Conda Downloads](https://img.shields.io/conda/dn/cctbx-nightly/cctbx.svg)](https://anaconda.org/cctbx-nightly/cctbx) | [![Conda Version](https://img.shields.io/conda/vn/cctbx-nightly/cctbx.svg)](https://anaconda.org/cctbx-nightly/cctbx) | [![Conda Platforms](https://img.shields.io/conda/pn/cctbx-nightly/cctbx.svg)](https://anaconda.org/cctbx-nightly/cctbx) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-cctbx--base-green.svg)](https://anaconda.org/cctbx-nightly/cctbx-base) | [![Conda Downloads](https://img.shields.io/conda/dn/cctbx-nightly/cctbx-base.svg)](https://anaconda.org/cctbx-nightly/cctbx-base) | [![Conda Version](https://img.shields.io/conda/vn/cctbx-nightly/cctbx-base.svg)](https://anaconda.org/cctbx-nightly/cctbx-base) | [![Conda Platforms](https://img.shields.io/conda/pn/cctbx-nightly/cctbx-base.svg)](https://anaconda.org/cctbx-nightly/cctbx-base) |
 
-Installing phenix
-=================
+Installing cctbx-base
+=====================
 
-Installing `phenix` from the `cctbx-dev` channel can be achieved by adding `cctbx-dev` to your channels with:
+Installing `cctbx-base` from the `cctbx-nightly` channel can be achieved by adding `cctbx-nightly` to your channels with:
 
 ```
-conda config --add channels cctbx-dev
+conda config --add channels cctbx-nightly
 conda config --set channel_priority strict
 ```
 
-Once the `cctbx-dev` channel has been enabled, `phenix` can be installed with `conda`:
+Once the `cctbx-nightly` channel has been enabled, `cctbx, cctbx-base` can be installed with `conda`:
 
 ```
-conda install phenix
-```
-
-or with `mamba`:
-
-```
-mamba install phenix
-```
-
-It is possible to list all of the versions of `phenix` available on your platform with `conda`:
-
-```
-conda search phenix --channel cctbx-dev
+conda install cctbx cctbx-base
 ```
 
 or with `mamba`:
 
 ```
-mamba search phenix --channel cctbx-dev
+mamba install cctbx cctbx-base
+```
+
+It is possible to list all of the versions of `cctbx` available on your platform with `conda`:
+
+```
+conda search cctbx --channel cctbx-nightly
+```
+
+or with `mamba`:
+
+```
+mamba search cctbx --channel cctbx-nightly
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search phenix --channel cctbx-dev
+mamba repoquery search cctbx --channel cctbx-nightly
 
-# List packages depending on `phenix`:
-mamba repoquery whoneeds phenix --channel cctbx-dev
+# List packages depending on `cctbx`:
+mamba repoquery whoneeds cctbx --channel cctbx-nightly
 
-# List dependencies of `phenix`:
-mamba repoquery depends phenix --channel cctbx-dev
+# List dependencies of `cctbx`:
+mamba repoquery depends cctbx --channel cctbx-nightly
 ```
 
 
 
 
-Updating phenix-feedstock
-=========================
+Updating cctbx-base-feedstock
+=============================
 
-If you would like to improve the phenix recipe or build a new
+If you would like to improve the cctbx-base recipe or build a new
 package version, please fork this repository and submit a PR. Upon submission,
 your changes will be run on the appropriate platforms to give the reviewer an
 opportunity to confirm that the changes result in a successful build. Once
 merged, the recipe will be re-built and uploaded automatically to the
-`cctbx-dev` channel, whereupon the built conda packages will be available for
-everybody to install and use from the `cctbx-dev` channel.
-Note that all branches in the phenix-project/phenix-feedstock are
+`cctbx-nightly` channel, whereupon the built conda packages will be available for
+everybody to install and use from the `cctbx-nightly` channel.
+Note that all branches in the cctbx/cctbx-base-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
 on branches in forks and branches in the main repository should only be used to
 build distinct package versions.

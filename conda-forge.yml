@@ -8,7 +8,6 @@ azure:
       CONDA_BLD_PATH: C:\\bld\\
 build_platform:
   osx_arm64: osx_64
-channel_priority: flexible
 conda_build:
   pkg_format: '2'
   zstd_compression_level: 22
