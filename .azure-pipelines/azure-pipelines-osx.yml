@@ -12,30 +12,46 @@ jobs:
         CONFIG: osx_64_numpy1.20python3.7.____cpython
         UPLOAD_PACKAGES: 'True'
         SHORT_CONFIG: osx_64_numpy1.20python3.7.____cpython
-      osx_64_numpy1.20python3.8.____cpython:
-        CONFIG: osx_64_numpy1.20python3.8.____cpython
+      osx_64_numpy1.22python3.8.____cpython:
+        CONFIG: osx_64_numpy1.22python3.8.____cpython
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: osx_64_numpy1.20python3.8.____cpython
-      osx_64_numpy1.20python3.9.____cpython:
-        CONFIG: osx_64_numpy1.20python3.9.____cpython
+        SHORT_CONFIG: osx_64_numpy1.22python3.8.____cpython
+      osx_64_numpy2.0python3.10.____cpython:
+        CONFIG: osx_64_numpy2.0python3.10.____cpython
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: osx_64_numpy1.20python3.9.____cpython
-      osx_64_numpy1.21python3.10.____cpython:
-        CONFIG: osx_64_numpy1.21python3.10.____cpython
+        SHORT_CONFIG: osx_64_numpy2.0python3.10.____cpython
+      osx_64_numpy2.0python3.11.____cpython:
+        CONFIG: osx_64_numpy2.0python3.11.____cpython
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: osx_64_numpy1.21python3.10.____cpython
-      osx_arm64_numpy1.20python3.8.____cpython:
-        CONFIG: osx_arm64_numpy1.20python3.8.____cpython
+        SHORT_CONFIG: osx_64_numpy2.0python3.11.____cpython
+      osx_64_numpy2.0python3.12.____cpython:
+        CONFIG: osx_64_numpy2.0python3.12.____cpython
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: osx_arm64_numpy1.20python3.8.____cpython
-      osx_arm64_numpy1.20python3.9.____cpython:
-        CONFIG: osx_arm64_numpy1.20python3.9.____cpython
+        SHORT_CONFIG: osx_64_numpy2.0python3.12.____cpython
+      osx_64_numpy2.0python3.9.____cpython:
+        CONFIG: osx_64_numpy2.0python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: osx_arm64_numpy1.20python3.9.____cpython
-      osx_arm64_numpy1.21python3.10.____cpython:
-        CONFIG: osx_arm64_numpy1.21python3.10.____cpython
+        SHORT_CONFIG: osx_64_numpy2.0python3.9.____cpython
+      osx_arm64_numpy1.22python3.8.____cpython:
+        CONFIG: osx_arm64_numpy1.22python3.8.____cpython
         UPLOAD_PACKAGES: 'True'
-        SHORT_CONFIG: osx_arm64_numpy1.21python3.10.____cpython
+        SHORT_CONFIG: osx_arm64_numpy1.22python3.8.____cpython
+      osx_arm64_numpy2.0python3.10.____cpython:
+        CONFIG: osx_arm64_numpy2.0python3.10.____cpython
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: osx_arm64_numpy2.0python3.10.____cpython
+      osx_arm64_numpy2.0python3.11.____cpython:
+        CONFIG: osx_arm64_numpy2.0python3.11.____cpython
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: osx_arm64_numpy2.0python3.11.____cpython
+      osx_arm64_numpy2.0python3.12.____cpython:
+        CONFIG: osx_arm64_numpy2.0python3.12.____cpython
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: osx_arm64_numpy2.0python3.12.____cpython
+      osx_arm64_numpy2.0python3.9.____cpython:
+        CONFIG: osx_arm64_numpy2.0python3.9.____cpython
+        UPLOAD_PACKAGES: 'True'
+        SHORT_CONFIG: osx_arm64_numpy2.0python3.9.____cpython
   timeoutInMinutes: 360
   variables: {}
 
@@ -49,7 +65,7 @@ jobs:
       export OSX_FORCE_SDK_DOWNLOAD="1"
       export GIT_BRANCH=$BUILD_SOURCEBRANCHNAME
       export FEEDSTOCK_NAME=$(basename ${BUILD_REPOSITORY_NAME})
-      export UPLOAD_ON_BRANCH="upload"
+      export UPLOAD_ON_BRANCH="main"
       if [[ "${BUILD_REASON:-}" == "PullRequest" ]]; then
         export IS_PR_BUILD="True"
       else
@@ -59,7 +75,6 @@ jobs:
     displayName: Run OSX build
     env:
       BINSTAR_TOKEN: $(BINSTAR_TOKEN)
-      TARBALL_PASSWORD: $(TARBALL_PASSWORD)
   - script: |
       export CI=azure
       export CI_RUN_ID=$(build.BuildNumber).$(system.JobAttempt)
