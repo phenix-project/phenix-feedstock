@@ -66,6 +66,11 @@ rm -fr ./modules/dxtbx/libtbx_refresh.py
 rm -fr ./modules/iota/libtbx_refresh.py
 rm -fr ./modules/xia2/libtbx_refresh.py
 
+# set extra compilation flags
+export CPPFLAGS="${CPPFLAGS} -DBOOST_TIMER_ENABLE_DEPRECATED -O3"
+export CXXFLAGS="${CXXFLAGS} -DBOOST_TIMER_ENABLE_DEPRECATED -O3"
+export CFLAGS="${CFLAGS} -DBOOST_TIMER_ENABLE_DEPRECATED -O3"
+
 # build
 export CCTBX_SKIP_CHEMDATA_CACHE_REBUILD=1
 ${PYTHON} bootstrap.py build \
