@@ -54,6 +54,7 @@ outputs:
         - xorg-libxfixes                        # [linux]
 
         - hdf5
+        - libtiff
         - pybind11
 
       run:
