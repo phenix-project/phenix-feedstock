@@ -75,7 +75,6 @@ ${PYTHON} bootstrap.py build \
   --config-flags="--use_environment_flags" \
   --config-flags="--cxxstd=c++14" \
   --config-flags="--no_bin_python" \
-  --config-flags="--skip_phenix_dispatchers" \
   --verbose
 
 # remove intermediate objects in build directory

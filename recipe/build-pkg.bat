@@ -1,3 +1,55 @@
+echo on
+
+dir C:\
+
+call %CONDA%\condabin\conda.bat create -n test -y -c conda-forge curl git openssl xz
+call %CONDA%\condabin\conda.bat activate test
+call %CONDA%\condabin\conda.bat clean --all -y
+
+REM clear up more disk space
+dir D:\bld\src_cache
+del /S /Q D:\bld\src_cache\*
+dir D:\bld\src_cache
+
+cd %SRC_DIR%
+dir
+@REM c:\\c\\envs\\b\\Library\bin\openssl.exe ^
+openssl ^
+  enc -d ^
+  -aes-256-cbc ^
+  -salt ^
+  -md sha256 ^
+  -iter 100000 ^
+  -pbkdf2 ^
+  -in %SRC_DIR%\phenix.enc ^
+  -out %SRC_DIR%\phenix.tar.xz ^
+  -pass env:TARBALL_PASSWORD
+if %errorlevel% neq 0 exit /b %errorlevel%
+dir
+del /S /Q %SRC_DIR%\phenix.enc
+tar -xf phenix.tar.xz
+if %errorlevel% neq 0 exit /b %errorlevel%
+dir
+del /S /Q phenix.tar.xz
+cd phenix-installer*
+dir
+call %CONDA%\condabin\conda.bat deactivate
+
+REM reapply patches
+git apply %RECIPE_DIR%\libtbx_SConscript.patch
+git apply %RECIPE_DIR%\bootstrap_win.patch
+
+REM clean up sources
+rmdir /S /Q .\modules\cctbx_project\xfel\euxfel\definitions
+
+call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\phaser_regression
+@REM call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\phaser_voyager
+
+call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\reduce
+call futurize -f lib2to3.fixes.fix_except -wn .\modules\reduce
+
+call futurize -f libfuturize.fixes.fix_print_with_import -wn .\modules\tntbx
+
 REM copy bootstrap.py
 copy modules\cctbx_project\libtbx\auto_build\bootstrap.py .
 if %errorlevel% neq 0 exit /b %errorlevel%
@@ -6,61 +58,67 @@ REM remove extra source code
 rmdir /S /Q .\modules\boost
 rmdir /S /Q .\modules\eigen
 rmdir /S /Q .\modules\scons
+dir
+
+REM remove some libtbx_refresh.py files
+del /S /Q .\modules\dxtbx\libtbx_refresh.py
+del /S /Q .\modules\iota\libtbx_refresh.py
+del /S /Q .\modules\xia2\libtbx_refresh.py
 
 REM build
 %PYTHON% bootstrap.py build ^
-  --builder=cctbx ^
+  --builder=phenix ^
   --use-conda %PREFIX% ^
   --nproc %CPU_COUNT% ^
   --config-flags="--cxxstd=c++14" ^
-  --config-flags="--no_bin_python" ^
-  --config-flags="--skip_phenix_dispatchers"
-if %errorlevel% neq 0 exit /b %errorlevel%
-cd build
-call .\bin\libtbx.configure cma_es crys3d fable rstbx serialtbx spotinder
-if %errorlevel% neq 0 exit /b %errorlevel%
-call .\bin\libtbx.scons -j %CPU_COUNT%
-if %errorlevel% neq 0 exit /b %errorlevel%
-call .\bin\libtbx.scons -j %CPU_COUNT%
+  --config-flags="--no_bin_python"
 if %errorlevel% neq 0 exit /b %errorlevel%
 cd ..
 
-REM remove dxtbx and cbflib
-del /S /Q .\build\*cbflib*
-del /S /Q .\build\lib\cbflib*
-for /D %%i in (.\build\lib\*dxtbx*) do rmdir /S /Q %%i
-rmdir /S /Q .\modules\dxtbx
-rmdir /S /Q .\modules\cbflib
-call .\build\bin\libtbx.python %RECIPE_DIR%\clean_env.py
-if %errorlevel% neq 0 exit /b %errorlevel%
-
-REM remove extra source files (C, C++, Fortran, CUDA)
-cd build
-del /S /Q *.c
-del /S /Q *.cpp
-del /S /Q *.cu
-del /S /Q *.f
-cd ..\modules
-del /S /Q *.c
-del /S /Q *.cpp
-del /S /Q *.cu
-del /S /Q *.f
-cd ..
+REM delete rotarama and cablam caches
+cd %SRC_DIR%
+cd phenix-installer*
+del /S /Q .\modules\chem_data\rotarama_data\*.pickle
+del /S /Q .\modules\chem_data\rotarama_data\*.dlite
+del /S /Q .\modules\chem_data\cablam_data\*.pickle
+del /S /Q .\modules\chem_data\cablam_data\*.dlite
 
 REM remove intermediate objects in build directory
 cd build
 del /S /Q *.obj
 cd ..
 
+REM remove compiled Python files
+REM https://stackoverflow.com/questions/28991015/python3-project-remove-pycache-folders-and-pyc-files
+cd %SRC_DIR%
+cd phenix-installer*
+%PYTHON% -Bc "import pathlib; import shutil; [shutil.rmtree(p) for p in pathlib.Path('.\build').rglob('__pycache__')]"
+%PYTHON% -Bc "import pathlib; import shutil; [shutil.rmtree(p) for p in pathlib.Path('.\modules').rglob('__pycache__')]"
+
+REM move chem_data, phenix_examples, and phenix_regression
+cd %SRC_DIR%
+cd phenix-installer*
+cd .\modules
+@REM move .\chem_data %SP_DIR%
+rmdir /S /Q .\chem_data
+move .\phenix_examples %SP_DIR%
+move .\phenix_regression %SP_DIR%
+dir
+cd ..
+
 REM copy files in build
 SET EXTRA_CCTBX_DIR=%LIBRARY_PREFIX%\share\cctbx
 mkdir  %EXTRA_CCTBX_DIR%
 SET CCTBX_CONDA_BUILD=.\modules\cctbx_project\libtbx\auto_build\conda_build
-call .\build\bin\libtbx.python %CCTBX_CONDA_BUILD%\install_build.py --prefix %LIBRARY_PREFIX% --sp-dir %SP_DIR% --ext-dir %PREFIX%\lib --preserve-egg-dir
+cd %SRC_DIR%
+cd phenix-installer*
+dir
+call .\build\bin\libtbx.python %CCTBX_CONDA_BUILD%\install_build.py ^
+  --prefix %LIBRARY_PREFIX% ^
+  --sp-dir %SP_DIR% ^
+  --ext-dir %PREFIX%\lib ^
+  --preserve-egg-dir
 if %errorlevel% neq 0 exit /b %errorlevel%
-
-REM copy gui_resources
-xcopy /E /I .\modules\gui_resources %SP_DIR%\gui_resources
 
 REM copy version and copyright files
 %PYTHON% .\modules\cctbx_project\libtbx\version.py --version=%PKG_VERSION%
@@ -73,12 +131,26 @@ cd .\modules\cctbx_project
 if %errorlevel% neq 0 exit /b %errorlevel%
 cd ..\..
 
+REM copy Phenix environment files
+set EXTRA_PHENIX_DIR=%LIBRARY_PREFIX%\share\phenix
+mkdir  %EXTRA_PHENIX_DIR%
+cd %SRC_DIR%
+cd phenix-installer*
+move .\modules\phenix\conda_envs %EXTRA_PHENIX_DIR%
+if %errorlevel% neq 0 exit /b %errorlevel%
+
 REM copy libtbx_env and update dispatchers
 echo Copying libtbx_env
 call .\build\bin\libtbx.python %CCTBX_CONDA_BUILD%\update_libtbx_env.py
 if %errorlevel% neq 0 exit /b %errorlevel%
 %PYTHON% %CCTBX_CONDA_BUILD%\update_libtbx_env.py
 if %errorlevel% neq 0 exit /b %errorlevel%
+
+REM copy REST credentials
+echo Copying REST credentials
+mkdir %EXTRA_CCTBX_DIR%\rest
+copy .\rest\token %EXTRA_CCTBX_DIR%\rest\token
+copy .\rest\url %EXTRA_CCTBX_DIR%\rest\url
 
 REM copy annlib headers and then clean up annlib
 xcopy /E .\modules\annlib\include\ANN %EXTRA_CCTBX_DIR%\annlib_adaptbx\include\ANN\
@@ -92,3 +164,28 @@ del /Q %LIBRARY_BIN%\*show_build_path.bat
 del /Q %LIBRARY_BIN%\*show_dist_paths.bat
 attrib -H %LIBRARY_BIN%\libtbx.show_build_path.bat
 attrib -H %LIBRARY_BIN%\libtbx.show_dist_paths.bat
+
+REM copy items for Start Menu
+set MENU_DIR=%PREFIX%\Menu
+mkdir %MENU_DIR%
+
+copy .\modules\gui_resources\icons\custom\phenix.ico %MENU_DIR%
+if %errorlevel% neq 0 exit /b %errorlevel%
+
+%PYTHON% %RECIPE_DIR%\scripts\win_update_menu.py --file %RECIPE_DIR%\menu-windows.json --version %PKG_VERSION%
+if %errorlevel% neq 0 exit /b %errorlevel%
+
+copy %RECIPE_DIR%\menu-windows.json %MENU_DIR%\phenix.json
+if %errorlevel% neq 0 exit /b %errorlevel%
+
+REM clean up cbflib
+move %SP_DIR%\cbflib\pycbf\pycbf.py %SP_DIR%
+rmdir /S /Q %SP_DIR%\cbflib
+if %errorlevel% neq 0 exit /b %errorlevel%
+
+REM clean up build directory
+cd %SRC_DIR%
+cd phenix-installer*
+rmdir /S /Q .\build
+if %errorlevel% neq 0 exit /b %errorlevel%
+dir
