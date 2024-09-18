@@ -26,6 +26,8 @@ libboost_python_devel:
 - '1.84'
 libsvm:
 - '332'
+libtiff:
+- '4.6'
 numpy:
 - '1.23'
 pin_run_as_build:
