@@ -116,7 +116,7 @@ CCTBX_CONDA_BUILD=./modules/cctbx_project/libtbx/auto_build/conda_build
 
 # copy version and copyright files
 echo Copying version and copyright files
-${PYTHON} ./modules/cctbx_project/libtbx/version.py --version=${PKG_VERSION}
+${PYTHON} ./modules/cctbx_project/libtbx/version.py
 cp ./modules/cctbx_project/COPYRIGHT.txt ${EXTRA_CCTBX_DIR}
 cp ./modules/cctbx_project/cctbx_version.txt ${EXTRA_CCTBX_DIR}
 cp ./modules/cctbx_project/cctbx_version.h ${PREFIX}/include/cctbx

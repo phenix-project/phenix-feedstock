@@ -121,7 +121,7 @@ call .\build\bin\libtbx.python %CCTBX_CONDA_BUILD%\install_build.py ^
 if %errorlevel% neq 0 exit /b %errorlevel%
 
 REM copy version and copyright files
-%PYTHON% .\modules\cctbx_project\libtbx\version.py --version=%PKG_VERSION%
+%PYTHON% .\modules\cctbx_project\libtbx\version.py
 if %errorlevel% neq 0 exit /b %errorlevel%
 copy .\modules\cctbx_project\COPYRIGHT.txt %EXTRA_CCTBX_DIR%
 copy .\modules\cctbx_project\cctbx_version.txt %EXTRA_CCTBX_DIR%
