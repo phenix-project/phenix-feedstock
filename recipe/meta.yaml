@@ -71,6 +71,7 @@ outputs:
         - onedep_api
         - pillow
         - psutil
+        - py2app                                # [osx]
         - pyopengl
         - pyrtf
         - pyside2                               # [py<312]
