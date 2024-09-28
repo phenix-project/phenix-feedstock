@@ -65,6 +65,15 @@ del /S /Q .\modules\dxtbx\libtbx_refresh.py
 del /S /Q .\modules\iota\libtbx_refresh.py
 del /S /Q .\modules\xia2\libtbx_refresh.py
 
+REM restructure phaser_voyager directory
+copy %RECIPE_DIR%\install_build.py .\modules\cctbx_project\libtbx\auto_build\conda_build\install_build.py
+copy %RECIPE_DIR%\phaser_voyager_libtbx_config .\modules\phaser_voyager\libtbx_config
+move .\modules\phaser_voyager\command_line .\modules\phaser_voyager\src\New_Voyager
+move .\modules\phaser_voyager\src\New_Voyager .\modules\phaser_voyager
+dir .\modules\phaser_voyager
+dir .\modules\phaser_voyager\src
+dir .\modules\phaser_voyager\New_Voyager
+
 REM build
 %PYTHON% bootstrap.py build ^
   --builder=phenix ^
@@ -119,10 +128,6 @@ call .\build\bin\libtbx.python %CCTBX_CONDA_BUILD%\install_build.py ^
   --ext-dir %PREFIX%\lib ^
   --preserve-egg-dir
 if %errorlevel% neq 0 exit /b %errorlevel%
-
-REM copy command_line directory for New_Voyager
-move .\modules\phaser_voyager\command_line %SP_DIR%\New_Voyager
-dir %SP_DIR%\New_Voyager
 
 REM copy version and copyright files
 %PYTHON% .\modules\cctbx_project\libtbx\version.py

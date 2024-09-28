@@ -66,6 +66,15 @@ rm -fr ./modules/dxtbx/libtbx_refresh.py
 rm -fr ./modules/iota/libtbx_refresh.py
 rm -fr ./modules/xia2/libtbx_refresh.py
 
+# restructure phaser_voyager directory
+cp ${RECIPE_DIR}/install_build.py ./modules/cctbx_project/libtbx/auto_build/conda_build/install_build.py
+cp ${RECIPE_DIR}/phaser_voyager_libtbx_config ./modules/phaser_voyager/libtbx_config
+mv ./modules/phaser_voyager/command_line ./modules/phaser_voyager/src/New_Voyager
+mv ./modules/phaser_voyager/src/New_Voyager ./modules/phaser_voyager
+ls ./modules/phaser_voyager/
+ls ./modules/phaser_voyager/src
+ls ./modules/phaser_voyager/New_Voyager
+
 # set extra compilation flags
 export CPPFLAGS="${CPPFLAGS} -DBOOST_TIMER_ENABLE_DEPRECATED -O3"
 export CXXFLAGS="${CXXFLAGS} -DBOOST_TIMER_ENABLE_DEPRECATED -O3"
@@ -113,10 +122,6 @@ EXTRA_CCTBX_DIR=${PREFIX}/share/cctbx
 mkdir -p ${EXTRA_CCTBX_DIR}
 CCTBX_CONDA_BUILD=./modules/cctbx_project/libtbx/auto_build/conda_build
 ./build/bin/libtbx.python ${CCTBX_CONDA_BUILD}/install_build.py --preserve-egg-dir
-
-# copy command_line directory for New_Voyager
-cp -a ./modules/phaser_voyager/command_line ${SP_DIR}/New_Voyager
-ls ${SP_DIR}/New_Voyager
 
 # copy version and copyright files
 echo Copying version and copyright files
