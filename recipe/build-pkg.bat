@@ -120,6 +120,10 @@ call .\build\bin\libtbx.python %CCTBX_CONDA_BUILD%\install_build.py ^
   --preserve-egg-dir
 if %errorlevel% neq 0 exit /b %errorlevel%
 
+REM copy command_line directory for New_Voyager
+move .\modules\phaser_voyager\command_line %SP_DIR%\New_Voyager
+dir %SP_DIR%\New_Voyager
+
 REM copy version and copyright files
 %PYTHON% .\modules\cctbx_project\libtbx\version.py
 if %errorlevel% neq 0 exit /b %errorlevel%
