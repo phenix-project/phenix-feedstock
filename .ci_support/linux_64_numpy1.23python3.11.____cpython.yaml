@@ -25,14 +25,12 @@ libboost_devel:
 libboost_python_devel:
 - '1.84'
 libsvm:
-- '332'
+- '335'
 libtiff:
-- '4.6'
+- '4.7'
 numpy:
 - '1.23'
 pin_run_as_build:
-  libsvm:
-    max_pin: x
   python:
     min_pin: x.x
     max_pin: x.x
@@ -47,3 +45,5 @@ zip_keys:
   - cdt_name
 - - python
   - numpy
+zlib:
+- '1'
