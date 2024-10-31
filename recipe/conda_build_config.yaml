@@ -2,3 +2,7 @@ channel_sources:
   - conda-forge,phenix-project
 channel_targets:
   - cctbx-dev main
+c_compiler_version:    # [osx]
+  - '17'               # [osx]
+cxx_compiler_version:  # [osx]
+  - '17'               # [osx]
