@@ -10,13 +10,14 @@ from subprocess import check_output
 
 # =============================================================================
 if __name__ == '__main__':
+  exe_files = glob.glob('build/**/exe/*')
   exe_dev_files = glob.glob('build/exe_dev/*')
   ext_files = glob.glob('build/lib/*_ext.so')
   lib_files = glob.glob('build/lib/*.dylib')
   test_files = glob.glob('build/**/tst_*[!.hpp]', recursive=True) \
                + glob.glob('build/**/timing/*', recursive=True) \
                + glob.glob('build/**/boost_python/*.so', recursive=True)
-  for ext_file in exe_dev_files + ext_files + lib_files + test_files:
+  for ext_file in exe_files + exe_dev_files + ext_files + lib_files + test_files:
     libraries = check_output([os.environ['OTOOL'], '-L', ext_file]).decode('utf8').split('\n')
     print('\n'.join(libraries))
     # update id
