@@ -133,7 +133,7 @@ dir
 call .\build\bin\libtbx.python %CCTBX_CONDA_BUILD%\install_build.py ^
   --prefix %LIBRARY_PREFIX% ^
   --sp-dir %SP_DIR% ^
-  --ext-dir %PREFIX%\lib ^
+  --ext-dir %LIBRARY_LIB% ^
   --preserve-egg-dir
 if %errorlevel% neq 0 exit /b %errorlevel%
 
