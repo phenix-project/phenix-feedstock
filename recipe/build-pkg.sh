@@ -61,8 +61,6 @@ rm -fr ./modules/scons
 rm -fr ./modules/msgpack*
 
 # remove some libtbx_refresh.py files
-rm -fr ./modules/dials/libtbx_refresh.py
-rm -fr ./modules/dxtbx/libtbx_refresh.py
 rm -fr ./modules/iota/libtbx_refresh.py
 rm -fr ./modules/xia2/libtbx_refresh.py
 
@@ -74,7 +72,7 @@ export CFLAGS="${CFLAGS} -DBOOST_TIMER_ENABLE_DEPRECATED -O3"
 # build
 export CCTBX_SKIP_CHEMDATA_CACHE_REBUILD=1
 ${PYTHON} bootstrap.py build \
-  --builder=phenix \
+  --builder=phenix_release \
   --use-conda ${PREFIX} \
   --nproc ${CPU_COUNT} \
   --config-flags="--compiler=conda" \
@@ -152,6 +150,27 @@ cp -a ./rest ${EXTRA_CCTBX_DIR}
 echo Removing some duplicate dispatchers
 find ${PREFIX}/bin -name "*show_dist_paths" -not -name "libtbx.show_dist_paths" -type f -delete
 find ${PREFIX}/bin -name "*show_build_path" -not -name "libtbx.show_build_path" -type f -delete
+
+# clean up dials and dxtbx
+for m in dials dxtbx; do
+  mv ${SP_DIR}/${m} ${SP_DIR}/old_${m}
+  mv ${SP_DIR}/old_${m}/src/${m} ${SP_DIR}/${m}
+  rm -fr ${SP_DIR}/old_${m}
+done
+
+# copy dxtbx_flumpy.so separately since it does not end it *_ext.so
+cp ./build/lib/dxtbx_flumpy.so ${SP_DIR}/../lib-dynload/
+
+# install iota and xia2
+cd modules
+for m in iota xia2; do
+  rm -fr ${SP_DIR}/${m}
+  cd ${m}
+  ${PYTHON} -m pip install . -vv --no-deps >& ${m}.log
+  cat ${m}.log
+  cd ..
+done
+cd ..
 
 # clean up cbflib
 echo Fix cbflib

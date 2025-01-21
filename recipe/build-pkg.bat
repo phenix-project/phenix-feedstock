@@ -61,7 +61,6 @@ rmdir /S /Q .\modules\scons
 dir
 
 REM remove some libtbx_refresh.py files
-del /S /Q .\modules\dxtbx\libtbx_refresh.py
 del /S /Q .\modules\iota\libtbx_refresh.py
 del /S /Q .\modules\xia2\libtbx_refresh.py
 
@@ -168,6 +167,18 @@ del /Q %LIBRARY_BIN%\*show_build_path.bat
 del /Q %LIBRARY_BIN%\*show_dist_paths.bat
 attrib -H %LIBRARY_BIN%\libtbx.show_build_path.bat
 attrib -H %LIBRARY_BIN%\libtbx.show_dist_paths.bat
+
+REM install iota and xia2
+rmdir /S /Q %SP_DIR%\iota
+rmdir /S /Q %SP_DIR%\xia2
+cd modules
+cd .\iota
+%PYTHON% -m pip install . -vv --no-deps > iota.log 2> iota_error.log
+cd ..
+cd .\xia2
+%PYTHON% -m pip install . -vv --no-deps > xia2.log 2> xia2_error.log
+cd ..
+cd ..
 
 REM copy items for Start Menu
 set MENU_DIR=%PREFIX%\Menu
