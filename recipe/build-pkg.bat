@@ -66,7 +66,7 @@ del /S /Q .\modules\xia2\libtbx_refresh.py
 
 REM build
 %PYTHON% bootstrap.py build ^
-  --builder=phenix ^
+  --builder=phenix_release ^
   --use-conda %PREFIX% ^
   --nproc %CPU_COUNT% ^
   --config-flags="--cxxstd=c++14" ^
