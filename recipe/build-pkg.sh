@@ -151,13 +151,6 @@ echo Removing some duplicate dispatchers
 find ${PREFIX}/bin -name "*show_dist_paths" -not -name "libtbx.show_dist_paths" -type f -delete
 find ${PREFIX}/bin -name "*show_build_path" -not -name "libtbx.show_build_path" -type f -delete
 
-# clean up dials and dxtbx
-for m in dials dxtbx; do
-  mv ${SP_DIR}/${m} ${SP_DIR}/old_${m}
-  mv ${SP_DIR}/old_${m}/src/${m} ${SP_DIR}/${m}
-  rm -fr ${SP_DIR}/old_${m}
-done
-
 # copy dxtbx_flumpy.so separately since it does not end it *_ext.so
 cp ./build/lib/dxtbx_flumpy.so ${SP_DIR}/../lib-dynload/
 
