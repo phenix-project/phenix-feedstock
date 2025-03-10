@@ -123,6 +123,9 @@ REM copy command_line directory for New_Voyager
 move .\modules\phaser_voyager\command_line %SP_DIR%\New_Voyager
 dir %SP_DIR%\New_Voyager
 
+REM copy modules/elbow files
+xcopy /E .\modules\elbow %SP_DIR%
+
 REM copy version and copyright files
 %PYTHON% .\modules\cctbx_project\libtbx\version.py
 if %errorlevel% neq 0 exit /b %errorlevel%

@@ -116,6 +116,9 @@ CCTBX_CONDA_BUILD=./modules/cctbx_project/libtbx/auto_build/conda_build
 cp -a ./modules/phaser_voyager/command_line ${SP_DIR}/New_Voyager
 ls ${SP_DIR}/New_Voyager
 
+# copy modules/elbow files
+cp -a ./modules/elbow ${SP_DIR}
+
 # copy version and copyright files
 echo Copying version and copyright files
 ${PYTHON} ./modules/cctbx_project/libtbx/version.py
