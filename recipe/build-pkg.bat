@@ -124,8 +124,9 @@ move .\modules\phaser_voyager\command_line %SP_DIR%\New_Voyager
 dir %SP_DIR%\New_Voyager
 
 REM copy modules/elbow files
-xcopy /E .\modules\elbow %SP_DIR%
+xcopy /E /Y .\modules\elbow %SP_DIR%
 rmdir /S /Q %SP_DIR%\elbow\elbow
+dir %SP_DIR%\elbow
 
 REM copy version and copyright files
 %PYTHON% .\modules\cctbx_project\libtbx\version.py
