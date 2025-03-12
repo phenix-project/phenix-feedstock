@@ -118,7 +118,6 @@ ls ${SP_DIR}/New_Voyager
 
 # copy modules/elbow files
 cp -a ./modules/elbow ${SP_DIR}
-rm -fr ${SP_DIR}/elbow/elbow
 ls ${SP_DIR}/elbow
 
 # copy version and copyright files
