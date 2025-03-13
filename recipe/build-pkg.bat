@@ -125,6 +125,7 @@ dir %SP_DIR%\New_Voyager
 
 REM copy modules/elbow files
 xcopy /E /Y .\modules\elbow %SP_DIR%
+rmdir /S /Q %SP_DIR%\elbow\elbow\command_line
 dir %SP_DIR%\elbow
 
 REM copy version and copyright files
