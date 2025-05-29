@@ -173,6 +173,17 @@ del /Q %LIBRARY_BIN%\*show_dist_paths.bat
 attrib -H %LIBRARY_BIN%\libtbx.show_build_path.bat
 attrib -H %LIBRARY_BIN%\libtbx.show_dist_paths.bat
 
+REM fix dxtbx and dials
+move %SP_DIR%\dxtbx %SP_DIR%\not_dxtbx
+move %SP_DIR%\not_dxtbx\src\dxtbx %SP_DIR%\dxtbx
+move %SP_DIR%\not_dxtbx\src\dxtbx.egg-info %SP_DIR%\dxtbx.egg-info
+rmdir /S /Q %SP_DIR%\not_dxtbx
+
+move %SP_DIR%\dials %SP_DIR%\not_dials
+move %SP_DIR%\not_dials\src\dials %SP_DIR%\dials
+move %SP_DIR%\not_dials\src\dials.egg-info %SP_DIR%\dials.egg-info
+rmdir /S /Q %SP_DIR%\not_dials
+
 REM install iota and xia2
 rmdir /S /Q %SP_DIR%\iota
 rmdir /S /Q %SP_DIR%\xia2
