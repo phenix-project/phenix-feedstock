@@ -112,6 +112,10 @@ mkdir -p ${EXTRA_CCTBX_DIR}
 CCTBX_CONDA_BUILD=./modules/cctbx_project/libtbx/auto_build/conda_build
 ./build/bin/libtbx.python ${CCTBX_CONDA_BUILD}/install_build.py --preserve-egg-dir
 
+# copy Phaser defaults
+mkdir -p ${EXTRA_CCTBX_DIR}/include
+cp ./build/include/phaser* ${EXTRA_CCTBX_DIR}/include
+
 # copy command_line directory for New_Voyager
 cp -a ./modules/phaser_voyager/command_line ${SP_DIR}/New_Voyager
 ls ${SP_DIR}/New_Voyager
