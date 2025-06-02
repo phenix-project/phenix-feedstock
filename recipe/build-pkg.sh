@@ -162,9 +162,7 @@ find ${PREFIX}/bin -name "*show_build_path" -not -name "libtbx.show_build_path" 
 
 # fix dxtbx and dials
 for m in dxtbx dials; do
-  mv ${SP_DIR}/${m} ${SP_DIR}/not_${m}
-  mv ${SP_DIR}/not_${m}/src/* ${SP_DIR}
-  rm -fr ${SP_DIR}/not_${m}
+  cp -af ${SP_DIR}/${m}/src/* ${SP_DIR}
 done
 
 # copy dxtbx_flumpy.so separately since it does not end it *_ext.so
