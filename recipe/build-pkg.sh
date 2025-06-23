@@ -81,6 +81,17 @@ ${PYTHON} bootstrap.py build \
   --config-flags="--no_bin_python" \
   --verbose
 
+# install aimnet2 for qrefine
+if [[ "${PY_VER}" == "3.9" && `uname` == "Linux" ]]; then
+  ${PYTHON} -m pip install -vv --no-deps git+https://github.com/zubatyuk/aimnet2calc.git
+  MODEL=aimnet2-qr_b97md4_qzvp_2.jpt
+  DESTINATION=${SP_DIR}/aimnet2calc/assets/aimnet2-qr
+  wget https://github.com/zubatyuk/aimnet-model-zoo/raw/main/aimnet2-qr/${MODEL}
+  mkdir -p ${DESTINATION}
+  mv ${MODEL} ${DESTINATION}
+  rm -fr ${SP_DIR}/aimnet2calc/__pycache__
+fi
+
 # remove intermediate objects in build directory
 cd build
 find . -name "*.o" -type f -delete
