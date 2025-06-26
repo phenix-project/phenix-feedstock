@@ -4,14 +4,16 @@
   "menu_items": [
   {
     "name": "Phenix REPLACEME",
+    "precommand": "call ${PREFIX}/phenix_env.bat",
     "command": ["${PREFIX}/Library/bin/phenix.bat"],
     "icon": "${MENU_DIR}/phenix.ico"
   },
   {
     "name": "Phenix REPLACEME Command Prompt",
-    "command": ["C:\\Windows\\System32\\cmd.exe",
+    "command": ["C:/Windows/System32/cmd.exe",
                 "/k",
-                "${PREFIX}\\phenix_env.bat"]
+                "${PREFIX}/phenix_env.bat"],
+    "terminal": "True"
   }
   ]
 }
