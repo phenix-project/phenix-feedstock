@@ -206,7 +206,7 @@ if %errorlevel% neq 0 exit /b %errorlevel%
 %PYTHON% %RECIPE_DIR%\scripts\win_update_menu.py --file %RECIPE_DIR%\menu-windows.json --version %PKG_VERSION%
 if %errorlevel% neq 0 exit /b %errorlevel%
 
-copy /Y %RECIPE_DIR%\menu-windows.json %MENU_DIR%\%PKG_NAME%_menu.json
+copy /Y %RECIPE_DIR%\menu-windows.json %MENU_DIR%\%PKG_NAME%.json
 if %errorlevel% neq 0 exit /b %errorlevel%
 
 REM clean up cbflib
