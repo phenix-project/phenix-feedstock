@@ -82,7 +82,7 @@ ${PYTHON} bootstrap.py build \
   --verbose
 
 # install aimnet2 for qrefine
-if [[ "${PY_VER}" == "3.9" && `uname` == "Linux" ]]; then
+if [[ `uname` == "Linux" ]]; then
   ${PYTHON} -m pip install -vv --no-deps git+https://github.com/zubatyuk/aimnet2calc.git
   MODEL=aimnet2-qr_b97md4_qzvp_2.jpt
   DESTINATION=${SP_DIR}/aimnet2calc/assets/aimnet2-qr
