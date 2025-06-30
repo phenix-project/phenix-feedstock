@@ -9,7 +9,7 @@
   {
     "name": "Phenix REPLACEME Command Prompt",
     "system": "%windir%\\system32\\cmd.exe",
-    "scriptarguments": ["/k", "${PREFIX}\\phenix_env.bat"],
+    "scriptarguments": ["/k", "${PREFIX}\\phenix_env.bat"]
   }
   ]
 }
