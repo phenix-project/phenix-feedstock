@@ -17,6 +17,10 @@ def add_phenix_version(prefix, version):
   Add PHENIX_GUI_ENVIRONMENT to Windows dispatcher as well (for phenix.refine updates)
   '''
 
+  # change version *.*.* to *.*-*
+  split_version = version.split('.')
+  version = '.'.join(split_version[:-1]) + '-' + split_version[-1]
+
   # find Phenix dispatcher
   prefix = Path(os.path.abspath(prefix))
   bin_directories = ['bin', 'Library/bin', 'Scripts']
