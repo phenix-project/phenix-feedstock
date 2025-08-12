@@ -171,6 +171,9 @@ echo Removing some duplicate dispatchers
 find ${PREFIX}/bin -name "*show_dist_paths" -not -name "libtbx.show_dist_paths" -type f -delete
 find ${PREFIX}/bin -name "*show_build_path" -not -name "libtbx.show_build_path" -type f -delete
 
+# add version to phenix dispatcher
+${PYTHON} ${RECIPE_DIR}/scripts/add_phenix_version.py --prefix ${PREFIX} --version ${PKG_VERSION}
+
 # fix dxtbx and dials
 for m in dxtbx dials; do
   cp -af ${SP_DIR}/${m}/src/* ${SP_DIR}

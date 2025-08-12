@@ -177,6 +177,9 @@ del /Q %LIBRARY_BIN%\*show_dist_paths.bat
 attrib -H %LIBRARY_BIN%\libtbx.show_build_path.bat
 attrib -H %LIBRARY_BIN%\libtbx.show_dist_paths.bat
 
+REM add version to phenix dispatcher
+%PYTHON% %RECIPE_DIR%\scripts\add_phenix_version.py --prefix %PREFIX% --version %PKG_VERSION%
+
 REM fix dxtbx and dials
 xcopy /E %SP_DIR%\not_dxtbx\src\dxtbx %SP_DIR%
 xcopy /E %SP_DIR%\not_dxtbx\src\dxtbx.egg-info %SP_DIR%
