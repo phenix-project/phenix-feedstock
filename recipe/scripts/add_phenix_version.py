@@ -39,6 +39,9 @@ def add_phenix_version(prefix, version):
         for line in lines:
           line = line.strip()
           if line.startswith('LIBTBX_PYEXE'):
+            if sys.platform.startswith('linux'):
+              f.write('LC_ALL=en_US.UTF-8\n')
+              f.write('export LC_ALL\n')
             f.write(f'PHENIX_VERSION="{version}"')
             f.write('\n')
             f.write('export PHENIX_VERSION\n')
