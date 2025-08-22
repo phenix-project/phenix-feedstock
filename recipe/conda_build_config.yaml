@@ -8,3 +8,17 @@ c_compiler_version:
 cxx_compiler_version:
   - '13' #  [linux]
   - '18' #  [osx]
+python:
+  # part of a zip_keys: python, is_python_min
+  - 3.9.* *_cpython
+  - 3.10.* *_cpython
+  - 3.11.* *_cpython
+  - 3.12.* *_cpython
+  - 3.13.* *_cp313
+is_python_min:
+  # part of a zip_keys: python, is_python_min
+  - false
+  - true
+  - false
+  - false
+  - false
