@@ -37,15 +37,21 @@ def add_phenix_version(prefix, version):
         lines = f.readlines()
       with open(phenix_dispatcher, 'w') as f:
         for line in lines:
-          line = line.strip()
+          line = line.rstrip()
           if line.startswith('LIBTBX_PYEXE'):
             if sys.platform.startswith('linux'):
               f.write('LC_ALL=en_US.UTF-8\n')
               f.write('export LC_ALL\n')
+            f.write('PHENIX=${LIBTBX_PREFIX}\n')
+            f.write('export PHENIX\n')
+            f.write('PHENIX_PREFIX=${LIBTBX_PREFIX}\n')
+            f.write('export PHENIX_PREFIX\n')
             f.write(f'PHENIX_VERSION="{version}"')
             f.write('\n')
             f.write('export PHENIX_VERSION\n')
           elif line.startswith('@set LIBTBX_PYEXE'):
+            f.write('@set PHENIX=%LIBTBX_PREFIX%\n')
+            f.write('@set PHENIX_PREFIX=%LIBTBX_PREFIX%\n')
             f.write('@set PHENIX_GUI_ENVIRONMENT=1\n')
             f.write(f'@set PHENIX_VERSION="{version}"')
             f.write('\n')
