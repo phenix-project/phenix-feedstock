@@ -156,10 +156,11 @@ fi
 echo Copying REST credentials
 cp -a ./rest ${EXTRA_CCTBX_DIR}
 
+# duplicate dispatchers needed for some tests
 # remove extra copies of dispatchers
-echo Removing some duplicate dispatchers
-find ${PREFIX}/bin -name "*show_dist_paths" -not -name "libtbx.show_dist_paths" -type f -delete
-find ${PREFIX}/bin -name "*show_build_path" -not -name "libtbx.show_build_path" -type f -delete
+# echo Removing some duplicate dispatchers
+# find ${PREFIX}/bin -name "*show_dist_paths" -not -name "libtbx.show_dist_paths" -type f -delete
+# find ${PREFIX}/bin -name "*show_build_path" -not -name "libtbx.show_build_path" -type f -delete
 
 # add version to phenix dispatcher
 ${PYTHON} ${RECIPE_DIR}/scripts/add_phenix_version.py --prefix ${PREFIX} --version ${PKG_VERSION}
