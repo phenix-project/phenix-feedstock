@@ -156,6 +156,10 @@ fi
 echo Copying REST credentials
 cp -a ./rest ${EXTRA_CCTBX_DIR}
 
+# copy build/include_paths for some tests
+echo Copying ./build/include_paths
+cp ./build/include_paths ${EXTRA_CCTBX_DIR}
+
 # duplicate dispatchers needed for some tests
 # remove extra copies of dispatchers
 # echo Removing some duplicate dispatchers

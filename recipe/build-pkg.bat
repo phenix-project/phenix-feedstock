@@ -156,6 +156,10 @@ mkdir %EXTRA_CCTBX_DIR%\rest
 copy .\rest\token %EXTRA_CCTBX_DIR%\rest\token
 copy .\rest\url %EXTRA_CCTBX_DIR%\rest\url
 
+REM copy build/include_paths for some tests
+echo Copying ./build/include_paths
+copy .\build\include_paths %EXTRA_CCTBX_DIR%
+
 REM copy annlib headers and then clean up annlib
 xcopy /E .\modules\annlib\include\ANN %EXTRA_CCTBX_DIR%\annlib_adaptbx\include\ANN\
 rmdir /S /Q .\build\annlib
