@@ -155,6 +155,7 @@ echo Copying REST credentials
 mkdir %EXTRA_CCTBX_DIR%\rest
 copy .\rest\token %EXTRA_CCTBX_DIR%\rest\token
 copy .\rest\url %EXTRA_CCTBX_DIR%\rest\url
+copy .\rest\ai_url %EXTRA_CCTBX_DIR%\rest\ai_url
 
 REM copy build/include_paths for some tests
 echo Copying ./build/include_paths
