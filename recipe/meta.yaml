@@ -49,6 +49,7 @@ outputs:
         - pip
         - python
         - python.app                            # [osx]
+        - scipy
         - scons
         - setuptools
         - six
