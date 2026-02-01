@@ -10,7 +10,7 @@ build_platform:
   osx_arm64: osx_64
 conda_build:
   pkg_format: '2'
-  zstd_compression_level: 3
+  zstd_compression_level: 22
 github:
   user_or_org: phenix-project
   repo_name: phenix-feedstock
