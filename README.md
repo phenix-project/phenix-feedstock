@@ -26,163 +26,11 @@ Current build status
 ====================
 
 
-<table>
-    
-  <tr>
-    <td>Azure</td>
+<table><tr><td>All platforms:</td>
     <td>
-      <details>
-        <summary>
-          <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-            <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main">
-          </a>
-        </summary>
-        <table>
-          <thead><tr><th>Variant</th><th>Status</th></tr></thead>
-          <tbody><tr>
-              <td>linux_64_python3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_python3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_python3.11.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_python3.11.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_python3.12.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_python3.12.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_python3.13.____cp313</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_python3.13.____cp313" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>linux_64_python3.9.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_python3.9.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_python3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_python3.11.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.11.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_python3.12.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.12.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_python3.13.____cp313</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.13.____cp313" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_64_python3.9.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_python3.9.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_arm64_python3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_python3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_arm64_python3.11.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_python3.11.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_arm64_python3.12.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_python3.12.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_arm64_python3.13.____cp313</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_python3.13.____cp313" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>osx_arm64_python3.9.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_python3.9.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_python3.10.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=win&configuration=win%20win_64_python3.10.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_python3.11.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=win&configuration=win%20win_64_python3.11.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_python3.12.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=win&configuration=win%20win_64_python3.12.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_python3.13.____cp313</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=win&configuration=win%20win_64_python3.13.____cp313" alt="variant">
-                </a>
-              </td>
-            </tr><tr>
-              <td>win_64_python3.9.____cpython</td>
-              <td>
-                <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
-                  <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main&jobName=win&configuration=win%20win_64_python3.9.____cpython" alt="variant">
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </details>
+      <a href="https://dev.azure.com/phenix-release/feedstock-builds/_build/latest?definitionId=7&branchName=main">
+        <img src="https://dev.azure.com/phenix-release/feedstock-builds/_apis/build/status/phenix-feedstock?branchName=main">
+      </a>
     </td>
   </tr>
 </table>
@@ -192,7 +40,7 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-phenix-green.svg)](https://anaconda.org/cctbx-dev/phenix) | [![Conda Downloads](https://img.shields.io/conda/dn/cctbx-dev/phenix.svg)](https://anaconda.org/cctbx-dev/phenix) | [![Conda Version](https://img.shields.io/conda/vn/cctbx-dev/phenix.svg)](https://anaconda.org/cctbx-dev/phenix) | [![Conda Platforms](https://img.shields.io/conda/pn/cctbx-dev/phenix.svg)](https://anaconda.org/cctbx-dev/phenix) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-chem__data-green.svg)](https://anaconda.org/cctbx-dev/chem_data) | [![Conda Downloads](https://img.shields.io/conda/dn/cctbx-dev/chem_data.svg)](https://anaconda.org/cctbx-dev/chem_data) | [![Conda Version](https://img.shields.io/conda/vn/cctbx-dev/chem_data.svg)](https://anaconda.org/cctbx-dev/chem_data) | [![Conda Platforms](https://img.shields.io/conda/pn/cctbx-dev/chem_data.svg)](https://anaconda.org/cctbx-dev/chem_data) |
 
 Installing phenix
 =================
@@ -204,41 +52,41 @@ conda config --add channels cctbx-dev
 conda config --set channel_priority strict
 ```
 
-Once the `cctbx-dev` channel has been enabled, `phenix` can be installed with `conda`:
+Once the `cctbx-dev` channel has been enabled, `chem_data` can be installed with `conda`:
 
 ```
-conda install phenix
-```
-
-or with `mamba`:
-
-```
-mamba install phenix
-```
-
-It is possible to list all of the versions of `phenix` available on your platform with `conda`:
-
-```
-conda search phenix --channel cctbx-dev
+conda install chem_data
 ```
 
 or with `mamba`:
 
 ```
-mamba search phenix --channel cctbx-dev
+mamba install chem_data
+```
+
+It is possible to list all of the versions of `chem_data` available on your platform with `conda`:
+
+```
+conda search chem_data --channel cctbx-dev
+```
+
+or with `mamba`:
+
+```
+mamba search chem_data --channel cctbx-dev
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search phenix --channel cctbx-dev
+mamba repoquery search chem_data --channel cctbx-dev
 
-# List packages depending on `phenix`:
-mamba repoquery whoneeds phenix --channel cctbx-dev
+# List packages depending on `chem_data`:
+mamba repoquery whoneeds chem_data --channel cctbx-dev
 
-# List dependencies of `phenix`:
-mamba repoquery depends phenix --channel cctbx-dev
+# List dependencies of `chem_data`:
+mamba repoquery depends chem_data --channel cctbx-dev
 ```
 
 
