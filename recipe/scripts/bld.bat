@@ -80,6 +80,10 @@ set PATH=%UNIQUE_PATH%
 echo "NEW PATH"
 echo %PATH%
 
+REM fix png.lib
+copy %LIBRARY_PREFIX%\lib\libpng.lib %LIBRARY_PREFIX%\lib\png.lib
+if %errorlevel% neq 0 exit /b %errorlevel%
+
 REM build
 set CCTBX_SKIP_CHEMDATA_CACHE_REBUILD=1
 %PYTHON% bootstrap.py build ^
