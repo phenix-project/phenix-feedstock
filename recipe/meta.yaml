@@ -45,6 +45,7 @@ outputs:
         - eigen
         - future
         - libglu                                # [linux]
+        - libpng
         - numpy
         - pip
         - python
