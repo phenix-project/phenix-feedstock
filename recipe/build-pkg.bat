@@ -56,6 +56,10 @@ REM remove some libtbx_refresh.py files
 del /S /Q .\modules\iota\libtbx_refresh.py
 del /S /Q .\modules\xia2\libtbx_refresh.py
 
+REM fix png.lib
+copy %LIBRARY_PREFIX%\lib\libpng.lib %LIBRARY_PREFIX%\lib\png.lib
+if %errorlevel% neq 0 exit /b %errorlevel%
+
 REM build
 %PYTHON% bootstrap.py build ^
   --builder=phenix_release ^
