@@ -1,4 +1,4 @@
-{% set version = "dev.5989" %}
+{% set version = "2026.2" %}
 
 package:
   name: chem_data
