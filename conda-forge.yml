@@ -20,8 +20,6 @@ secrets:
   - TARBALL_PASSWORD
 provider:
   linux_64: azure
-  linux_aarch64: azure
-  linux_ppc64le: azure
   osx_64: azure
   win_64: azure
   test: native
