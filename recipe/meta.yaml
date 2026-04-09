@@ -95,7 +95,7 @@ outputs:
         # phasertng
         - bokeh
         - networkx
-        - pyvis
+
     test:
       imports:
         - scitbx.array_family.flex
