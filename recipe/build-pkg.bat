@@ -125,7 +125,8 @@ dir %SP_DIR%\New_Voyager
 
 REM copy modules/elbow files
 xcopy /S /E /Y .\modules\elbow %SP_DIR%
-xcopy /S /E /Y %SP_DIR%\resources %SP_DIR%\elbow\
+mkdir %SP_DIR%\elbow\resources
+xcopy /S /E /Y %SP_DIR%\resources %SP_DIR%\elbow\resources
 rmdir /S /Q %SP_DIR%\elbow\elbow\command_line
 dir %SP_DIR%\elbow
 
