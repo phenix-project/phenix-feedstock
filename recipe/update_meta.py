@@ -76,22 +76,9 @@ def run():
     print(r.text)
     sys.exit(1)
 
-  # modify URL to get file
-  unix_url = None
-  win_url = None
-  if raw_url is not None:
-    file_url = urlsplit(raw_url)
-    new_url = list(file_url)
-    new_url[3] = 'format=file&subPath=/phenix.enc'
-    unix_url = urlunsplit(new_url)
-    # Windows does not like the %2F
-    new_url[3] = 'format=file&subPath=/phenix.enc'
-    win_url = urlunsplit(new_url)
-
   # modify meta.yaml to use new version and URL
   if (namespace.new_version is not None
-      and unix_url is not None
-      and win_url is not None):
+      and raw_url is not None):
     with open(namespace.meta_path, 'r') as f:
       lines = f.readlines()
     for i, line in enumerate(lines):
@@ -99,13 +86,9 @@ def run():
         print('Old: ', line)
         lines[i] = r'{% set version = "' + namespace.new_version + r'" %}' + '\n'
         print('New: ', lines[i])
-      if line.startswith('  url:') and line.endswith('[unix]\n'):
+      if line.startswith('  url:'):
         print('Old: ', line)
-        lines[i] = f'  url: {unix_url}  # [unix]\n'
-        print('New: ', lines[i])
-      if line.startswith('  url:') and line.endswith('[win]\n'):
-        print('Old: ', line)
-        lines[i] = f'  url: {win_url}  # [win]\n'
+        lines[i] = f'  url: {raw_url}\n'
         print('New: ', lines[i])
     with open(namespace.meta_path, 'w') as f:
       for line in lines:
