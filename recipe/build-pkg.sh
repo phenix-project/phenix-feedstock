@@ -1,23 +1,6 @@
 #!/bin/bash
 set -xe
 
-echo ${SRC_DIR}
-ls ${SRC_DIR}
-
-echo `pwd`
-ls .
-
-mv ${SRC_DIR}/content\?format=zip ${SRC_DIR}/phenix.zip
-unzip ${SRC_DIR}/phenix.zip
-
-ls ${SRC_DIR}
-
-mv ${SRC_DIR}/phenix/phenix.enc ${SRC_DIR}/phenix.enc
-
-rm -fr phenix phenix.zip
-
-ls ${SRC_DIR}
-
 openssl enc -d \
   -aes-256-cbc \
   -salt \
