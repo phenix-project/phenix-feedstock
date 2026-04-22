@@ -13,6 +13,12 @@ dir D:\bld\src_cache
 
 cd %SRC_DIR%
 dir
+
+7z e phenix.zip
+del /S /Q phenix.zip
+
+dir
+
 @REM c:\\c\\envs\\b\\Library\bin\openssl.exe ^
 openssl ^
   enc -d ^

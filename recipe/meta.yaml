@@ -38,6 +38,7 @@ outputs:
         - {{ cdt('mesa-libgl-devel') }}         # [linux]
         - {{ cdt('mesa-dri-drivers') }}         # [linux]
         - wget                                  # [unix]
+        - unzip                                 # [unix]
       host:
         - libboost-python-devel
         - libboost-devel
