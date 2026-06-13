@@ -58,6 +58,7 @@ outputs:
         - xorg-libxfixes                        # [linux]
         - zlib
 
+        - hatchling
         - hdf5
         - libtiff
         - msgpack-cxx
@@ -79,7 +80,7 @@ outputs:
         - py2app                                # [osx]
         - pyopengl
         - pyrtf
-        - pyside2                               # [py<312]
+        - pyside2
         - python
         - python.app                            # [osx]
         - pyzmq
