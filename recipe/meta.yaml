@@ -10,6 +10,7 @@ source:
 
 build:
   number: 0
+  skip: true  # [py<311]
   skip_compile_pyc:
     - "*/*.py"
   preserve_egg_dir: true
