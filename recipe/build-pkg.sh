@@ -179,7 +179,7 @@ cp ./build/lib/dxtbx_flumpy.so ${SP_DIR}/../lib-dynload/
 
 # install iota and xia2
 cd modules
-for m in iota xia2; do
+for m in dxtbx dials iota xia2; do
   rm -fr ${SP_DIR}/${m}
   cd ${m}
   ${PYTHON} -m pip install . -vv --no-deps >& ${m}.log
