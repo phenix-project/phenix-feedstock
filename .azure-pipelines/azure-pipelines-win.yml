@@ -11,6 +11,7 @@ jobs:
       win_64_python3.11.____cpython:
         CONFIG: win_64_python3.11.____cpython
         UPLOAD_PACKAGES: 'True'
+        build_platform: win-64
         build_workspace_dir: C:\\bld\\
         free_disk_space: quick
         pagefile_size: 0
@@ -21,6 +22,7 @@ jobs:
       win_64_python3.12.____cpython:
         CONFIG: win_64_python3.12.____cpython
         UPLOAD_PACKAGES: 'True'
+        build_platform: win-64
         build_workspace_dir: C:\\bld\\
         free_disk_space: quick
         pagefile_size: 0
@@ -31,6 +33,7 @@ jobs:
       win_64_python3.13.____cp313:
         CONFIG: win_64_python3.13.____cp313
         UPLOAD_PACKAGES: 'True'
+        build_platform: win-64
         build_workspace_dir: C:\\bld\\
         free_disk_space: quick
         pagefile_size: 0
@@ -60,6 +63,7 @@ jobs:
         UPLOAD_ON_BRANCH: upload
         UPLOAD_PACKAGES: $(UPLOAD_PACKAGES)
         UPLOAD_TEMP: $(UPLOAD_TEMP)
+        build_platform: $(build_platform)
         flow_run_id: azure_$(Build.BuildNumber).$(System.JobAttempt)
         remote_url: $(Build.Repository.Uri)
         sha: $(Build.SourceVersion)
@@ -67,7 +71,7 @@ jobs:
         TARBALL_PASSWORD: $(TARBALL_PASSWORD)
 
     - script: |
-        set ARTIFACT_STAGING_DIR=$(Build.ArtifactStagingDirectory
+        set ARTIFACT_STAGING_DIR=$(Build.ArtifactStagingDirectory)
         set BLD_ARTIFACT_PREFIX=conda_artifacts
         set CI=azure
         set CI_RUN_ID=$(build.BuildNumber).$(system.JobAttempt)
