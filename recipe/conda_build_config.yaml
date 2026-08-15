@@ -6,3 +6,9 @@ libboost_devel:
   - '1.88'
 libboost_python_devel:
   - '1.88'
+c_compiler_version:  # [unix]
+  - '14'  # [linux]
+  - '19'  # [osx]
+cxx_compiler_version:  # [unix]
+  - '14'  # [linux]
+  - '19'  # [osx]
