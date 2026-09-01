@@ -1,8 +1,6 @@
 azure:
   user_or_org: phenix-release
   project_name: feedstock-builds
-  free_disk_space: true
-  store_build_artifacts: true
   settings_win:
     variables:
       CONDA_BLD_PATH: C:\\bld\\
@@ -24,3 +22,12 @@ provider:
   win_64: azure
   test: native
 upload_on_branch: upload
+workflow_settings:
+  free_disk_space: max
+  store_build_artifacts:
+  - platform:
+    - linux_64
+    - osx_64
+    - osx_arm64
+    - win_64
+    value: true
