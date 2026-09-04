@@ -42,8 +42,7 @@ call :start_group "Configuring conda"
 
 :: Activate the base conda environment
 echo Activating environment
-set "CONDA_EXE=%MINIFORGE_HOME%\Scripts\conda.exe"
-call "%MINIFORGE_HOME%\condabin\conda.bat" activate "%MINIFORGE_HOME%"
+call "%MINIFORGE_HOME%\Scripts\activate.bat"
 :: Configure the solver
 set "CONDA_SOLVER=libmamba"
 if !errorlevel! neq 0 exit /b !errorlevel!
