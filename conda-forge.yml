@@ -1,9 +1,6 @@
 azure:
   user_or_org: phenix-release
   project_name: feedstock-builds
-  settings_win:
-    variables:
-      CONDA_BLD_PATH: C:\\bld\\
 build_platform:
   osx_arm64: osx_64
 conda_build:
