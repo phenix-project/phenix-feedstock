@@ -12,7 +12,7 @@ jobs:
         CONFIG: win_64_python3.11.____cpython
         UPLOAD_PACKAGES: 'True'
         build_platform: win-64
-        build_workspace_dir: C:\\bld\\
+        build_workspace_dir: D:\\bld\\
         free_disk_space: max
         pagefile_size: 0
         resize_partitions: false
@@ -23,7 +23,7 @@ jobs:
         CONFIG: win_64_python3.12.____cpython
         UPLOAD_PACKAGES: 'True'
         build_platform: win-64
-        build_workspace_dir: C:\\bld\\
+        build_workspace_dir: D:\\bld\\
         free_disk_space: max
         pagefile_size: 0
         resize_partitions: false
@@ -34,7 +34,7 @@ jobs:
         CONFIG: win_64_python3.13.____cp313
         UPLOAD_PACKAGES: 'True'
         build_platform: win-64
-        build_workspace_dir: C:\\bld\\
+        build_workspace_dir: D:\\bld\\
         free_disk_space: max
         pagefile_size: 0
         resize_partitions: false
