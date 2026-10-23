@@ -2,6 +2,7 @@ azure:
   user_or_org: phenix-release
   project_name: feedstock-builds
 build_platform:
+  linux_aarch64: linux_64
   osx_arm64: osx_64
 conda_build:
   pkg_format: '2'
@@ -15,15 +16,17 @@ secrets:
   - TARBALL_PASSWORD
 provider:
   linux_64: azure
+  linux_aarch64: azure
   osx_64: azure
   win_64: azure
-  test: native
+test: native
 upload_on_branch: upload
 workflow_settings:
   free_disk_space: max
   store_build_artifacts:
   - platform:
     - linux_64
+    - linux_aarch64
     - osx_64
     - osx_arm64
     - win_64
