@@ -19,9 +19,9 @@ cxx_compiler_version:
 hdf5:
 - 1.14.6
 libboost_devel:
-- '1.88'
+- '1.90'
 libboost_python_devel:
-- '1.88'
+- '1.90'
 libpng:
 - '1.6'
 libsvm:
