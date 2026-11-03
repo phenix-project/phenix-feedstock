@@ -1,8 +1,57 @@
 diff --git a/modules/cctbx_project/boost_adaptbx/SConscript b/modules/cctbx_project/boost_adaptbx/SConscript
-index 02670e92ff..234e76e4d1 100644
+index fef39af7c2..3f9e51cc72 100644
 --- a/modules/cctbx_project/boost_adaptbx/SConscript
 +++ b/modules/cctbx_project/boost_adaptbx/SConscript
-@@ -735,7 +735,7 @@ main()
+@@ -146,24 +146,24 @@ if (not env_etc.no_boost_python):
+       os.remove(old_filename)
+ 
+   conf = env_pure_boost_python_ext.Clone().Configure()
+-  if (not conf.TryCompile("#include <iostream>", extension=".cpp")):
+-    sys.exit("""
+-FATAL:
++#   if (not conf.TryCompile("#include <iostream>", extension=".cpp")):
++#     sys.exit("""
++# FATAL:
+ 
+-********************** C++ compiler does not work. **********************
++# ********************** C++ compiler does not work. **********************
+ 
+-See build/config.log for details""")
+-  conf.Finish()
+-  conf = env_pure_boost_python_ext.Clone().Configure()
+-  if (not conf.TryCompile("#include <Python.h>", extension=".cpp")):
+-    raise RuntimeError("""
+-FATAL:
++# See build/config.log for details""")
++#   conf.Finish()
++#   conf = env_pure_boost_python_ext.Clone().Configure()
++#   if (not conf.TryCompile("#include <Python.h>", extension=".cpp")):
++#     raise RuntimeError("""
++# FATAL:
+ 
+-******************** Python.h include not available. ********************
++# ******************** Python.h include not available. ********************
+ 
+-On some Linux machines you may need to install the "python-dev" package,
+-e.g. with "yum install python-dev" or "apt-get install python-dev".
+-""")
++# On some Linux machines you may need to install the "python-dev" package,
++# e.g. with "yum install python-dev" or "apt-get install python-dev".
++# """)
+   conf.Finish()
+   env_boost_python_ext = env_pure_boost_python_ext.Clone()
+   env_etc.include_registry.prepend(
+@@ -737,7 +737,8 @@ main()
+     else:
+       env.Replace(LIBS=[])  # no need to link Boost libraries here
+     conf = env.Configure()
+-    flag, output = conf.TryRun(test_code, extension='.cpp')
++    # flag, output = conf.TryRun(test_code, extension='.cpp')
++    flag = True
+     conf.Finish()
+     if (not flag):
+       see_message_above = \
+@@ -773,7 +774,7 @@ main()
              + u.replace(" ", "_").upper(), file=f)
        print(file=f)
        print("#endif // GUARD", file=f)
@@ -11,11 +60,64 @@ index 02670e92ff..234e76e4d1 100644
  
    if (os.path.isfile(libtbx.env.under_build("lib/libswig_class_example.a"))):
      # this example requires these manual steps:
+diff --git a/modules/cctbx_project/gltbx/SConscript b/modules/cctbx_project/gltbx/SConscript
+index d1865d2a77..a42baeb620 100644
+--- a/modules/cctbx_project/gltbx/SConscript
++++ b/modules/cctbx_project/gltbx/SConscript
+@@ -52,11 +52,13 @@ if not libtbx.env.module_is_installed("gltbx"):
+     #
+     env_etc.gltbx_has_usable_opengl = False
+     conf = trial_env.Configure()
+-    flag, output = conf.TryRun("""
+-  #include <gltbx/include_opengl.h>
+-  #include <iostream>
+-  int main() { std::cout << GL_POINT << std::endl; return 0; }
+-  """, extension=".cpp")
++  #   flag, output = conf.TryRun("""
++  # #include <gltbx/include_opengl.h>
++  # #include <iostream>
++  # int main() { std::cout << GL_POINT << std::endl; return 0; }
++  # """, extension=".cpp")
++    flag = True
++    output = ''
+     conf.Finish()
+     if (flag and len(output.strip()) != 0) or libtbx.env.build_options.use_conda:
+       conf = env.Configure()
 diff --git a/modules/cctbx_project/libtbx/SConscript b/modules/cctbx_project/libtbx/SConscript
-index 2764d43440..d117599281 100644
+index bf6462c6ee..44c6b5bba4 100644
 --- a/modules/cctbx_project/libtbx/SConscript
 +++ b/modules/cctbx_project/libtbx/SConscript
-@@ -1197,7 +1197,8 @@ if env_etc.cxx11_is_available:
+@@ -73,7 +73,8 @@ int main()
+     CCFLAGS=env_etc.ccflags_base,
+     CXXFLAGS=env_etc.cxxflags_base)
+   conf = env.Configure()
+-  flag, output = conf.TryRun(test_code, extension='.cpp')
++  # flag, output = conf.TryRun(test_code, extension='.cpp')
++  flag = True
+   conf.Finish()
+   if (not flag): return None
+   return int(output)
+@@ -720,7 +721,8 @@ int main() {
+   return 0;
+ }
+ """
+-    flag, output = conf.TryRun(test_code, extension='.cpp')
++    # flag, output = conf.TryRun(test_code, extension='.cpp')
++    flag = True
+     conf.Finish()
+     assert flag, "I have been asked to use the compiler clang but it is not working!"
+     env_etc.clang_version = ()
+@@ -923,7 +925,8 @@ int main() {
+       """  std::cout << "}"; """,
+       """  return 0;         """,
+       """}                   """])
+-    flag, output = conf.TryRun("\n".join(test_code), extension='.cpp')
++    # flag, output = conf.TryRun("\n".join(test_code), extension='.cpp')
++    flag = True
+     conf.Finish()
+     assert flag
+     output = output.replace(":,", ":None,")
+@@ -1227,7 +1230,8 @@ if env_etc.cxx11_is_available:
      conf = test_env.Configure()
    else:
      conf = env_base.Configure()
@@ -25,20 +127,21 @@ index 2764d43440..d117599281 100644
    conf.Finish()
    if not flag:
      env_etc.cxx11_is_available = False
+@@ -1395,7 +1399,8 @@ int main() {
+   env.Append(CCFLAGS=compiler_options)
+   env.Append(LINKFLAGS=linker_options)
+   conf = env.Configure()
+-  flag, output = conf.TryRun(test_code, extension='.cpp')
++  # flag, output = conf.TryRun(test_code, extension='.cpp')
++  flag = True
+   conf.Finish()
+   if (not flag or output.strip() != "e=2.71828, pi=3.14159"):
+     print("libtbx.scons: OpenMP is not usable.")
 diff --git a/modules/cctbx_project/libtbx/auto_build/bootstrap.py b/modules/cctbx_project/libtbx/auto_build/bootstrap.py
-index b8f3c2578d..eed122d45f 100644
+index dfe82c9008..76805feb5b 100644
 --- a/modules/cctbx_project/libtbx/auto_build/bootstrap.py
 +++ b/modules/cctbx_project/libtbx/auto_build/bootstrap.py
-@@ -1864,7 +1864,7 @@ environment exists in or is defined by {conda_env}.
-       # the get_environment function in ShellCommand updates the environment
-       if os.environ.get('CCTBX_CONDA_USE_ENVIRONMENT_VARIABLES', None):
-         env = {
--          'PYTHONPATH': None,
-+          # 'PYTHONPATH': None,
-           'LD_LIBRARY_PATH': None,
-           'DYLD_LIBRARY_PATH': None,
-           'DYLD_FALLBACK_LIBRARY_PATH': None
-@@ -1900,9 +1900,9 @@ environment exists in or is defined by {conda_env}.
+@@ -2016,9 +2016,9 @@ environment exists in or is defined by {conda_env}.
        ))
  
      # write extra setpaths script for conda
@@ -52,7 +155,7 @@ index b8f3c2578d..eed122d45f 100644
    def add_make(self):
      self.add_command('libtbx.scons', args=['-j',
 diff --git a/modules/cctbx_project/libtbx/auto_build/conda_build/update_libtbx_env.py b/modules/cctbx_project/libtbx/auto_build/conda_build/update_libtbx_env.py
-index e3467f9d5d..75b5edc103 100644
+index d24f0a8101..0706aa7e0d 100644
 --- a/modules/cctbx_project/libtbx/auto_build/conda_build/update_libtbx_env.py
 +++ b/modules/cctbx_project/libtbx/auto_build/conda_build/update_libtbx_env.py
 @@ -127,7 +127,7 @@ def update_libtbx_env(default_dir=None):
