@@ -6,7 +6,7 @@ context:
   url: https://artprodcus3.artifacts.visualstudio.com/Aa21b64c7-c136-4a25-ab50-eb9ba3fa4296/f0ee1b2f-77b3-4fa6-a2c5-97101b71b939/_apis/artifact/cGlwZWxpbmVhcnRpZmFjdDovL3BoZW5peC1yZWxlYXNlL3Byb2plY3RJZC9mMGVlMWIyZi03N2IzLTRmYTYtYTJjNS05NzEwMWI3MWI5MzkvYnVpbGRJZC8xNjU5Ni9hcnRpZmFjdE5hbWUvcGhlbml40/content?format=file&subPath=/phenix.enc
 
 package:
-  name: phenix
+  name: chem_data
   version: ${{ version }}
 
 source:
@@ -15,9 +15,9 @@ source:
 
 build:
   number: 0
-  skip:
-    - match(python, "<3.11")
-    - match(python, ">=3.14")
+  noarch: python
+  dynamic_linking:
+    binary_relocation: false
   python:
     skip_pyc_compilation:
       - "*/*.py"
@@ -177,7 +177,7 @@ build:
     #   - xia2 = xia2.cli.xia2_main:run
     #   - xia2.cluster_analysis = xia2.cli.cluster_analysis:run
   script:
-    file: build
+    file: build_chem_data
     secrets:
       - TARBALL_PASSWORD
     env:
@@ -240,62 +240,16 @@ requirements:
     - pybind11
 
   run:
-    - biopython
-    - flask
-    - future
-    - ipython
-    - if: linux
-      then: ${{ pin_compatible('libglu') }}
-    - libsvm
-    - matplotlib-base
-    - mrcfile
-    - ${{ pin_compatible('numpy') }}
-    - onedep_api
-    - pillow
-    - psutil
-    - if: osx
-      then: py2app
-    - pyopengl
-    - pyrtf
-    - pyside2
     - python
     - if: osx
       then: python.app
-    - pyzmq
-    - qt-webengine
-    - rdkit
-    - reportlab
-    - requests
-    - restraintlib
-    - scipy
-    - six
-    - websockets
-    - wxpython
 
-    # phasertng
-    - bokeh
-    - networkx
-
-# conda-build never ran these: the output had the package's own name, and its
-# test section was dropped ("Nothing to test for"). pip check fails on undeclared
-# pip requirements of bundled modules (aimnet2calc, onedep-lib, restraintlib, xia2),
-# and the libtbx suite has two failures in an installed package
-# (tst_processing.py, tst_dispatcher_environment.py).
 tests:
   - python:
       imports:
-        - scitbx.array_family.flex
-        - if: not win
-          then:
-            - gltbx.gl
-            - gltbx.glu
+        - chem_data
+        - chem_data.geostd
       pip_check: false
-  - script:
-      - libtbx.show_commands
-      # - if: unix
-      #   then: mkdir test; cd test; libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4
-      # - if: win
-      #   then: mkdir test && cd test && libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4
 
 about:
   homepage: https://github.com/cctbx/cctbx_project
