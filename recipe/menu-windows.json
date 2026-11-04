@@ -1,15 +1,26 @@
 {
+  "$schema": "https://json-schema.org/draft-07/schema",
+  "$id": "https://schemas.conda.io/menuinst-1.schema.json",
   "menu_name": "Phenix REPLACEME",
   "menu_items": [
-  {
-    "name": "Phenix REPLACEME",
-    "script": "${PREFIX}/Library/bin/phenix.bat",
-    "icon": "${MENU_DIR}/phenix.ico"
-  },
-  {
-    "name": "Phenix REPLACEME Command Prompt",
-    "system": "%windir%\\system32\\cmd.exe",
-    "scriptarguments": ["/k", "${PREFIX}\\phenix_env.bat"]
-  }
+    {
+      "name": "Phenix REPLACEME",
+      "description": "Start the Phenix REPLACEME graphical interface",
+      "command": ["{{ PREFIX }}/Library/bin/phenix.bat"],
+      "icon": "{{ MENU_DIR }}/phenix.ico",
+      "activate": false,
+      "platforms": {
+        "win": {}
+      }
+    },
+    {
+      "name": "Phenix REPLACEME Command Prompt",
+      "description": "Open a command prompt with the Phenix REPLACEME environment",
+      "command": ["%windir%\\system32\\cmd.exe", "/k", "{{ PREFIX }}\\phenix_env.bat"],
+      "activate": false,
+      "platforms": {
+        "win": {}
+      }
+    }
   ]
 }

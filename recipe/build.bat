@@ -2,7 +2,7 @@ echo on
 
 dir C:\
 
-call %CONDA%\condabin\conda.bat create -n test -y -c conda-forge curl git openssl xz
+call %CONDA%\condabin\conda.bat create -n test -y --override-channels -c conda-forge curl git openssl xz
 call %CONDA%\condabin\conda.bat activate test
 call %CONDA%\condabin\conda.bat clean --all -y
 
