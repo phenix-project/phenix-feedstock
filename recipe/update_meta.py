@@ -41,7 +41,7 @@ def run():
   parser.add_argument('--new-version', default=None, type=str,
     help='The version of the artifact')
   parser.add_argument('--meta-path', default=None, type=str,
-    help='The path to meta.yaml')
+    help='The path to recipe.yaml')
 
   # show help if no arguments are provided
   if len(sys.argv) == 1:
@@ -76,19 +76,35 @@ def run():
     print(r.text)
     sys.exit(1)
 
-  # modify meta.yaml to use new version and URL
+  # download only phenix.enc from the artifact; rattler-build does not
+  # extract the zip that format=zip returns because its URL has no extension
+  file_url = None
+  if raw_url is not None:
+    new_url = list(urlsplit(raw_url))
+    new_url[3] = 'format=file&subPath=/phenix.enc'
+    file_url = urlunsplit(new_url)
+
+  # modify the context section of recipe.yaml to use new version and URL
   if (namespace.new_version is not None
-      and raw_url is not None):
+      and file_url is not None):
     with open(namespace.meta_path, 'r') as f:
       lines = f.readlines()
+    replacements = {
+      'version': f'  version: "{namespace.new_version}"\n',
+      'url': f'  url: {file_url}\n',
+    }
+    in_context = False
     for i, line in enumerate(lines):
-      if i == 0:
+      # top-level keys delimit the context section
+      if not line.startswith((' ', '#', '\n')):
+        in_context = line.startswith('context:')
+        continue
+      if not in_context:
+        continue
+      key = line.strip().split(':', 1)[0]
+      if key in replacements:
         print('Old: ', line)
-        lines[i] = r'{% set version = "' + namespace.new_version + r'" %}' + '\n'
-        print('New: ', lines[i])
-      if line.startswith('  url:'):
-        print('Old: ', line)
-        lines[i] = f'  url: {raw_url}\n'
+        lines[i] = replacements[key]
         print('New: ', lines[i])
     with open(namespace.meta_path, 'w') as f:
       for line in lines:

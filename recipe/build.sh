@@ -93,7 +93,7 @@ ${PYTHON} -Bc "import pathlib; import shutil; [shutil.rmtree(p) for p in pathlib
 ${PYTHON} -Bc "import pathlib; import shutil; [shutil.rmtree(p) for p in pathlib.Path('.\modules').rglob('__pycache__')]"
 
 # fix rpath on macOS because libraries and extensions will be in different locations
-if [[ ! -z "$MACOSX_DEPLOYMENT_TARGET" ]]; then
+if [[ ! -z "${MACOSX_DEPLOYMENT_TARGET:-}" ]]; then
   echo Fixing rpath:
   ${PYTHON} ${RECIPE_DIR}/fix_macos_rpath.py
 fi
@@ -201,7 +201,7 @@ rm -fr ${SP_DIR}/cbflib
 # clean source cache
 ARTIFACT_DIR=/home/conda/feedstock_root/build_artifacts
 SUBDIR=linux-64
-if [[ ! -z "$MACOSX_DEPLOYMENT_TARGET" ]]; then
+if [[ ! -z "${MACOSX_DEPLOYMENT_TARGET:-}" ]]; then
   ARTIFACT_DIR=/Users/runner/miniforge3/conda-bld/
   SUBDIR=osx-64
   if [[ "$CC" == *"arm64"* ]]; then

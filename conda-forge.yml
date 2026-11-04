@@ -7,6 +7,7 @@ build_platform:
 conda_build:
   pkg_format: '2'
   zstd_compression_level: 16
+conda_build_tool: rattler-build
 github:
   user_or_org: phenix-project
   repo_name: phenix-feedstock
