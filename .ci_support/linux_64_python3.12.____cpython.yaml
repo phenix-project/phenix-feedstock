@@ -28,8 +28,6 @@ libboost_python_devel:
 - '1.90'
 libpng:
 - '1.6'
-libsvm:
-- '337'
 libtiff:
 - '4.7'
 msgpack_cxx:
