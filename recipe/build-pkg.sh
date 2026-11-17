@@ -72,10 +72,12 @@ ${PYTHON} bootstrap.py build \
   --verbose
 
 # install aimnet2 for qrefine
+# the AQuaRef weights go to ${PREFIX}/share/aimnet, which qrefine searches
+# after the aimnet cache (~/.cache/aimnet)
 if [[ `uname` == "Linux" || `uname` == "Darwin" ]]; then
   ${PYTHON} -m pip install -vv --no-deps git+https://github.com/zubatyuk/aimnet2calc.git
   MODEL=aimnet2-qr_b97md4_qzvp_2.jpt
-  DESTINATION=${SP_DIR}/aimnet2calc/assets/aimnet2-qr
+  DESTINATION=${PREFIX}/share/aimnet
   wget https://github.com/zubatyuk/aimnet-model-zoo/raw/main/aimnet2-qr/${MODEL}
   mkdir -p ${DESTINATION}
   mv ${MODEL} ${DESTINATION}

@@ -261,6 +261,7 @@ outputs:
       commands:
         - libtbx.show_commands
         - pip check
+        - test -f ${PREFIX}/share/aimnet/aimnet2-qr_b97md4_qzvp_2.jpt  # [unix]
         - mkdir test; cd test; libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4  # [not win]
         - mkdir test && cd test && libtbx.run_tests_parallel module=cctbx module=libtbx module=scitbx nproc=4  # [win]
       requires:
