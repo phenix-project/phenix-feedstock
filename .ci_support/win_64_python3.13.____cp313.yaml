@@ -1,5 +1,7 @@
 c_compiler:
-- vs2022
+- vs
+c_compiler_version:
+- '2022'
 c_stdlib:
 - vs
 channel_sources:
@@ -7,7 +9,9 @@ channel_sources:
 channel_targets:
 - cctbx-dev main
 cxx_compiler:
-- vs2022
+- vs
+cxx_compiler_version:
+- '2022'
 hdf5:
 - 1.14.6
 libboost_devel:
