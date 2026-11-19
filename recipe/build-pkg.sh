@@ -71,17 +71,17 @@ ${PYTHON} bootstrap.py build \
   --config-flags="--no_bin_python" \
   --verbose
 
-# install aimnet2 for qrefine
+# install aimnet (aimnetcentral) for qrefine; its dependencies (pytorch,
+# warp-lang, nvalchemi-toolkit-ops, ...) come from the CUDA environments
 # the AQuaRef weights go to ${PREFIX}/share/aimnet, which qrefine searches
 # after the aimnet cache (~/.cache/aimnet)
 if [[ `uname` == "Linux" || `uname` == "Darwin" ]]; then
-  ${PYTHON} -m pip install -vv --no-deps git+https://github.com/zubatyuk/aimnet2calc.git
+  ${PYTHON} -m pip install -vv --no-deps --no-compile git+https://github.com/isayevlab/aimnetcentral.git
   MODEL=aimnet2-qr_b97md4_qzvp_2.jpt
   DESTINATION=${PREFIX}/share/aimnet
   wget https://github.com/zubatyuk/aimnet-model-zoo/raw/main/aimnet2-qr/${MODEL}
   mkdir -p ${DESTINATION}
   mv ${MODEL} ${DESTINATION}
-  rm -fr ${SP_DIR}/aimnet2calc/__pycache__
 fi
 
 # remove intermediate objects in build directory

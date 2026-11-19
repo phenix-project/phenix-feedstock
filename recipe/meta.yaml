@@ -214,6 +214,7 @@ outputs:
         - zlib
 
         - hatchling
+        - hatch-vcs                             # [unix]
         - hdf5
         - libtiff
         - msgpack-cxx
