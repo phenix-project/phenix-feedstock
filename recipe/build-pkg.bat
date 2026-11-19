@@ -40,6 +40,13 @@ REM reapply patches
 git apply %RECIPE_DIR%\libtbx_SConscript.patch
 git apply %RECIPE_DIR%\bootstrap_win.patch
 
+REM qrefine 152ce4f: phenix.aquaref with a map stopped on "d_min is required"
+REM only for 2.3.6249; later versions contain the fix and the patch fails there
+if "%PKG_VERSION%"=="2.3.6249" (
+  git apply %RECIPE_DIR%\qrefine_dmin.patch
+  if errorlevel 1 exit 1
+)
+
 REM clean up sources
 rmdir /S /Q .\modules\cctbx_project\xfel\euxfel\definitions
 

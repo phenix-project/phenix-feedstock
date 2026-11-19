@@ -1,0 +1,46 @@
+qrefine 152ce4f (2026-11-18): aquaref with a map: do not require d_min for the aimnet2 presets
+
+For the qrefine of Phenix 2.3.6249 (fc3620e); later versions contain it.
+
+
+diff --git a/modules/qrefine/api.py b/modules/qrefine/api.py
+index 802c3f4..ba5bdce 100644
+--- a/modules/qrefine/api.py
++++ b/modules/qrefine/api.py
+@@ -28,8 +28,10 @@ def _auto_cust(params, d_min, has_map, has_data, log):
+   Data (d_min given) wins over a map, as it always did.
+   """
+   if(params.quantum.engine_name != "aimnet2"): return
+-  if(has_data and d_min is None):
+-    raise Sorry("d_min is required when has_data is True (aimnet2 presets "
++  # The reflection-data presets depend on resolution; the map presets do
++  # not (with a map d_min is None: it is the resolution of reflection data).
++  if(has_data and not has_map and d_min is None):
++    raise Sorry("d_min is required with reflection data (aimnet2 presets "
+       "depend on resolution).")
+   msg = """
+ The following settings have been auto-set to match refine.mode=refine
+diff --git a/modules/qrefine/tests/unit/tst_56.py b/modules/qrefine/tests/unit/tst_56.py
+index 81a3508..c3b3a44 100644
+--- a/modules/qrefine/tests/unit/tst_56.py
++++ b/modules/qrefine/tests/unit/tst_56.py
+@@ -17,10 +17,15 @@ def test_finalize_auto_cust():
+     assert p.expansion and not p.cluster.clustering
+     assert p.refine.minimizer == "lbfgs" and p.refine.gradient_only
+     assert p.refine.number_of_weight_search_cycles == 10
+-  p = qr.get_default_params(); p.quantum.engine_name = "aimnet2"
+-  api.finalize_params(p, n_conformers=1, has_map=True, log=null_out())
+-  assert p.refine.minimizer == "lbfgsb" and not p.expansion
+-  assert p.refine.max_bond_rmsd == 0.009
++  # a map: no d_min (qr.py passes has_data=True with a map; phenix.aquaref
++  # model.pdb map.ccp4 used to stop on "d_min is required")
++  for has_data in [True, False]:
++    p = qr.get_default_params(); p.quantum.engine_name = "aimnet2"
++    api.finalize_params(p, n_conformers=1, has_map=True, has_data=has_data,
++      log=null_out())
++    assert p.refine.mode == "refine"
++    assert p.refine.minimizer == "lbfgsb" and not p.expansion
++    assert p.refine.max_bond_rmsd == 0.009
+   # auto_cust=False skips the presets
+   p = qr.get_default_params(); p.quantum.engine_name = "aimnet2"
+   p.auto_cust = False
