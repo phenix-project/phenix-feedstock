@@ -38,7 +38,9 @@ call %CONDA%\condabin\conda.bat deactivate
 
 REM reapply patches
 git apply %RECIPE_DIR%\libtbx_SConscript.patch
+if errorlevel 1 exit 1
 git apply %RECIPE_DIR%\bootstrap_win.patch
+if errorlevel 1 exit 1
 
 REM qrefine 152ce4f: phenix.aquaref with a map stopped on "d_min is required"
 REM only for 2.3.6249; later versions contain the fix and the patch fails there

@@ -186,6 +186,7 @@ outputs:
         - {{ compiler('cxx') }}
         - git                                   # [win]
         - gnuconfig                             # [unix]
+        - patch                                 # [unix]
         - m2-tar                                # [win]
         - m2-xz                                 # [win]
         - {{ cdt('libselinux') }}               # [linux]
